@@ -24,7 +24,7 @@ public class CommentRestControler {
 	@Autowired
 	CommentService commentservice;
 	
-	
+	//jjjjjjj
 	
 	// http://localhost:8081/SpringMVC/servlet/retrieve-all-Comments
 	@GetMapping("/retrieve-all-Comments")
