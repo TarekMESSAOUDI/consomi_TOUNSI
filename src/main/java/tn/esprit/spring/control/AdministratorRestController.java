@@ -38,6 +38,20 @@ public class AdministratorRestController {
 		return aS.retrieveAdministratorById(userId);
 		}
 		
+		// http://localhost:9090/SpringMVC/servlet/retrieve-administrator-by-type/{user-type}
+		@GetMapping("/retrieve-administrator-by-type/{user-typeadmin}")
+		@ResponseBody
+		public List<Administrator> retrieveAdministratorByTypeAdmin(@PathVariable("user-typeadmin") String typeAdmin) {
+		return aS.retrieveAdministratorByTypeAdmin(typeAdmin);
+		}
+		
+		// http://localhost:9090/SpringMVC/servlet/retrieve-administrator-by-speciality/{user-speciality}
+		@GetMapping("/retrieve-administrator-by-speciality/{user-speciality}")
+		@ResponseBody
+		public List<Administrator> retrieveAdministratorBySpecialityAdmin(@PathVariable("user-speciality") String specialityAdmin) {
+		return aS.retrieveAdministratorSpecialityAdmin(specialityAdmin);
+		}
+		
 		// http://localhost:9090/SpringMVC/servlet/add-administrator
 		@PostMapping("/add-administrator")
 		@ResponseBody
