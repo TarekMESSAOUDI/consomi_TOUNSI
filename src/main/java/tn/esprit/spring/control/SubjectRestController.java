@@ -37,6 +37,27 @@ public class SubjectRestController {
 			return sS.retrieveSubjectById(subjectId);
 			}
 
+			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-title/{subject-title}
+			@GetMapping("/retrieve-subject-by-title/{subject-title}")
+			@ResponseBody
+			public List<Subject> retrieveSubjectByTitle(@PathVariable("subject-title") String titleSubject) {
+			return sS.retrieveSubjectByTitle(titleSubject);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-stars/{subject-stars}
+			@GetMapping("/retrieve-subject-by-stars/{subject-stars}")
+			@ResponseBody
+			public List<Subject> retrieveSubjectByStars(@PathVariable("subject-stars") float starsNumberSubject) {
+			return sS.retrieveSubjectByStars(starsNumberSubject);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-starsless/{subject-starsless}
+			@GetMapping("/retrieve-subject-by-starsless/{subject-starsless}")
+			@ResponseBody
+			public List<Subject> retrieveSubjectByStarsless(@PathVariable("subject-starsless") float starsNumberSubject) {
+			return sS.retrieveSubjectByStarsless(starsNumberSubject);
+			}
+			
 			// http://localhost:9090/SpringMVC/servlet/add-subject
 			@PostMapping("/add-subject")
 			@ResponseBody

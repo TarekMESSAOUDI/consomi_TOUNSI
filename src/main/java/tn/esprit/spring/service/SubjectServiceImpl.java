@@ -52,4 +52,19 @@ public class SubjectServiceImpl implements ISubjectService {
 		// TODO Auto-generated method stub
 		return (List<Subject>) sR.findAll();
 	}
+
+	@Override
+	public List<Subject> retrieveSubjectByTitle(String titleSubject) {
+		return (List<Subject>) sR.findByTitleSubject(titleSubject);
+	}
+
+	@Override
+	public List<Subject> retrieveSubjectByStars(float starsNumberSubject) {
+		return (List<Subject>) sR.findByStarsNumberSubjectGreaterThan(starsNumberSubject);
+	}
+
+	@Override
+	public List<Subject> retrieveSubjectByStarsless(float starsNumberSubject) {
+		return (List<Subject>) sR.findByStarsNumberSubjectLessThan(starsNumberSubject);
+	}
 }

@@ -38,6 +38,20 @@ public class DepartmentManagerRestController {
 			return dmS.retrieveDepartmentManagerById(userId);
 			}
 			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-departmentManager-by-salary/{user-salary}
+			@GetMapping("/retrieve-departmentManager-by-salary/{user-salary}")
+			@ResponseBody
+			public List<DepartmentManager> retrieveDepartmentManagerBysalary(@PathVariable("user-salary") float salaryDepartmentManager) {
+			return dmS.retrieveDepartmentManagerBysalary(salaryDepartmentManager);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/count-departmentmanager
+			@GetMapping("/count-departmentmanager")
+			@ResponseBody
+			public long retrieveDepartmentManagerByCount() {
+			return dmS.retrieveDepartmentManagerByCount();
+			}
+			
 			// http://localhost:9090/SpringMVC/servlet/add-departmentManager
 			@PostMapping("/add-departmentManager")
 			@ResponseBody
