@@ -14,7 +14,7 @@ public interface IDepartmentManagerService {
 
 	boolean deleteDepartmentManager(int id);
 
-	Optional<DepartmentManager> retrieveDepartmentManager(int id);
+	Optional<DepartmentManager> retrieveDepartmentManagerById(int id);
 	
 	List<DepartmentManager> retrieveAllDepartmentManagers();
 

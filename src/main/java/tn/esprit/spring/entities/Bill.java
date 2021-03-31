@@ -45,7 +45,7 @@ public class Bill implements Serializable {
 
 	public Bill() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	

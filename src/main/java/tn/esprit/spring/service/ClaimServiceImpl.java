@@ -2,6 +2,8 @@ package tn.esprit.spring.service;
 
 
 
+import java.util.List;
+
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,9 @@ public class ClaimServiceImpl implements IClaimService {
 
 	
 	@Override
-	public void addClaim(Claim c) {
+	public Claim addClaim(Claim c) {
 		
-		cr.save(c);
+		return cr.save(c);
 	}
 
 	@Override
@@ -49,7 +51,11 @@ public class ClaimServiceImpl implements IClaimService {
 		return cr.findById(id) .get();
 	}
 	
-	
+	@Override
+	public List<Claim> retrieveAllClaims(){
+		return (List<Claim>) cr.findAll();	
+		
+	}
 	
 	
 	

@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_CLAIM")
 public class Claim implements Serializable {
@@ -44,12 +44,12 @@ public class Claim implements Serializable {
 		this.dateClaim = dateClaim;
 	}
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Client Client;
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Administrator Administrator; 
 	

@@ -18,13 +18,11 @@ public class AdministratorServiceImpl implements IAdministratorService {
 	
 	@Override
 	public Administrator addAdministrator(Administrator admin) {
-		// TODO Auto-generated method stub
 		return Ar.save(admin);
 	}
 
 	@Override
 	public Administrator updateAdministrator(Administrator admin) {
-		// TODO Auto-generated method stub
 		return Ar.save(admin);
 	}
 
@@ -34,19 +32,26 @@ public class AdministratorServiceImpl implements IAdministratorService {
 			Ar.deleteById(id);
 			return true;
 		}else
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Optional<Administrator> retrieveAdministrator(int id) {
-		// TODO Auto-generated method stub
-		return Ar.findById(id);
+	public Optional<Administrator> retrieveAdministratorById(int idUser) {
+		return Ar.findById(idUser);
 	}
-
+	
+	@Override
+	public List<Administrator> retrieveAdministratorByTypeAdmin(String typeAdmin) {
+		return Ar.findByTypeAdmin(typeAdmin);
+	}
+	
+	@Override
+	public List<Administrator> retrieveAdministratorSpecialityAdmin(String specialityAdmin) {
+		return Ar.findBySpecialityAdmin(specialityAdmin);
+	}
+	
 	@Override
 	public List<Administrator> retrieveAllAdministrators() {
-		// TODO Auto-generated method stub
 		return (List<Administrator>) Ar.findAll();
 	}
 

@@ -50,10 +50,10 @@ public class ClientServiceImplTest {
 	}
 	
 	@Test
-	public void retrieveClientTest() {
-	l.info("Client : "+cS.retrieveClient(9));
+	public void retrieveClientByIdTest() {
+	l.info("Client : "+cS.retrieveClientById(11));
 	}
-	
+		
 	@Test
 	public void retrieveAllClientTest() {
 		l.info("Clients list : "+cS.retrieveAllClients());

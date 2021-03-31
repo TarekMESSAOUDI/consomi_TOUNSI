@@ -41,7 +41,7 @@ public class Basket implements Serializable {
 	}
 
 	@OneToOne(mappedBy="Basket")
-	@JsonIgnore
+	//@JsonIgnore
 	private Client Client;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")

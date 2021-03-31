@@ -13,8 +13,14 @@ public interface IAdministratorService {
 
 	boolean deleteAdministrator(int id);
 
-	Optional<Administrator> retrieveAdministrator(int id);
+	Optional<Administrator> retrieveAdministratorById(int idUser);
+
 	
 	List<Administrator> retrieveAllAdministrators();
+
+	List<Administrator> retrieveAdministratorByTypeAdmin(String typeAdmin);
+
+	List<Administrator> retrieveAdministratorSpecialityAdmin(String specialityAdmin);
+
 
 }

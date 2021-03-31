@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import tn.esprit.spring.entities.Bill;
-import tn.esprit.spring.entities.Order;
 import tn.esprit.spring.entities.PaymentType;
 
 
@@ -27,7 +26,7 @@ public interface BillService {
 
 	List<Bill> getBill_by_Type(PaymentType paymentType);
 
-	List<Bill> getAllBill_by_Order(Order order);
+	List<Bill> getAllBill_by_Order(Long idOrder);
 
 	void assignOrder_to_Bill(Long idOrder, Long idBill);
 	

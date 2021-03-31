@@ -40,7 +40,7 @@ public class Subject implements Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Subject")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Comment> Comment;
 	
 	public int getIdSubject() {

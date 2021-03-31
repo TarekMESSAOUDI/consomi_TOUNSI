@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_CHARITY_EVENT")
 public class CharityEvent implements Serializable {
@@ -48,7 +48,7 @@ public class CharityEvent implements Serializable {
 		this.participantsCharityEvent = participantsCharityEvent;
 	}
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Administrator Administrator; 
 	
