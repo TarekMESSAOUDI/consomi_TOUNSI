@@ -13,7 +13,7 @@ public interface IClientService {
 
 	boolean deleteClient(int id);
 
-	Optional<Client> retrieveClient(int id);
+	Optional<Client> retrieveClientById(int id);
 	
 	List<Client> retrieveAllClients();
 

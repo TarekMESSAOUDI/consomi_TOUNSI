@@ -31,7 +31,7 @@ public interface BillRepository  extends CrudRepository <Bill,Long> {
 	
 	
 	@Query(value = "SELECT * FROM T_BILL t WHERE order_id_order=?1", nativeQuery = true)
-    public List<Bill> getAllBill_by_Order(Order order);
+    public List<Bill> getAllBill_by_Order(Long idOrder);
 
 
 	
