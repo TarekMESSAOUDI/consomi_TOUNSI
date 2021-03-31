@@ -39,7 +39,16 @@ public class AdministratorServiceImpl implements IAdministratorService {
 	public Optional<Administrator> retrieveAdministratorById(int idUser) {
 		return Ar.findById(idUser);
 	}
-
+	
+	@Override
+	public List<Administrator> retrieveAdministratorByTypeAdmin(String typeAdmin) {
+		return Ar.findByTypeAdmin(typeAdmin);
+	}
+	
+	@Override
+	public List<Administrator> retrieveAdministratorSpecialityAdmin(String specialityAdmin) {
+		return Ar.findBySpecialityAdmin(specialityAdmin);
+	}
 	
 	@Override
 	public List<Administrator> retrieveAllAdministrators() {
