@@ -48,7 +48,7 @@ public class Order implements Serializable {
 	private Bill bill;
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Client Client;
 

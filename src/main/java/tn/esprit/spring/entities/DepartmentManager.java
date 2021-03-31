@@ -67,7 +67,7 @@ public class DepartmentManager extends User implements Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="DepartmentManager")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Department> Department;
 	
 	

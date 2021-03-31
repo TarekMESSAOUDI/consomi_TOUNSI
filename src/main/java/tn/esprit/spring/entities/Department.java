@@ -54,7 +54,7 @@ public class Department implements Serializable {
 	Stock stock ;
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	DepartmentManager DepartmentManager ;
 	

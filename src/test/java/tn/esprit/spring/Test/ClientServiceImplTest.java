@@ -51,7 +51,7 @@ public class ClientServiceImplTest {
 	
 	@Test
 	public void retrieveClientByIdTest() {
-	l.info("Client : "+cS.retrieveClientById(9));
+	l.info("Client : "+cS.retrieveClientById(11));
 	}
 		
 	@Test
