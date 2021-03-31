@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_CLIENT")
 public class Client extends User implements Serializable {
@@ -74,19 +74,19 @@ public class Client extends User implements Serializable {
 	
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-    @JsonIgnore
+   // @JsonIgnore
 	private Set<Order> Order;
 	
-    @JsonIgnore
+   // @JsonIgnore
 	@OneToOne
 	private Basket Basket; 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Comment> Comment;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Claim> Claim;
 
 
@@ -144,7 +144,7 @@ public class Client extends User implements Serializable {
 	public void setClaim(Set<Claim> claim) {
 		Claim = claim;
 	}
-
+/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -197,7 +197,7 @@ public class Client extends User implements Serializable {
 		return true;
 	}
 	
-	
+	*/
 
 	
 }
