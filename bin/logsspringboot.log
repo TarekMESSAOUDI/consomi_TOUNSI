@@ -1,0 +1,61 @@
+2021-03-09 00:49:03.527  INFO 8348 --- [main] t.e.spring.Test.SubjectServiceImplTest   : Starting SubjectServiceImplTest using Java 1.8.0_181 on Tarek with PID 8348 (started by LENOVO in C:\Users\LENOVO\Documents\workspace-sts-3.8.4.RELEASE\consomi_TOUNSI)
+2021-03-09 00:49:03.529  INFO 8348 --- [main] t.e.spring.Test.SubjectServiceImplTest   : No active profile set, falling back to default profiles: default
+2021-03-09 00:49:03.862  INFO 4216 --- [restartedMain] t.e.spring.ConsomiTounsiApplication      : Starting ConsomiTounsiApplication using Java 1.8.0_181 on Tarek with PID 4216 (C:\Users\LENOVO\Documents\workspace-sts-3.8.4.RELEASE\consomi_TOUNSI\target\classes started by LENOVO in C:\Users\LENOVO\Documents\workspace-sts-3.8.4.RELEASE\consomi_TOUNSI)
+2021-03-09 00:49:03.862  INFO 4216 --- [restartedMain] t.e.spring.ConsomiTounsiApplication      : No active profile set, falling back to default profiles: default
+2021-03-09 00:49:04.032  INFO 4216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-09 00:49:04.049  INFO 4216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 5 JPA repository interfaces.
+2021-03-09 00:49:04.129  INFO 4216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2021-03-09 00:49:04.129  INFO 4216 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-09 00:49:04.129  INFO 4216 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-09 00:49:04.138  INFO 4216 --- [restartedMain] o.a.c.c.C.[.[localhost].[/SpringMVC]     : Initializing Spring embedded WebApplicationContext
+2021-03-09 00:49:04.138  INFO 4216 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 274 ms
+2021-03-09 00:49:04.175  INFO 4216 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-09 00:49:04.180  INFO 4216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2021-03-09 00:49:04.184  INFO 4216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2021-03-09 00:49:04.184  INFO 4216 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-03-09 00:49:04.195  WARN 4216 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.Administrator
+2021-03-09 00:49:04.201  WARN 4216 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.Client
+2021-03-09 00:49:04.206  WARN 4216 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.DeliveryPerson
+2021-03-09 00:49:04.208  WARN 4216 --- [restartedMain] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.DepartmentManager
+2021-03-09 00:49:04.231  INFO 8348 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-09 00:49:04.261  INFO 4216 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.DepartmentManager (class must be instantiated by Interceptor)
+2021-03-09 00:49:04.267  INFO 4216 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.DeliveryPerson (class must be instantiated by Interceptor)
+2021-03-09 00:49:04.287  INFO 4216 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.Client (class must be instantiated by Interceptor)
+2021-03-09 00:49:04.320  INFO 4216 --- [restartedMain] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.Administrator (class must be instantiated by Interceptor)
+2021-03-09 00:49:04.331  INFO 8348 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 5 JPA repository interfaces.
+2021-03-09 00:49:04.931  INFO 4216 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-09 00:49:04.932  INFO 4216 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-09 00:49:04.936  INFO 4216 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-03-09 00:49:05.025  INFO 8348 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-09 00:49:05.043  WARN 4216 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-09 00:49:05.076  INFO 4216 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-09 00:49:05.094  INFO 8348 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-09 00:49:05.144  INFO 4216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path '/SpringMVC'
+2021-03-09 00:49:05.148  INFO 4216 --- [restartedMain] t.e.spring.ConsomiTounsiApplication      : Started ConsomiTounsiApplication in 1.336 seconds (JVM running for 7389.54)
+2021-03-09 00:49:05.149  INFO 4216 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-03-09 00:49:05.257  INFO 8348 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-09 00:49:05.511  INFO 8348 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-09 00:49:05.659  INFO 8348 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-09 00:49:05.673  INFO 8348 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-03-09 00:49:05.809  WARN 8348 --- [main] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.Administrator
+2021-03-09 00:49:05.837  WARN 8348 --- [main] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.Client
+2021-03-09 00:49:05.846  WARN 8348 --- [main] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.DeliveryPerson
+2021-03-09 00:49:05.850  WARN 8348 --- [main] org.hibernate.cfg.AnnotationBinder       : HHH000139: Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: tn.esprit.spring.entities.DepartmentManager
+2021-03-09 00:49:06.204  INFO 8348 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.DepartmentManager (class must be instantiated by Interceptor)
+2021-03-09 00:49:06.215  INFO 8348 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.DeliveryPerson (class must be instantiated by Interceptor)
+2021-03-09 00:49:06.238  INFO 8348 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.Client (class must be instantiated by Interceptor)
+2021-03-09 00:49:06.283  INFO 8348 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: tn.esprit.spring.entities.Administrator (class must be instantiated by Interceptor)
+2021-03-09 00:49:06.823  INFO 8348 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-09 00:49:06.830  INFO 8348 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-09 00:49:07.649  WARN 8348 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-09 00:49:07.890  INFO 8348 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-09 00:49:08.302  INFO 8348 --- [main] t.e.spring.Test.SubjectServiceImplTest   : Started SubjectServiceImplTest in 5.054 seconds (JVM running for 5.778)
+2021-03-09 00:49:08.851  INFO 8348 --- [main] t.e.spring.Test.SubjectServiceImplTest   : Subject deletedfalse
+2021-03-09 00:49:08.865  INFO 8348 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-09 00:49:08.867  INFO 8348 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-09 00:49:08.869  INFO 8348 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-03-09 00:49:08.878  INFO 8348 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-03-09 00:52:00.411  INFO 4216 --- [Thread-39] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-03-09 00:52:00.412  INFO 4216 --- [Thread-39] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-03-09 00:52:00.412  INFO 4216 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2021-03-09 00:52:00.415  INFO 4216 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
