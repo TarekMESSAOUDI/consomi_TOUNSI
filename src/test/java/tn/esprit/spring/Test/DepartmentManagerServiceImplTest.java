@@ -25,6 +25,7 @@ public class DepartmentManagerServiceImplTest  {
 	
 	@Autowired
 	IDepartmentManagerService dmS;
+	
 	@Autowired
 	IDepartmentManagerRepository dmR;
 	
@@ -49,10 +50,10 @@ public class DepartmentManagerServiceImplTest  {
 	}
 	
 	@Test
-	public void retrieveDepartmentManagerTest() {
-	l.info("Department Manager : "+dmS.retrieveDepartmentManager(17));
+	public void retrieveDepartmentManagerByIdTest() {
+	l.info("Department Manager : "+dmS.retrieveDepartmentManagerById(17));
 	}
-	
+		
 	@Test
 	public void retrieveAllSubjectTest() {
 		l.info("DepartmentManager list : "+dmS.retrieveAllDepartmentManagers());

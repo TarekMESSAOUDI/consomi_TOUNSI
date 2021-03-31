@@ -26,9 +26,9 @@ public class SubjectServiceImplTest {
 	ISubjectRepository sR;
 	
 	@Test
-	public void testAddSubject() {
+	public void addSubjectTest() {
 	Subject s = new Subject("TitreSujet","EvenementA",4);
-	sS.addSubject(s);
+	sS.addSubject(s,1);
 	}
 	
 	@Test
@@ -44,8 +44,8 @@ public class SubjectServiceImplTest {
 	}
 
 	@Test
-	public void retrieveSubjectTest() {
-		l.info("Subject :"+sS.retrieveSubject(3));
+	public void retrieveSubjectByIdTest() {
+		l.info("Subject by id:"+sS.retrieveSubjectById(3));
 	}
 	
 	@Test

@@ -17,19 +17,16 @@ public class DepartmentManagerServiceImpl implements IDepartmentManagerService {
 
 	@Override
 	public DepartmentManager addDepartmentManager(DepartmentManager DepM) {
-		// TODO Auto-generated method stub
 		return Dmr.save(DepM);
 	}
 
 	@Override
 	public DepartmentManager updateDepartmentManager(DepartmentManager DepM) {
-		// TODO Auto-generated method stub
 		return Dmr.save(DepM);
 	}
 
 	@Override
 	public boolean deleteDepartmentManager(int id) {
-		// TODO Auto-generated method stub
 		if (Dmr.existsById(id)){
 			Dmr.deleteById(id);
 			return true;
@@ -38,14 +35,12 @@ public class DepartmentManagerServiceImpl implements IDepartmentManagerService {
 	}
 
 	@Override
-	public Optional<DepartmentManager> retrieveDepartmentManager(int id) {
-		// TODO Auto-generated method stub
+	public Optional<DepartmentManager> retrieveDepartmentManagerById(int id) {
 		return Dmr.findById(id);
 	}
 
 	@Override
 	public List<DepartmentManager> retrieveAllDepartmentManagers() {
-		// TODO Auto-generated method stub
 		return (List<DepartmentManager>) Dmr.findAll();
 	}
 
