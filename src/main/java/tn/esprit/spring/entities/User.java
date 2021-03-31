@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -91,9 +92,11 @@ public class User implements Serializable {
 	public void setCinUser(String cinUser) {
 		this.cinUser = cinUser;
 	}
+	@Transient
 	public String getPasswordUser() {
 		return passwordUser;
 	}
+	@Transient
 	public void setPasswordUser(String passwordUser) {
 		this.passwordUser = passwordUser;
 	}
@@ -139,12 +142,14 @@ public class User implements Serializable {
 	/**
 	 * @return the confirmPasswordUser
 	 */
+	@Transient
 	public String getConfirmPasswordUser() {
 		return confirmPasswordUser;
 	}
 	/**
 	 * @param confirmPasswordUser the confirmPasswordUser to set
 	 */
+	
 	public void setConfirmPasswordUser(String confirmPasswordUser) {
 		this.confirmPasswordUser = confirmPasswordUser;
 	}

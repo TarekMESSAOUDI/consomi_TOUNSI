@@ -18,4 +18,8 @@ public interface IDepartmentManagerService {
 	
 	List<DepartmentManager> retrieveAllDepartmentManagers();
 
+	List<DepartmentManager> retrieveDepartmentManagerBysalary(float salaryDepartmentManager);
+
+	long retrieveDepartmentManagerByCount();
+
 }
