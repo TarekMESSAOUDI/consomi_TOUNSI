@@ -9,13 +9,13 @@ import tn.esprit.spring.entities.Subject;
 
 public interface ISubjectService {
 	
-	Subject addSubject(Subject s);
+	Subject addSubject(Subject s,int idSubject);
 
 	Subject updateSubject(Subject s);
 
 	boolean deleteSubject(int id);
 
-	Optional<Subject> retrieveSubject(int id);
+	Optional<Subject> retrieveSubjectById(int id);
 	
 	List<Subject> retrieveAllSubject();
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.Subject;
 import tn.esprit.spring.repository.ISubjectRepository;
 
@@ -14,16 +15,20 @@ public class SubjectServiceImpl implements ISubjectService {
 	
 	@Autowired
 	ISubjectRepository sR;
+	
+	@Autowired
+	ISubjectService sS;
 
 	@Override
-	public Subject addSubject(Subject s) {
-		// TODO Auto-generated method stub
-		return sR.save(s);
+	public Subject addSubject(Subject s,int idSubject) {
+		if (sR.existsById(idSubject)){
+			return (Subject) sR.findAll();
+		}else
+			return sR.save(s);
 	}
 
 	@Override
 	public Subject updateSubject(Subject s) {
-		// TODO Auto-generated method stub
 		return sR.save(s);
 	}
 
@@ -34,13 +39,11 @@ public class SubjectServiceImpl implements ISubjectService {
 			return true;
 		}else
 		return false;
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Optional<Subject> retrieveSubject(int id) {
-		// TODO Auto-generated method stub
+	public Optional<Subject> retrieveSubjectById(int id) {
 		return sR.findById(id);
 	}
 
@@ -49,5 +52,4 @@ public class SubjectServiceImpl implements ISubjectService {
 		// TODO Auto-generated method stub
 		return (List<Subject>) sR.findAll();
 	}
-
 }

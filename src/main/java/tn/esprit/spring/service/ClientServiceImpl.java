@@ -17,19 +17,16 @@ public class ClientServiceImpl implements IClientService {
 	
 	@Override
 	public Client addClient(Client client) {
-		// TODO Auto-generated method stub
 		return Cr.save(client);
 	}
 
 	@Override
 	public Client updateClient(Client client) {
-		// TODO Auto-generated method stub
 		return Cr.save(client);
 	}
 
 	@Override
 	public boolean deleteClient(int id) {
-		// TODO Auto-generated method stub
 		if (Cr.existsById(id)){
 			Cr.deleteById(id);
 			return true;
@@ -38,14 +35,13 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public Optional<Client> retrieveClient(int id) {
-		// TODO Auto-generated method stub
+	public Optional<Client> retrieveClientById(int id) {
 		return Cr.findById(id);
 	}
-
+	
+	
 	@Override
 	public List<Client> retrieveAllClients() {
-		// TODO Auto-generated method stub
 		return (List<Client>) Cr.findAll();
 	}
 	

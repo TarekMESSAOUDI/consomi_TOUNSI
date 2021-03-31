@@ -31,10 +31,10 @@ public class AdministratorServiceImplTest {
 	
 	
 	@Test
-	public void testAddAdministrator() throws ParseException {
+	public void AddAdministratorTest() throws ParseException {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	Date date = dateFormat.parse("2021-03-07");
-	Administrator admin = new Administrator("Tarek", "MESSAOUDI", "07480313","0000", "0000", true, "55717442","ariana", date, "tarek", "img1", SexeType.Men, "Gestionnaoire", "Super");
+	Administrator admin = new Administrator("Tarek", "MESSAOUDI", "07480313","0000", "0000", true, "55717442","ariana", date, "tarek","img1", SexeType.Men, "Gestionnaoire", "Super");
 	aS.addAdministrator(admin);
 	}
 	
@@ -51,8 +51,8 @@ public class AdministratorServiceImplTest {
 	}
 	
 	@Test
-	public void retrieveAdministratorTest() {
-	l.info("Administrateur : "+aS.retrieveAdministrator(8));
+	public void retrieveAdministratorByIdTest() {
+	l.info("Administrateur by id : "+aS.retrieveAdministratorById(8));
 	}
 	
 	@Test
