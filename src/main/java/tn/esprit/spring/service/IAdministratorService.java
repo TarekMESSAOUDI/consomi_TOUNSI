@@ -18,4 +18,9 @@ public interface IAdministratorService {
 	
 	List<Administrator> retrieveAllAdministrators();
 
+	List<Administrator> retrieveAdministratorByTypeAdmin(String typeAdmin);
+
+	List<Administrator> retrieveAdministratorSpecialityAdmin(String specialityAdmin);
+
+
 }

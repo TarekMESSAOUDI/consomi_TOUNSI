@@ -49,12 +49,12 @@ public class Comment implements Serializable {
 		DateComment = dateComment;
 		this.stateComment = stateComment;
 	}
-@JsonIgnore
+//@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	Client Client; 
 
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Subject Subject; 
 	

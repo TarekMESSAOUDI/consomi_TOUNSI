@@ -45,12 +45,12 @@ public class Claim implements Serializable {
 		this.dateClaim = dateClaim;
 	}
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Client Client;
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Administrator Administrator; 
 	

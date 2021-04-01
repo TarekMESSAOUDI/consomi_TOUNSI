@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_ADMINISTRATOR")
 public class Administrator extends User implements Serializable {
@@ -68,15 +68,15 @@ public class Administrator extends User implements Serializable {
 	private String typeAdmin ;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Claim> Claim;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<CharityEvent> CharityEvent;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Publicity> Publicity;
 
 	public String getSpecialityAdmin() {

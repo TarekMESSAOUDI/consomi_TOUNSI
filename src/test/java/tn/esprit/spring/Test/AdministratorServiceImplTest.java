@@ -56,6 +56,16 @@ public class AdministratorServiceImplTest {
 	}
 	
 	@Test
+	public void retrieveAdministratorByTypeAdmin() {
+	l.info("Administrateur by type : "+aS.retrieveAdministratorByTypeAdmin("Super"));
+	}
+	
+	@Test
+	public void retrieveAdministratorBySpecialityAdmin() {
+	l.info("Administrateur by Speciality : "+aS.retrieveAdministratorSpecialityAdmin("Super"));
+	}
+	
+	@Test
 	public void retrieveAllAdministratorTest() {
 		l.info("Administrators list : "+aS.retrieveAllAdministrators());
 	}

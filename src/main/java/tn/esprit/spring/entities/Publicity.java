@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_PUBLICITY")
 public class Publicity implements Serializable {
@@ -70,7 +70,7 @@ public class Publicity implements Serializable {
 		this.finalViewNumber = finalViewNumber;
 	}
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	Administrator Administrator; 
 	
