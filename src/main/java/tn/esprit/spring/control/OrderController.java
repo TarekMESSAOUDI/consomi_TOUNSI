@@ -18,7 +18,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
-	// http://localhost:8081/SpringMVC/servlet/add-order
+	// http://localhost:9090/SpringMVC/servlet/add-order
 	@PostMapping("/add-order")
 	@ResponseBody
 	public Order addOrder(@RequestBody Order o) {
