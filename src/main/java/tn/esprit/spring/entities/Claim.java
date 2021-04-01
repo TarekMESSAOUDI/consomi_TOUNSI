@@ -15,8 +15,9 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+
 @Entity
+@JsonIgnoreProperties
 @Table (name = "T_CLAIM")
 public class Claim implements Serializable {
 	
