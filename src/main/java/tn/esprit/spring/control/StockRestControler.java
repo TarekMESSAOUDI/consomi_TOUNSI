@@ -54,6 +54,9 @@ public class StockRestControler {
 			public void removeStock(@PathVariable("stock-id") Long stockId) {
 			stockService.deleteStock(stockId);
 			}
+			
+			
+			
 			// http://localhost:8081/SpringMVC/servlet/modify-stock
 			@PutMapping("/modify-stock")
 			@ResponseBody
@@ -61,7 +64,7 @@ public class StockRestControler {
 			return stockService.addStock(stock);
 			}
 	
-			/*
+			
 			
 			// http://localhost:8081/SpringMVC/servlet/retrieve-Stock-By-Name/{Stock-nameStock}
 						@GetMapping("/retrieve-Stock-By-Name/{Stock-nameStock}")
@@ -70,16 +73,26 @@ public class StockRestControler {
 						return stockService.retrieveStockByName(nameStock);
 						}
 			
-	
-						// http://localhost:8081/SpringMVC/servlet/retrieve-Stock-By-TypeStock/{Stock-TypeStock}
-						@GetMapping("/retrieve-Stock-By-TypeStock/{Stock-TypeStock}")
-						@ResponseBody
-						public List<Stock> retrieveStockByTypeStock(@PathVariable("Stock-TypeStock") TypeStock TypeStock) {
-						return stockService.retrieveByTypeStock(TypeStock);
-						}
-						
-						*/
 						
 						
-					
+//still under maint
+						
+			// http://localhost:8081/SpringMVC/servlet/retrieve-Stock-By-TypeStock/{Stock-TypeStock}     
+			@GetMapping("/retrieve-Stock-By-TypeStock/{Stock-TypeStock}")
+			@ResponseBody
+			public List<Stock> retrieveStockByTypeStock(@PathVariable("Stock-TypeStock") TypeStock TypeStock) {
+			return stockService.retrieveByTypeStock(TypeStock);
+			}
+						
+			
+			
+			/*
+						////////////////////////////////////////a terminer
+			// http://localhost:9090/SpringMVC/servlet/allocateStockToProduct/{idStock/{idProduct}  	
+			@PutMapping("/allocateStockToProduit/{ids}/{idp}")
+			public void allocateStocktoPrduct(@PathVariable(value = "idstock") Long idStock,@PathVariable(value = "idproduct") Long IdProduct){
+				
+				stockService.allocateStocktoProduct(idStock, IdProduct);
+			}		
+*/					
 }

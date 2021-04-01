@@ -38,7 +38,7 @@ DepartmentRepository departmentrepository ;
 	
 	
 	@Override
-	public void deleteDepartment(Long idDepartment) {
+	public void deleteDepartment(int idDepartment) {
 		departmentrepository.deleteById(idDepartment);
 	}
 
@@ -51,7 +51,7 @@ DepartmentRepository departmentrepository ;
 	}
 	
 	@Override
-	public Department retrieveDepartment(Long idDepartment) {
+	public Department retrieveDepartment(int idDepartment) {
 		// TODO Auto-generated method stub
 		return departmentrepository.findById(idDepartment).get();
 	}

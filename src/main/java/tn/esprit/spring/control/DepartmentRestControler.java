@@ -41,7 +41,7 @@ import tn.esprit.spring.service.DepartmentService;
 		//http://localhost:8081/SpringMVC/servlet/retrieve-department/{department-id}
 			@GetMapping("/retrieve-department/{department-id}")
 			@ResponseBody
-			public Department retrieveDepartment(@PathVariable("department-id") Long departmentId) {
+			public Department retrieveDepartment(@PathVariable("department-id") int departmentId) {
 			return departmentService.retrieveDepartment(departmentId);
 			}
 			
@@ -56,10 +56,10 @@ import tn.esprit.spring.service.DepartmentService;
 			}
 		
 		
-			//localhost:8081/SpringMVC/servlet/remove-department/{department-id}
+			// http://localhost:8081/SpringMVC/servlet/remove-department/{department-id}
 				@DeleteMapping("/remove-department/{department-id}")
 				@ResponseBody
-				public void removeDepartment(@PathVariable("department-id") Long departmentId) {
+				public void removeDepartment(@PathVariable("department-id") int departmentId) {
 				departmentService.deleteDepartment(departmentId);
 				}
 				// http://localhost:8081/SpringMVC/servlet/modify-department
