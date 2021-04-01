@@ -23,7 +23,7 @@ public class BillController {
 	@Autowired
 	private BillService billService;
 	
-	// http://localhost:8081/SpringMVC/servlet/add-bill
+	// http://localhost:9090/SpringMVC/servlet/add-bill
 		@PostMapping("/add-bill")
 		@ResponseBody
 		public Bill addBill(@RequestBody Bill b) {
@@ -31,35 +31,35 @@ public class BillController {
 		return bill;
 		}
 	
-	// URL : http://localhost:8081/SpringMVC/servlet/getAllBill
+	// URL : http://localhost:9090/SpringMVC/servlet/getAllBill
 	    @GetMapping(value = "getAllBill")
 	  
 	    public List<Bill> getAllBill(){
 		return billService.getAllBill();
 		}
 	    
-	 // URL : http://localhost:8081/SpringMVC/servlet/delete-bill
+	 // URL : http://localhost:9090/SpringMVC/servlet/delete-bill
 		   @DeleteMapping(value = "delete-bill/{idBill}")
 		   
 			public void deleteBill(@PathVariable("idBill")Long idBill){
 			   billService.deleteBill(idBill);
 		   }
 		   
-		// http://localhost:8081/SpringMVC/servlet/modify-bill
+		// http://localhost:9090/SpringMVC/servlet/modify-bill
 			@PutMapping("/modify-bill")
 			@ResponseBody
 			public Bill modifyUser(@RequestBody Bill bill) {
 			return billService.updateBill(bill);
 			}
 			
-		// URL : http://localhost:8081/SpringMVC/servlet/getBill_by_ID/8
+		// URL : http://localhost:9090/SpringMVC/servlet/getBill_by_ID/8
 			 @GetMapping(value = "getBill_by_ID/{idBill}")
 			   
 			 public Optional<Bill> getBill_by_ID(@PathVariable("idBill")Long idBill) {
 					return billService.getBill_by_ID(idBill);
 			}
 			 
-		// URL : http://localhost:8081/SpringMVC/servlet/getBill_by_Type/At_Delivery
+		// URL : http://localhost:9090/SpringMVC/servlet/getBill_by_Type/At_Delivery
 			 @GetMapping(value = "getBill_by_Type/{paymentType}")
 			   
 			 public List<Bill> getBill_by_Type(@PathVariable("paymentType")PaymentType paymentType) {
@@ -67,7 +67,7 @@ public class BillController {
 			}
 			 
 			 
-			// URL : http://localhost:8081/SpringMVC/servlet/getAllBill_by_Order/1
+			// URL : http://localhost:9090/SpringMVC/servlet/getAllBill_by_Order/1
 			 @GetMapping(value = "getAllBill_by_Order/{idOrder}")
 			   
 			 public List<Bill> getAllBill_by_Order(@PathVariable("idOrder")Long idOrder) {

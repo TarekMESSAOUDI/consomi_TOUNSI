@@ -19,5 +19,11 @@ public interface ISubjectService {
 	
 	List<Subject> retrieveAllSubject();
 
+	List<Subject> retrieveSubjectByTitle(String titleSubject);
+
+	List<Subject> retrieveSubjectByStars(float starsNumberSubject);
+
+	List<Subject> retrieveSubjectByStarsless(float starsNumberSubject);
+
 
 }
