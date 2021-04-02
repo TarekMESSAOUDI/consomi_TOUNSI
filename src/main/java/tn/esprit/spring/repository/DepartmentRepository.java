@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import tn.esprit.spring.entities.Department;
 
-public interface DepartmentRepository extends CrudRepository<Department, Long> {
+public interface DepartmentRepository extends CrudRepository<Department, Integer> {
 
 	
 	
