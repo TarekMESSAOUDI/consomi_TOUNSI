@@ -22,6 +22,9 @@ public class Administrator extends User implements Serializable {
 	/**
 	 * 
 	 */
+	/**
+	 * 
+	 */
 	private static long serialVersionUID = 1L;
 
 	public Administrator() {

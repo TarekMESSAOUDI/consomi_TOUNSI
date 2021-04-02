@@ -13,7 +13,7 @@ public interface StockService {
 
 	void deleteStock(Long idStock);
 
-	//Stock updateStock(Stock s);
+	Stock updateStock(Stock s);
 
 	Stock retrieveStock(Long idStock);
 

@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,9 @@ public class DeliveryPersonServiceImpl implements IDeliveryPersonService {
 		
 	}
 	@Override
-	public boolean deleteDeliveryPerson(int id) {
-		if(dr.existsById(id)){
-			dr.deleteById(id);
+	public boolean deleteDeliveryPerson(int idUser) {
+		if(dr.existsById(idUser)){
+			dr.deleteById(idUser);
 			return true;
 		}else{
 		return false;}
@@ -32,15 +33,19 @@ public class DeliveryPersonServiceImpl implements IDeliveryPersonService {
 	public DeliveryPerson updateDeliveryPerson(DeliveryPerson d) {
 		return dr.save(d);
 	}
+	
 	@Override
-	public DeliveryPerson retrieveDeliveryPerson(int id) {
-		return (DeliveryPerson) dr.findAll();
+	public Optional<DeliveryPerson> retrieveDeliveryPerson(int idUser) {
+		
+		return dr.findById(idUser);
+	}
 
-}
+
 	@Override
 	public List<DeliveryPerson> retrieveAllDeliveryPerson() {
 		
 		return (List<DeliveryPerson>) dr.findAll();
 	}
+	
 	}
 

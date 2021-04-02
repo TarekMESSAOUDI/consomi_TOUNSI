@@ -20,6 +20,8 @@ public class StockServiceImpl implements StockService {
 	
 	@Autowired
 	StockRepository stockrepository ;
+	/*@Autowired
+	ProductRepository prooductrepository;*/
 	
 	private static final Logger L = LogManager.getLogger(StockServiceImpl.class);
 	
@@ -46,11 +48,11 @@ public class StockServiceImpl implements StockService {
 	}
 	
 	
-	//@Override
-//public Stock updateStock(Stock s) {
+	@Override
+public Stock updateStock(Stock s) {
 		
-	//	return stockrepository.save(s);
-	//}
+		return stockrepository.save(s);
+	}
 	
 	
 	@Override
@@ -69,10 +71,22 @@ public class StockServiceImpl implements StockService {
 	
 	
 	
- @Override
+ @Override                                                         
 	public List<Stock> retrieveByTypeStock(TypeStock TypeStock){
 		return stockrepository.findByTypeStock(TypeStock);	
 	}
 	
+ /*
+ /////////////////////////////////////a terminer//////////////
+ @Override
+	public void allocateStocktoProduct(Long idStock, Long IdProduct) {
+		Product product = produitRepository.findById(IdProduct).get();
+		Stock stock = stockrepository.findById(idStock).get();
+		stock.setIdProduct(product);
+		stockrepository.save(stock);
+	}
+*/
+ 
+ 
 	
 }

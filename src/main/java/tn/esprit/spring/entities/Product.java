@@ -20,7 +20,6 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPayment ;
 	private int idProduct ;
 	private String titleProduct ;
 	private String descriptionProduct ;
@@ -40,11 +39,10 @@ public class Product implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Product(int idPayment, int idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
+	public Product( int idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
 			float priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct, int idUnderCategory,
 			String pictureProduct, int idDepartment, int idStock, int maxQuantityProduct) {
 		super();
-		this.idPayment = idPayment;
 		this.idProduct = idProduct;
 		this.titleProduct = titleProduct;
 		this.descriptionProduct = descriptionProduct;
@@ -72,12 +70,7 @@ public class Product implements Serializable {
 	@ManyToOne
 	UnderCategory UnderCategory;
 	
-	public int getIdPayment() {
-		return idPayment;
-	}
-	public void setIdPayment(int idPayment) {
-		this.idPayment = idPayment;
-	}
+	
 	public int getIdProduct() {
 		return idProduct;
 	}
