@@ -69,7 +69,26 @@ import tn.esprit.spring.service.DepartmentService;
 				return departmentService.addDepartment(department);
 				}
 		
+				
+				
+				
+				
+				
 		
+							////////////////////////////////////////to contenue desallocate
+				
+		// http://localhost:9090/SpringMVC/servlet/allocateProductToDepartment/{idd/{idp}  	
+	@PutMapping("/allocateProductToDepartment/{iddepartment}/{idproduct}")
+	public void allocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int IdProduct){
+					
+	departmentService.allocateProductToDepartment(idDepartment, IdProduct);
+	}		
+		
+	
+	
+	
+	
+	
 	}
 
 	

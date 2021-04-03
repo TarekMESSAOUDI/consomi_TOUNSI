@@ -23,6 +23,7 @@ public interface StockService {
 
 	List<Stock> retrieveByTypeStock(TypeStock TypeStock);
 
+
 	
 
 

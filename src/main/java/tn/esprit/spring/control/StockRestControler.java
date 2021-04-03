@@ -86,13 +86,4 @@ public class StockRestControler {
 						
 			
 			
-			/*
-						////////////////////////////////////////a terminer
-			// http://localhost:9090/SpringMVC/servlet/allocateStockToProduct/{idStock/{idProduct}  	
-			@PutMapping("/allocateStockToProduit/{ids}/{idp}")
-			public void allocateStocktoPrduct(@PathVariable(value = "idstock") Long idStock,@PathVariable(value = "idproduct") Long IdProduct){
-				
-				stockService.allocateStocktoProduct(idStock, IdProduct);
-			}		
-*/					
 }
