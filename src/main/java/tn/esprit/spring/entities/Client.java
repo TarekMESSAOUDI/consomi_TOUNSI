@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //@JsonIgnoreProperties
 @Entity
-@Table (name = "T_CLIENT")
+//@Table (name = "T_CLIENT")
 public class Client extends User implements Serializable {
 	
 	
@@ -70,10 +70,28 @@ public class Client extends User implements Serializable {
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
+		Order = getOrder();
+		Basket = getBasket();
+		Comment = getComment();
+		Claim = getClaim();
 	}
 	
 	
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
+    public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
+			Set<tn.esprit.spring.entities.Order> order, tn.esprit.spring.entities.Basket basket,
+			Set<tn.esprit.spring.entities.Comment> comment, Set<tn.esprit.spring.entities.Claim> claim) {
+		super();
+		this.rankClient = rankClient;
+		this.fidelityCardNumberClient = fidelityCardNumberClient;
+		this.pointNumberClient = pointNumberClient;
+		Order = order;
+		Basket = basket;
+		Comment = comment;
+		Claim = claim;
+	}
+
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
    // @JsonIgnore
 	private Set<Order> Order;
 	

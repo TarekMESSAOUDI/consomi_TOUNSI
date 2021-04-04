@@ -20,10 +20,7 @@ public class SubjectServiceImpl implements ISubjectService {
 	ISubjectService sS;
 
 	@Override
-	public Subject addSubject(Subject s,int idSubject) {
-		if (sR.existsById(idSubject)){
-			return (Subject) sR.findAll();
-		}else
+	public Subject addSubject(Subject s) {
 			return sR.save(s);
 	}
 

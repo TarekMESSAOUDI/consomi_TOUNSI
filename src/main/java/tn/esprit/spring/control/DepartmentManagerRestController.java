@@ -39,7 +39,7 @@ public class DepartmentManagerRestController {
 			}
 			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-departmentManager-by-salary/{user-salary}
-			@GetMapping("/retrieve-departmentManager-by-salary/{user-salary}")
+			@GetMapping("/retrieve-departmentManager-by-salarygreaterthan/{user-salary}")
 			@ResponseBody
 			public List<DepartmentManager> retrieveDepartmentManagerBysalary(@PathVariable("user-salary") float salaryDepartmentManager) {
 			return dmS.retrieveDepartmentManagerBysalary(salaryDepartmentManager);

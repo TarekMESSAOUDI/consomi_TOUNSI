@@ -45,7 +45,7 @@ public class SubjectRestController {
 			return sS.retrieveSubjectByTitle(titleSubject);
 			}
 			
-			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-stars/{subject-stars}
+			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-starsgreater/{subject-stars}
 			@GetMapping("/retrieve-subject-by-stars/{subject-stars}")
 			@ResponseBody
 			public List<Subject> retrieveSubjectByStars(@PathVariable("subject-stars") float starsNumberSubject) {
@@ -63,7 +63,7 @@ public class SubjectRestController {
 			@PostMapping("/add-subject")
 			@ResponseBody
 			public Subject addSubject(@RequestBody Subject sub) {
-				Subject subject = sS.addSubject(sub,1);
+				Subject subject = sS.addSubject(sub);
 			return subject;
 			}
 
