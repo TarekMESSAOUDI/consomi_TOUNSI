@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Subject;
 import tn.esprit.spring.service.ISubjectService;
 
-@RestController
+@Controller
 public class SubjectRestController {
 	
 	@Autowired
@@ -44,7 +45,7 @@ public class SubjectRestController {
 			return sS.retrieveSubjectByTitle(titleSubject);
 			}
 			
-			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-stars/{subject-stars}
+			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-starsgreater/{subject-stars}
 			@GetMapping("/retrieve-subject-by-stars/{subject-stars}")
 			@ResponseBody
 			public List<Subject> retrieveSubjectByStars(@PathVariable("subject-stars") float starsNumberSubject) {
@@ -62,7 +63,7 @@ public class SubjectRestController {
 			@PostMapping("/add-subject")
 			@ResponseBody
 			public Subject addSubject(@RequestBody Subject sub) {
-				Subject subject = sS.addSubject(sub,1);
+				Subject subject = sS.addSubject(sub);
 			return subject;
 			}
 

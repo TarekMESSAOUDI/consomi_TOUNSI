@@ -28,7 +28,7 @@ public class SubjectServiceImplTest {
 	@Test
 	public void addSubjectTest() {
 	Subject s = new Subject("TitreSujet","EvenementA",4);
-	sS.addSubject(s,1);
+	sS.addSubject(s);
 	}
 	
 	@Test

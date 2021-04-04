@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties
-@Table (name = "T_DEPARTMENT_MANAGER")
+//@Table (name = "T_DEPARTMENT_MANAGER")
 public class DepartmentManager extends User implements Serializable {
 
 
