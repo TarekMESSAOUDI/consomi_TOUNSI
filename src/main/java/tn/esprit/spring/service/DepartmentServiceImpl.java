@@ -8,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Department;
+import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.repository.DepartmentRepository;
+import tn.esprit.spring.repository.ProductRepository;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Autowired
 DepartmentRepository departmentrepository ;
+	
+	@Autowired
+ProductRepository productrepository;
 	
 	
 	private static final Logger L = LogManager.getLogger(DepartmentService.class);
@@ -55,5 +61,40 @@ DepartmentRepository departmentrepository ;
 		// TODO Auto-generated method stub
 		return departmentrepository.findById(idDepartment).get();
 	}
+	
+	
+	
+	
+	
+///////////////////////////////////////////////////
+@Override
+public void allocateProductToDepartment(int idDepartment, int IdProduct) {
+Product product = productrepository.findById(IdProduct).get();
+Department department = departmentrepository.findById(idDepartment).get();
+product.setDepartment(department);
+productrepository.save(product);
+
+}
+
+
+/*
+public void deallocateProductFromDepartment(int IdDepartment, int IdProduct) {
+	
+	Department department = departmentrepository.findById(IdDepartment).get();
+	
+	int nbp=department.getProduct().size();         //get products
+	for(int i = 0; i < nbp; i++){
+		if(department.getProduct().get(i).getId() == IdProduct){
+			
+			department.getProduct().remove(i);
+			
+		}
+	
+}
+}
+*/
+	
+	
+	
 
 }

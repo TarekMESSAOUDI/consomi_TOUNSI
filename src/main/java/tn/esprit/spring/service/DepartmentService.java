@@ -18,6 +18,10 @@ public interface DepartmentService {
 
 	List<Department> retrieveAllDepartments();
 
+	void allocateProductToDepartment(int idDepartment, int IdProduct);
+
+
+
 	
 
 }
