@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -54,9 +55,9 @@ public class Basket implements Serializable {
 		this.amountBasket = amountBasket;
 	}
 
-	@OneToOne(mappedBy="Basket")
-	//@JsonIgnore
-	private Client Client;
+	@ManyToOne
+	Client Client;
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")
 	@JsonIgnore

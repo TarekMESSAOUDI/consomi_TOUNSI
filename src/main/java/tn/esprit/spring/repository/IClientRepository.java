@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
 
+@Repository
 public interface IClientRepository extends CrudRepository <Client, Integer>{
 
 	List<Client> findByRankClient(int rankClient);
