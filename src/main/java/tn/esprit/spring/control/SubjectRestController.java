@@ -46,7 +46,7 @@ public class SubjectRestController {
 			}
 			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-starsgreater/{subject-stars}
-			@GetMapping("/retrieve-subject-by-stars/{subject-stars}")
+			@GetMapping("/retrieve-subject-by-starsgreater/{subject-stars}")
 			@ResponseBody
 			public List<Subject> retrieveSubjectByStars(@PathVariable("subject-stars") float starsNumberSubject) {
 			return sS.retrieveSubjectByStars(starsNumberSubject);

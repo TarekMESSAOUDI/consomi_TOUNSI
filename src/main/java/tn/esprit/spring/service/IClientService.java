@@ -37,5 +37,7 @@ public interface IClientService {
 
 	long retrieveClientByCount();
 
+//	void affectImageToClient(int idUser, int idImageUser);
+
 
 }
