@@ -17,7 +17,7 @@ public interface IClientService {
 
 	boolean deleteClient(int id);
 
-	Optional<Client> retrieveClientById(int id);
+	Client retrieveClientById(int id);
 	
 	List<Client> retrieveAllClients();
 

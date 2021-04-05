@@ -44,8 +44,8 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public Optional<Client> retrieveClientById(int id) {
-		return Cr.findById(id);
+	public Client retrieveClientById(int id) {
+		return Cr.findById(id).get();
 	}
 	
 	

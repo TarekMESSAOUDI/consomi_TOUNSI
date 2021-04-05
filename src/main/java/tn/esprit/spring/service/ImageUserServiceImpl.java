@@ -17,10 +17,13 @@ import tn.esprit.spring.repository.IImageUserRepository;
 public class ImageUserServiceImpl implements IImageUserService{
 	
 	@Autowired
-	private IImageUserRepository iur;
+	IImageUserRepository iur;
 	
 	@Autowired
 	IClientRepository cR;
+	
+	@Autowired
+	ImageUserServiceImpl usi;
 	
 	
 	  public ImageUser1 addImage(MultipartFile file) throws IOException {
@@ -31,14 +34,30 @@ public class ImageUserServiceImpl implements IImageUserService{
 		  }
 
 
-		/*@Override
-		public void affecterImageAClient(int idImageUser, int idUser) {
+	public void affecterMissionADepartement(int i, int j) {
+		Client client=cR.findById(j).get();
+		MultipartFile imageUser1=usi.findById(i);
+		((ImageUser1) imageUser1).setClient(client);
+		iur.save(null);
+		
+	}
+
+
+	private MultipartFile findById(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+		@Override
+		public void affectationImageToClient(int idImageUser, int idUser) {
 			// TODO Auto-generated method stub
-			Client client=cR.findById(idUser);
-			ImageUser1 imageUser1=iur.findById(idImageUser);
+			Client client=cR.findById(idUser).get();
+			ImageUser1 imageUser1=iur.findById(idImageUser).get();
 			imageUser1.setClient(client);
 			iur.save(imageUser1);
 }
-*/
+
 		
 	}
