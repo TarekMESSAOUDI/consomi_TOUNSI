@@ -1,5 +1,7 @@
 package tn.esprit.spring.entities;
 
+import java.util.Optional;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "T_IMAGE_USER")
@@ -19,7 +22,7 @@ public class ImageUser1 {
 	private int idImageUser ;
 	
 	private String nameImageUser;
-	private String typeImageUser;
+	//private String typeImageUser;
 	
 	
 
@@ -27,6 +30,10 @@ public class ImageUser1 {
 		SerialVersionUID = serialversionuid;
 	}
 	
+	@ManyToOne
+	Client Client;
+	
+
 	@Lob
 	  private byte[] data;
 
@@ -46,13 +53,13 @@ public class ImageUser1 {
 		this.nameImageUser = nameImageUser;
 	}
 
-	public String getTypeImageUser() {
+	/*public String getTypeImageUser() {
 		return typeImageUser;
 	}
 
 	public void setTypeImageUser(String typeImageUser) {
 		this.typeImageUser = typeImageUser;
-	}
+	}*/
 
 	public byte[] getData() {
 		return data;
@@ -66,11 +73,29 @@ public class ImageUser1 {
 		super();
 		this.idImageUser = idImageUser;
 		this.nameImageUser = nameImageUser;
-		this.typeImageUser = typeImageUser;
+		//this.typeImageUser = typeImageUser;
 		this.data = data;
 	}
 
 	
+
+	public Client getClient() {
+		return Client;
+	}
+
+	public void setClient(Client client) {
+		Client = client;
+	}
+
+	public ImageUser1(int idImageUser, String nameImageUser, String typeImageUser,
+			tn.esprit.spring.entities.Client client, byte[] data) {
+		super();
+		this.idImageUser = idImageUser;
+		this.nameImageUser = nameImageUser;
+		//this.typeImageUser = typeImageUser;
+		Client = client;
+		this.data = data;
+	}
 
 	public static long getSerialVersionUID() {
 		return SerialVersionUID;
@@ -89,7 +114,7 @@ public class ImageUser1 {
 	public ImageUser1(String nameImageUser, String type, byte[] data) {
 		super();
 		this.nameImageUser = nameImageUser;
-		this.typeImageUser = typeImageUser;
+		//this.typeImageUser = typeImageUser;
 		this.data = data;
 	}
 

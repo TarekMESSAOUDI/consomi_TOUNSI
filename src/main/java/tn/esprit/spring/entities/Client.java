@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 //@JsonIgnoreProperties
 @Entity
 //@Table (name = "T_CLIENT")
@@ -72,12 +73,26 @@ public class Client extends User implements Serializable {
 		Basket = getBasket();
 		Comment = getComment();
 		Claim = getClaim();
+		ImageUser1 = getImageUser1();
 	}
 	
-	
-    public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
-			Set<tn.esprit.spring.entities.Order> order, tn.esprit.spring.entities.Basket basket,
-			Set<tn.esprit.spring.entities.Comment> comment, Set<tn.esprit.spring.entities.Claim> claim) {
+
+
+	public Set<Basket> getBasket() {
+		return Basket;
+	}
+
+
+
+	public void setBasket(Set<Basket> basket) {
+		Basket = basket;
+	}
+
+
+
+	public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
+			Set<tn.esprit.spring.entities.Order> order, Set<Basket> basket,
+			Set<Comment> comment, Set<Claim> claim, Set<ImageUser1> ImageUser1) {
 		super();
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
@@ -86,6 +101,7 @@ public class Client extends User implements Serializable {
 		Basket = basket;
 		Comment = comment;
 		Claim = claim;
+		ImageUser1=ImageUser1;
 	}
 
 
@@ -94,8 +110,8 @@ public class Client extends User implements Serializable {
 	private Set<Order> Order;
 	
    // @JsonIgnore
-	@OneToOne
-	private Basket Basket; 
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="Client")
+	private Set<Basket> Basket; 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	//@JsonIgnore
@@ -104,6 +120,20 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	//@JsonIgnore
 	private Set<Claim> Claim;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<ImageUser1> ImageUser1;
+
+
+	public Set<ImageUser1> getImageUser1() {
+		return ImageUser1;
+	}
+
+
+
+	public void setImageUser1(Set<ImageUser1> imageUser1) {
+		ImageUser1 = imageUser1;
+	}
 
 
 
@@ -152,12 +182,6 @@ public class Client extends User implements Serializable {
 	}
 	public void setOrder(Set<Order> order) {
 		Order = order;
-	}
-	public Basket getBasket() {
-		return Basket;
-	}
-	public void setBasket(Basket basket) {
-		Basket = basket;
 	}
 	public Set<Comment> getComment() {
 		return Comment;
