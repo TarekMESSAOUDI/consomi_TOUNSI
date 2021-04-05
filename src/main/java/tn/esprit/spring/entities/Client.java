@@ -8,7 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -77,6 +77,14 @@ public class Client extends User implements Serializable {
 	}
 	
 
+	
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
+    //@JsonIgnore
+	private Set<Order> Order;
+	
+    
+
+
 
 	public Set<Basket> getBasket() {
 		return Basket;
@@ -105,13 +113,12 @@ public class Client extends User implements Serializable {
 	}
 
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-   // @JsonIgnore
-	private Set<Order> Order;
+	
 	
    // @JsonIgnore
 	@OneToMany (cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Basket> Basket; 
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	//@JsonIgnore
@@ -120,6 +127,8 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	//@JsonIgnore
 	private Set<Claim> Claim;
+	
+	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<ImageUser1> ImageUser1;
@@ -183,6 +192,9 @@ public class Client extends User implements Serializable {
 	public void setOrder(Set<Order> order) {
 		Order = order;
 	}
+
+	
+
 	public Set<Comment> getComment() {
 		return Comment;
 	}
@@ -200,7 +212,7 @@ public class Client extends User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Basket == null) ? 0 : Basket.hashCode());
+
 		result = prime * result + ((Claim == null) ? 0 : Claim.hashCode());
 		result = prime * result + ((Comment == null) ? 0 : Comment.hashCode());
 		result = prime * result + ((Order == null) ? 0 : Order.hashCode());
@@ -219,11 +231,7 @@ public class Client extends User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Client other = (Client) obj;
-		if (Basket == null) {
-			if (other.Basket != null)
-				return false;
-		} else if (!Basket.equals(other.Basket))
-			return false;
+		
 		if (Claim == null) {
 			if (other.Claim != null)
 				return false;

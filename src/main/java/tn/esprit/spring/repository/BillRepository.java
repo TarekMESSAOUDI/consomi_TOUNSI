@@ -23,8 +23,7 @@ import tn.esprit.spring.entities.PaymentType;
 @Repository
 public interface BillRepository  extends CrudRepository <Bill,Long> {
 	
-//	@Query(value = "SELECT * FROM T_BILL t WHERE t.payment_type = :t " , nativeQuery =true)
-//	List<Bill> findByType(@Param("t")PaymentType paymentType);
+
 	
 	List<Bill> findByPaymentType(PaymentType p);
 
@@ -32,6 +31,27 @@ public interface BillRepository  extends CrudRepository <Bill,Long> {
 	
 	@Query(value = "SELECT * FROM T_BILL t WHERE order_id_order=?1", nativeQuery = true)
     public List<Bill> getAllBill_by_Order(Long idOrder);
+
+
+
+	@Query(value = "select payment_type from T_BILL t where id_bill=?1", nativeQuery = true)
+    public String  get_payment_type_by_idBill(Long idBill);
+
+
+
+	@Query(value = "SELECT * FROM T_BILL WHERE id_bill=?1", nativeQuery = true)
+	public Bill getOne(Long idBill);
+
+
+
+	
+
+
+
+
+
+
+	
 
 
 	
