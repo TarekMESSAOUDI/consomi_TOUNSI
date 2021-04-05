@@ -20,10 +20,7 @@ public class SubjectServiceImpl implements ISubjectService {
 	ISubjectService sS;
 
 	@Override
-	public Subject addSubject(Subject s,int idSubject) {
-		if (sR.existsById(idSubject)){
-			return (Subject) sR.findAll();
-		}else
+	public Subject addSubject(Subject s) {
 			return sR.save(s);
 	}
 
@@ -51,5 +48,20 @@ public class SubjectServiceImpl implements ISubjectService {
 	public List<Subject> retrieveAllSubject() {
 		// TODO Auto-generated method stub
 		return (List<Subject>) sR.findAll();
+	}
+
+	@Override
+	public List<Subject> retrieveSubjectByTitle(String titleSubject) {
+		return (List<Subject>) sR.findByTitleSubject(titleSubject);
+	}
+
+	@Override
+	public List<Subject> retrieveSubjectByStars(float starsNumberSubject) {
+		return (List<Subject>) sR.findByStarsNumberSubjectGreaterThan(starsNumberSubject);
+	}
+
+	@Override
+	public List<Subject> retrieveSubjectByStarsless(float starsNumberSubject) {
+		return (List<Subject>) sR.findByStarsNumberSubjectLessThan(starsNumberSubject);
 	}
 }

@@ -58,11 +58,18 @@ public class Product implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Product(int idProduct, int idPayment, String titleProduct, String nombre, String descriptionProduct,
 			int quantityProduct, int priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct,
 			int idUnderCategory, String pictureProduct, int idDepartment, int idStock, int maxQuantityProduct,
 			tn.esprit.spring.entities.Department department, Order order,
 			tn.esprit.spring.entities.UnderCategory underCategory) {
+
+	
+	public Product( int idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
+			float priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct, int idUnderCategory,
+			String pictureProduct, int idDepartment, int idStock, int maxQuantityProduct) {
+
 		super();
 		this.idProduct = idProduct;
 		this.idPayment = idPayment;
@@ -82,6 +89,22 @@ public class Product implements Serializable {
 		
 		UnderCategory = underCategory;
 	}
+
+
+
+	@JsonIgnore
+	@ManyToOne
+	Department Department;
+	
+	@JsonIgnore
+	@ManyToOne
+	Basket Basket; 
+	
+	@JsonIgnore
+	@ManyToOne
+	UnderCategory UnderCategory;
+	
+	
 
 	public int getIdProduct() {
 		return idProduct;

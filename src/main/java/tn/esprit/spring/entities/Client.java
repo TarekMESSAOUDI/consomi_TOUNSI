@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
@@ -13,9 +14,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+
+//@JsonIgnoreProperties
 @Entity
-@Table (name = "T_CLIENT")
+//@Table (name = "T_CLIENT")
 public class Client extends User implements Serializable {
 	
 	
@@ -31,29 +33,26 @@ public class Client extends User implements Serializable {
 			String confirmPasswordUser, boolean stateUser, int phoneNumberUser, String adressUser, Date birthDateUser,
 			String emailUser, String imageUser, SexeType sexeUser) {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
 
 	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
 			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
-			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser) {
+			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, int i, int j, int k) {
 		super(firstNameUser, lastNameUser, cinUser, passwordUser, confirmPasswordUser, stateUser, phoneNumberUser, adressUser,
 				birthDateUser, emailUser, imageUser, sexeUser);
-		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient) {
+	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, /*String imageUser,*/ SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
 		super();
 		this.firstNameUser = firstNameUser ;
 		this.lastNameUser = lastNameUser ;
@@ -70,28 +69,95 @@ public class Client extends User implements Serializable {
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
+		Order = getOrder();
+		Basket = getBasket();
+		Comment = getComment();
+		Claim = getClaim();
+		ImageUser1 = getImageUser1();
 	}
 	
+
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
     //@JsonIgnore
 	private Set<Order> Order;
 	
     
+
+
+
+	public Set<Basket> getBasket() {
+		return Basket;
+	}
+
+
+
+	public void setBasket(Set<Basket> basket) {
+		Basket = basket;
+	}
+
+
+
+	public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
+			Set<tn.esprit.spring.entities.Order> order, Set<Basket> basket,
+			Set<Comment> comment, Set<Claim> claim, Set<ImageUser1> ImageUser1) {
+		super();
+		this.rankClient = rankClient;
+		this.fidelityCardNumberClient = fidelityCardNumberClient;
+		this.pointNumberClient = pointNumberClient;
+		Order = order;
+		Basket = basket;
+		Comment = comment;
+		Claim = claim;
+		ImageUser1=ImageUser1;
+	}
+
+
+	
+	
+   // @JsonIgnore
+	@OneToMany (cascade = CascadeType.ALL, mappedBy="Client")
+	private Set<Basket> Basket; 
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Comment> Comment;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Claim> Claim;
 	
 	
 
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<ImageUser1> ImageUser1;
 
-	
-	
+
+	public Set<ImageUser1> getImageUser1() {
+		return ImageUser1;
+	}
+
+
+
+	public void setImageUser1(Set<ImageUser1> imageUser1) {
+		ImageUser1 = imageUser1;
+	}
+
+
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+
+
+	public static void setSerialVersionUID(long serialVersionUID) {
+		Client.serialVersionUID = serialVersionUID;
+	}
+
+
+
 	public static void setSerialversionuid(long serialversionuid) {
 		serialVersionUID = serialversionuid;
 	}
@@ -126,7 +192,9 @@ public class Client extends User implements Serializable {
 	public void setOrder(Set<Order> order) {
 		Order = order;
 	}
+
 	
+
 	public Set<Comment> getComment() {
 		return Comment;
 	}
@@ -139,7 +207,7 @@ public class Client extends User implements Serializable {
 	public void setClaim(Set<Claim> claim) {
 		Claim = claim;
 	}
-
+/*
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -188,7 +256,7 @@ public class Client extends User implements Serializable {
 		return true;
 	}
 	
-	
+	*/
 
 	
 }

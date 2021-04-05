@@ -9,7 +9,7 @@ import tn.esprit.spring.entities.Subject;
 
 public interface ISubjectService {
 	
-	Subject addSubject(Subject s,int idSubject);
+	Subject addSubject(Subject s);
 
 	Subject updateSubject(Subject s);
 
@@ -18,6 +18,12 @@ public interface ISubjectService {
 	Optional<Subject> retrieveSubjectById(int id);
 	
 	List<Subject> retrieveAllSubject();
+
+	List<Subject> retrieveSubjectByTitle(String titleSubject);
+
+	List<Subject> retrieveSubjectByStars(float starsNumberSubject);
+
+	List<Subject> retrieveSubjectByStarsless(float starsNumberSubject);
 
 
 }

@@ -1,10 +1,18 @@
 package tn.esprit.spring.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import tn.esprit.spring.entities.Subject;
 
 public interface ISubjectRepository extends CrudRepository <Subject, Integer>{
+	
+	List<Subject> findByTitleSubject(String titleSubject);
+	
+	List<Subject> findByStarsNumberSubjectGreaterThan(float starsNumberSubject);
+	
+	List<Subject> findByStarsNumberSubjectLessThan(float starsNumberSubject);
 
 }

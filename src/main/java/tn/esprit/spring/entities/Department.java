@@ -26,7 +26,7 @@ public class Department implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
+	//test
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDepartment ;
@@ -54,7 +54,7 @@ public class Department implements Serializable {
 	Stock stock ;
 	
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
 	DepartmentManager DepartmentManager ;
 	

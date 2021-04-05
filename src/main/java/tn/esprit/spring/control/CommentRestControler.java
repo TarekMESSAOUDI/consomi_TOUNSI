@@ -24,9 +24,8 @@ public class CommentRestControler {
 	@Autowired
 	CommentService commentservice;
 	
-	//jjjjjjj
 	
-	// http://localhost:8081/SpringMVC/servlet/retrieve-all-Comments
+	// http://localhost:9090/SpringMVC/servlet/retrieve-all-Comments
 	@GetMapping("/retrieve-all-Comments")
 	@ResponseBody
 	public List<Comment> getCommnets() {
@@ -34,7 +33,7 @@ public class CommentRestControler {
 	return list;
 	}
 
-	//http://localhost:8081/SpringMVC/servlet/retrieve-comment/{comment-id}
+	//http://localhost:9090/SpringMVC/servlet/retrieve-comment/{comment-id}
 		@GetMapping("/retrieve-comment/{comment-id}")
 		@ResponseBody
 		public Comment retrieveComment(@PathVariable("comment-id") Long commentId) {
@@ -43,7 +42,7 @@ public class CommentRestControler {
 		
 		
 		
-		// http://localhost:8081/SpringMVC/servlet/add-comment
+		// http://localhost:9090/SpringMVC/servlet/add-comment
 		@PostMapping("/add-comment")
 		@ResponseBody
 		public Comment addComment(@RequestBody Comment c) {
@@ -52,13 +51,13 @@ public class CommentRestControler {
 		}
 	
 	
-		//localhost:8081/SpringMVC/servlet/remove-comment/{comment-id}
+		//localhost:9090/SpringMVC/servlet/remove-comment/{comment-id}
 			@DeleteMapping("/remove-comment/{comment-id}")
 			@ResponseBody
 			public void removeComment(@PathVariable("comment-id") Long commentId) {
 			commentservice.deleteComment(commentId);
 			}
-			// http://localhost:8081/SpringMVC/servlet/modify-comment
+			// http://localhost:9090/SpringMVC/servlet/modify-comment
 			@PutMapping("/modify-comment")
 			@ResponseBody
 			public Comment modifyComment(@RequestBody Comment comment) {

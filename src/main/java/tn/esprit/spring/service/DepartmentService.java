@@ -10,13 +10,17 @@ public interface DepartmentService {
 
 	Department addDepartment(Department D);
 
-	void deleteDepartment(Long idDepartment);
+	void deleteDepartment(int idDepartment);
 
 	Department updateDepartment(Department D);
 
-	Department retrieveDepartment(Long idDepartment);
+	Department retrieveDepartment(int idDepartment);
 
 	List<Department> retrieveAllDepartments();
+
+	void allocateProductToDepartment(int idDepartment, int IdProduct);
+
+
 
 	
 

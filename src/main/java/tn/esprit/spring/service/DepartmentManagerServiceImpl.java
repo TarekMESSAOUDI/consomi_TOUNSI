@@ -44,4 +44,13 @@ public class DepartmentManagerServiceImpl implements IDepartmentManagerService {
 		return (List<DepartmentManager>) Dmr.findAll();
 	}
 
+	@Override
+	public List<DepartmentManager> retrieveDepartmentManagerBysalary(float salaryDepartmentManager) {
+		return (List<DepartmentManager>) Dmr.findBySalaryDepartmentManagerGreaterThan(salaryDepartmentManager);
+	}
+
+	@Override
+	public long retrieveDepartmentManagerByCount() {
+		return Dmr.count();
+	}
 }

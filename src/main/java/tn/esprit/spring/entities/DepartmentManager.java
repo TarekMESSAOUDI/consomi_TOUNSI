@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties
-@Table (name = "T_DEPARTMENT_MANAGER")
+//@Table (name = "T_DEPARTMENT_MANAGER")
 public class DepartmentManager extends User implements Serializable {
 
 
@@ -67,7 +67,7 @@ public class DepartmentManager extends User implements Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="DepartmentManager")
-	@JsonIgnore
+	//@JsonIgnore
 	private Set<Department> Department;
 	
 	

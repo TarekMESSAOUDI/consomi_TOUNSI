@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+//@JsonIgnoreProperties
 @Entity
 @Table (name = "T_CHARITY_EVENT")
 public class CharityEvent implements Serializable {
@@ -48,7 +48,21 @@ public class CharityEvent implements Serializable {
 		this.participantsCharityEvent = participantsCharityEvent;
 	}
 
-	@JsonIgnore
+	public CharityEvent(int idCharityEvent, String titleCharityEvent, Date startDateCharityEvent,
+			Date endDateCharityEvent, String locationCharityEvent, String participantsCharityEvent,
+			tn.esprit.spring.entities.Administrator administrator, tn.esprit.spring.entities.Cagnotte cagnotte) {
+		super();
+		this.idCharityEvent = idCharityEvent;
+		this.titleCharityEvent = titleCharityEvent;
+		this.startDateCharityEvent = startDateCharityEvent;
+		this.endDateCharityEvent = endDateCharityEvent;
+		this.locationCharityEvent = locationCharityEvent;
+		this.participantsCharityEvent = participantsCharityEvent;
+		Administrator = administrator;
+		Cagnotte = cagnotte;
+	}
+
+	//@JsonIgnore
 	@ManyToOne
 	Administrator Administrator; 
 	
