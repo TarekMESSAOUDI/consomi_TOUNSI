@@ -1,5 +1,8 @@
 package tn.esprit.spring.entities;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 
 import javax.persistence.Entity;
@@ -10,10 +13,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Entity
 @Table(name = "T_IMAGE_USER")
-public class ImageUser1 {
+public class ImageUser1 implements MultipartFile {
 	
 	private static long SerialVersionUID=1L;
 	
@@ -83,8 +88,8 @@ public class ImageUser1 {
 		return Client;
 	}
 
-	public void setClient(Client client) {
-		Client = client;
+	public void setClient (Client client2) {
+		Client = client2;
 	}
 
 	public ImageUser1(int idImageUser, String nameImageUser, String typeImageUser,
@@ -124,6 +129,54 @@ public class ImageUser1 {
 
 	public static long getSerialversionuid() {
 		return SerialVersionUID;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getOriginalFilename() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getContentType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public long getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public byte[] getBytes() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InputStream getInputStream() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void transferTo(File dest) throws IOException, IllegalStateException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

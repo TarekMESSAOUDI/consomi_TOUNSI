@@ -1,9 +1,12 @@
 package tn.esprit.spring.control;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,15 +48,15 @@ public class ImageUserRestController {
 	    }
 	  }
 	  
-		
-	/*	@PostMapping("/affect-image-to-client")
+	 // http://localhost:9090/SpringMVC/servlet//affect-image-to-client
+		@PostMapping("/affect-image-to-client/{idimage}/{idclient}")
 		@ResponseBody
-		public void affectationImageToClient(){
-		Client client =new Client();
-			MultipartFile file=(MultipartFile) new ImageUser1();
-			Cs.addClient(client).getFirstNameUser();
-			usi.addImage(file);
-			usi.affecterMissionADepartement(1, 1);
-	}*/
+		public void affectationImageToClient(@PathVariable("idimage") int idimage,@PathVariable("idclient")int idclient) throws IOException{
+		//Client client =new Client();
+			//MultipartFile file=new ImageUser1();
+			//Cs.addClient(client).getFirstNameUser();
+			//usi.addImage(file);
+			usi.affectationImageToClient(idimage, idclient);
+	}
 
 }

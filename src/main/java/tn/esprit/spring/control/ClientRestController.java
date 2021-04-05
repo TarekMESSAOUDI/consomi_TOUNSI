@@ -38,7 +38,7 @@ public class ClientRestController {
 			// http://localhost:9090/SpringMVC/servlet/retrieve-client-by-id/{user-id}
 			@GetMapping("/retrieve-client-by-id/{user-id}")
 			@ResponseBody
-			public Optional<Client> retrieveClient(@PathVariable("user-id") int userId) {
+			public Client retrieveClient(@PathVariable("user-id") int userId) {
 			return cS.retrieveClientById(userId);
 			}
 			
