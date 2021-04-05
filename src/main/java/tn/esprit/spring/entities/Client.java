@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,29 +32,26 @@ public class Client extends User implements Serializable {
 			String confirmPasswordUser, boolean stateUser, int phoneNumberUser, String adressUser, Date birthDateUser,
 			String emailUser, String imageUser, SexeType sexeUser) {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
 
 	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
 			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
-			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser) {
+			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, int i, int j, int k) {
 		super(firstNameUser, lastNameUser, cinUser, passwordUser, confirmPasswordUser, stateUser, phoneNumberUser, adressUser,
 				birthDateUser, emailUser, imageUser, sexeUser);
-		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient) {
+	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, /*String imageUser,*/ SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
 		super();
 		this.firstNameUser = firstNameUser ;
 		this.lastNameUser = lastNameUser ;
@@ -108,8 +106,19 @@ public class Client extends User implements Serializable {
 	private Set<Claim> Claim;
 
 
-	
-	
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+
+
+	public static void setSerialVersionUID(long serialVersionUID) {
+		Client.serialVersionUID = serialVersionUID;
+	}
+
+
+
 	public static void setSerialversionuid(long serialversionuid) {
 		serialVersionUID = serialversionuid;
 	}

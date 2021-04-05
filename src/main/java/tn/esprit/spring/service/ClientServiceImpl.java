@@ -8,14 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Client;
+import tn.esprit.spring.entities.Department;
+import tn.esprit.spring.entities.ImageUser1;
+import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.SexeType;
 import tn.esprit.spring.repository.IClientRepository;
+import tn.esprit.spring.repository.IImageUserRepository;
 
 @Service
 public class ClientServiceImpl implements IClientService {
 
 	@Autowired
 	IClientRepository Cr;
+	
+	@Autowired
+	IImageUserRepository iur;
 	
 	@Override
 	public Client addClient(Client client) {
@@ -86,5 +93,14 @@ public class ClientServiceImpl implements IClientService {
 	public long retrieveClientByCount() {
 		return Cr.count();
 	}
+	
+	/*@Override
+	public void affectImageToClient(int idUser, int idImageUser) {
+	ImageUser1 imageUser1 = iur.findById(idImageUser).get();
+	Client client = Cr.findById(idUser).get();
+	client.setImageUser1(imageUser1);
+	iur.save(imageUser1);
+
+	}*/
 	
 }

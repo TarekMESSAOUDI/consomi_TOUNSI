@@ -105,6 +105,13 @@ public class ClientRestController {
 			Client cl = cS.addClient(client);
 			return cl;
 			}
+			
+		/*	// http://localhost:9090/SpringMVC/servlet/affect-image-to-client/{iduser/{idimage}  	
+			@PutMapping("/affect-image-to-client/{iduser}/{idimage}")
+			public void affectImageToClient(@PathVariable(value = "idUser") int idUser,@PathVariable(value = "idImageUser") int IdImageUser){
+							
+			cS.affectImageToClient(idUser, IdImageUser);
+			}		*/
 
 			// http://localhost:9090/SpringMVC/servlet/delete-client/{user-id}
 			@DeleteMapping("/delete-client/{user-id}")

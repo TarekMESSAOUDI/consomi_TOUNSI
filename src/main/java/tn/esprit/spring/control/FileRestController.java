@@ -23,7 +23,7 @@ public class FileRestController {
 	@Autowired
 	FileStrorageService storageService;
 
-	  @PostMapping("/upload")
+	  @PostMapping("/uploade")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
 	    try {

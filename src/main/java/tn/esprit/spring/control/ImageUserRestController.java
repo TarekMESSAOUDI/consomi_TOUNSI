@@ -19,7 +19,8 @@ public class ImageUserRestController {
 	@Autowired
 	  private ImageUserServiceImpl usi;
 	
-	  @PostMapping("/upload")
+	// http://localhost:9090/SpringMVC/servlet/uploaded
+	  @PostMapping("/uploaded")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
 	    try {

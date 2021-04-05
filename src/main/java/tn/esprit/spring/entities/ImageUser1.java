@@ -5,13 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_IMAGE_USER")
-public class ImageUser {
+public class ImageUser1 {
 	
-	private static final long SerialVersionUID=1L;
+	private static long SerialVersionUID=1L;
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -19,6 +20,12 @@ public class ImageUser {
 	
 	private String nameImageUser;
 	private String typeImageUser;
+	
+	
+
+	public static void setSerialversionuid(long serialversionuid) {
+		SerialVersionUID = serialversionuid;
+	}
 	
 	@Lob
 	  private byte[] data;
@@ -55,7 +62,7 @@ public class ImageUser {
 		this.data = data;
 	}
 
-	public ImageUser(int idImageUser, String nameImageUser, String typeImageUser, byte[] data) {
+	public ImageUser1(int idImageUser, String nameImageUser, String typeImageUser, byte[] data) {
 		super();
 		this.idImageUser = idImageUser;
 		this.nameImageUser = nameImageUser;
@@ -63,19 +70,30 @@ public class ImageUser {
 		this.data = data;
 	}
 
-	public ImageUser() {
+	
+
+	public static long getSerialVersionUID() {
+		return SerialVersionUID;
+	}
+
+	public static void setSerialVersionUID(long serialVersionUID) {
+		SerialVersionUID = serialVersionUID;
+	}
+
+
+	public ImageUser1() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ImageUser(String nameImageUser, String type, byte[] data) {
+	public ImageUser1(String nameImageUser, String type, byte[] data) {
 		super();
 		this.nameImageUser = nameImageUser;
 		this.typeImageUser = typeImageUser;
 		this.data = data;
 	}
 
-	public ImageUser(String nameImageUser2, String contentType, String nameImageUser3, byte[] bytes) {
+	public ImageUser1(String nameImageUser2, String contentType, String nameImageUser3, byte[] bytes) {
 		// TODO Auto-generated constructor stub
 	}
 
