@@ -1,6 +1,12 @@
 package tn.esprit.spring.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,17 +58,49 @@ public class CommentServiceImpl implements CommentService {
 		return commentrepository.findById(idComment).get();
 	}
 	
+	
+	
+	
+	
 	@Override
-	public List<Comment> retrieveCommentBylikeNumberComment(int likeNumberComment){
-		return commentrepository.findBylikeNumberComment(likeNumberComment);
-	}
+	public int countNbcommentaire(int idComment) {
+		return  commentrepository.countNbCommentaire(idComment);
 	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Transactional
 	@Override
-	public List<Comment> retrieveCommentBydisLikeNumberComment(int disLikeNumberComment){
-		return commentrepository.findBydisLikeNumberComment(disLikeNumberComment);
+	public int ajouterCommentaire(Comment c) {
+		List<String> badwords=new ArrayList<>();
+		badwords.add("badbad");
+		badwords.add("badwords");
+		badwords.add("bads");
+		String motcommentaire[]=c.getDescriptionComment().split(" ");
+		String com ="";
+		 
+	for(String mots:motcommentaire){
+//		if(motcommentaire.length==1 && motcommentaire.equals("b"))
+		
+			if (badwords.contains(mots)){
+			    mots="(@#à*&è)";
+				com=com+" "+mots;	
+			}
+		else
+			com=com+" "+mots;}
+	 c.setDescriptionComment(com);
+	 commentrepository.save(c);
+	return c.getIdComment().intValue();
 	}
-	
-	
 	
 	
 }

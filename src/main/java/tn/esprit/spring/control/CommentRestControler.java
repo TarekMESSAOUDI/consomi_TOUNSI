@@ -5,6 +5,9 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +44,7 @@ public class CommentRestControler {
 		}
 		
 		
-		
+		/*
 		// http://localhost:9090/SpringMVC/servlet/add-comment
 		@PostMapping("/add-comment")
 		@ResponseBody
@@ -49,9 +52,9 @@ public class CommentRestControler {
 		Comment comment1 = commentservice.addComment(c);
 		return comment1;
 		}
+	*/
 	
-	
-		//localhost:9090/SpringMVC/servlet/remove-comment/{comment-id}
+		//  http://localhost:9090/SpringMVC/servlet/remove-comment/{comment-id}
 			@DeleteMapping("/remove-comment/{comment-id}")
 			@ResponseBody
 			public void removeComment(@PathVariable("comment-id") Long commentId) {
@@ -64,6 +67,32 @@ public class CommentRestControler {
 			return commentservice.addComment(comment);
 			}
 	
+
+			// 	http://localhost:9090/SpringMVC/servlet/afficherNbcomment/{sujetId}
+			@GetMapping("/afficherNbcomment/{sujetId}")
+			public ResponseEntity<?> afficherNbCommentaireOfSujet(@PathVariable(value = "sujetId") int idComment) {
+				int com =commentservice.countNbcommentaire(idComment);
+				return 	ResponseEntity.ok().body(com);
+			}
 	
-	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/////////////////////////////add comment without bad words//////////////////////////////////////////////
+			
+			
+		//	http://localhost:9090/SpringMVC/servlet/add-comment
+			
+			@PostMapping("/add-comment")
+			public ResponseEntity<?>ajouterCommentaire( @Validated @RequestBody Comment c){
+				commentservice.ajouterCommentaire(c);
+				return 	ResponseEntity.ok().body(c);
+			
+			}
 }

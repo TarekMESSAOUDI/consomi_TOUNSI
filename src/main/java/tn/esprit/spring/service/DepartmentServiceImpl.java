@@ -94,7 +94,11 @@ public void deallocateProductFromDepartment(int IdDepartment, int IdProduct) {
 }
 */
 	
+@Override
+public List<Product> findProdcutInDepartment(int idDepartment) {
 	
+	return productrepository.findProductinDepartment(idDepartment);
+}
 	
 
 }

@@ -18,9 +18,10 @@ public interface CommentService {
 
 	List<Comment> retrieveAllComments();
 
-	List<Comment> retrieveCommentBylikeNumberComment(int likeNumberComment);
+	
+	int countNbcommentaire(int idSubject);
 
-	List<Comment> retrieveCommentBydisLikeNumberComment(int disLikeNumberComment);
+	int ajouterCommentaire(Comment c);
 
 	
 

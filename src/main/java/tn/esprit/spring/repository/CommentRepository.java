@@ -16,14 +16,11 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	
 	
 	
-	@Query(value = "SELECT * FROM t_comment c WHERE c.likeNumberComment = :t " , nativeQuery =true)
-	List<Comment> findBylikeNumberComment(@Param("t")int likeNumberComment);
-	
-	@Query(value = "SELECT * FROM t_comment c WHERE c.disLikeNumberComment = :t " , nativeQuery =true)
-	List<Comment> findBydisLikeNumberComment(@Param("t")int disLikeNumberComment);
 	
 	
 	
+	@Query(value = "select count(*) from t_comment where id_sujet= ?1", nativeQuery = true)
+	 public int countNbCommentaire(int idComment);
 	
 	
 }

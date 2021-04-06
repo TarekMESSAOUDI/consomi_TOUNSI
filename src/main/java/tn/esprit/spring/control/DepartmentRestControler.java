@@ -15,7 +15,7 @@
 	import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Department;
-
+import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.service.DepartmentService;
 
 
@@ -69,6 +69,20 @@ import tn.esprit.spring.service.DepartmentService;
 				return departmentService.addDepartment(department);
 				}
 		
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/findproductinDepartment
+				
+				@GetMapping("/findproductinDepartment/{idD}")
+				public List<Product> findProduitNameParRayon(@PathVariable(value = "idD") int idDepartment) {
+					return departmentService.findProdcutInDepartment(idDepartment);
+				}
+				
+				
+				
+				
+				
 				
 				
 				
