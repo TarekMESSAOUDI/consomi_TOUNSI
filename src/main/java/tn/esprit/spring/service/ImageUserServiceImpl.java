@@ -34,13 +34,13 @@ public class ImageUserServiceImpl implements IImageUserService{
 		  }
 
 
-	public void affecterMissionADepartement(int i, int j) {
+	/*public void affecterMissionADepartement(int i, int j) {
 		Client client=cR.findById(j).get();
 		MultipartFile imageUser1=usi.findById(i);
 		((ImageUser1) imageUser1).setClient(client);
 		iur.save(null);
 		
-	}
+	}*/
 
 
 	private MultipartFile findById(int i) {

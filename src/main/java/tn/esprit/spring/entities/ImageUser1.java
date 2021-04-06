@@ -3,7 +3,6 @@ package tn.esprit.spring.entities;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.web.multipart.MultipartFile;
-
 
 @Entity
 @Table(name = "T_IMAGE_USER")
@@ -27,10 +25,7 @@ public class ImageUser1 implements MultipartFile {
 	private int idImageUser ;
 	
 	private String nameImageUser;
-	//private String typeImageUser;
 	
-	
-
 	public static void setSerialversionuid(long serialversionuid) {
 		SerialVersionUID = serialversionuid;
 	}
@@ -38,7 +33,6 @@ public class ImageUser1 implements MultipartFile {
 	@ManyToOne
 	Client Client;
 	
-
 	@Lob
 	  private byte[] data;
 
@@ -58,14 +52,6 @@ public class ImageUser1 implements MultipartFile {
 		this.nameImageUser = nameImageUser;
 	}
 
-	/*public String getTypeImageUser() {
-		return typeImageUser;
-	}
-
-	public void setTypeImageUser(String typeImageUser) {
-		this.typeImageUser = typeImageUser;
-	}*/
-
 	public byte[] getData() {
 		return data;
 	}
@@ -78,7 +64,6 @@ public class ImageUser1 implements MultipartFile {
 		super();
 		this.idImageUser = idImageUser;
 		this.nameImageUser = nameImageUser;
-		//this.typeImageUser = typeImageUser;
 		this.data = data;
 	}
 
@@ -97,7 +82,6 @@ public class ImageUser1 implements MultipartFile {
 		super();
 		this.idImageUser = idImageUser;
 		this.nameImageUser = nameImageUser;
-		//this.typeImageUser = typeImageUser;
 		Client = client;
 		this.data = data;
 	}
@@ -113,18 +97,15 @@ public class ImageUser1 implements MultipartFile {
 
 	public ImageUser1() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ImageUser1(String nameImageUser, String type, byte[] data) {
 		super();
 		this.nameImageUser = nameImageUser;
-		//this.typeImageUser = typeImageUser;
 		this.data = data;
 	}
 
 	public ImageUser1(String nameImageUser2, String contentType, String nameImageUser3, byte[] bytes) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static long getSerialversionuid() {
@@ -133,50 +114,41 @@ public class ImageUser1 implements MultipartFile {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getOriginalFilename() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getContentType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public long getSize() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public byte[] getBytes() throws IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public InputStream getInputStream() throws IOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void transferTo(File dest) throws IOException, IllegalStateException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	

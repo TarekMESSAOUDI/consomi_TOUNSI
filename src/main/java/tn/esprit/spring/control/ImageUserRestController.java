@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import tn.esprit.spring.entities.Client;
-import tn.esprit.spring.entities.ImageUser1;
 import tn.esprit.spring.fileUpmessage.ResponseMessage;
 import tn.esprit.spring.service.IClientService;
 import tn.esprit.spring.service.IImageUserService;
@@ -58,5 +56,19 @@ public class ImageUserRestController {
 			//usi.addImage(file);
 			usi.affectationImageToClient(idimage, idclient);
 	}
+		
+	/*	@PostMapping("/uploadedandaffect/{idimage}/{idclient}")
+		  public ResponseEntity<ResponseMessage> uploadFileaffect(@RequestParam("file") MultipartFile file,@PathVariable("idimage") int idimage,@PathVariable("idclient")int idclient) {
+		    String message = "";
+		    try {
+		      usi.addImage(file);
+		      usi.affectationImageToClient(idimage, idclient);
+		      message = "Uploaded the file successfully: " + file.getOriginalFilename();
+		      return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+		    } catch (Exception e) {
+		      message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+		      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+		    }
+		  }*/
 
 }
