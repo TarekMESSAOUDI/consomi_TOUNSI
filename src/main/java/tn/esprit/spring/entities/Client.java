@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 
 @Entity
@@ -60,6 +61,18 @@ public class Client extends User implements Serializable {
 	
 
 	public Basket getBasket() {
+
+	
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
+    //@JsonIgnore
+	private Set<Order> Order;
+	
+    
+
+
+
+	public Set<Basket> getBasket() {
+
 		return Basket;
 	}
 
@@ -81,17 +94,21 @@ public class Client extends User implements Serializable {
 		this.ImageUser1=ImageUser1;
 	}
 
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Order> Order;
 	
 	@OneToOne //( mappedBy="Client")
 	private Basket Basket; 
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Comment> Comment;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Claim> Claim;
+	
+	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<ImageUser1> ImageUser1;
@@ -132,6 +149,9 @@ public class Client extends User implements Serializable {
 	public void setOrder(Set<Order> order) {
 		Order = order;
 	}
+
+	
+
 	public Set<Comment> getComment() {
 		return Comment;
 	}
@@ -145,9 +165,10 @@ public class Client extends User implements Serializable {
 		Claim = claim;
 	}
 
+
 	public void setClient(Basket basket2) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
