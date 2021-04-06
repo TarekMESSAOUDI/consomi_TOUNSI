@@ -2,9 +2,6 @@ package tn.esprit.spring.control;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
-import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entities.Basket;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
+import tn.esprit.spring.service.IBasketService;
 import tn.esprit.spring.service.IClientService;
 
 
@@ -26,6 +25,9 @@ public class ClientRestController {
 	
 	@Autowired 
 	IClientService cS;
+	
+	@Autowired
+	IBasketService bs;
 
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-clients
 			@GetMapping("/retrieve-all-clients")
@@ -103,6 +105,7 @@ public class ClientRestController {
 			@ResponseBody
 			public Client addClient(@RequestBody Client client) {
 			Client cl = cS.addClient(client);
+			
 			return cl;
 			}
 			

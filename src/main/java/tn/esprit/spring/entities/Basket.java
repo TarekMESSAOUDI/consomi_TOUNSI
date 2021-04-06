@@ -43,11 +43,8 @@ public class Basket implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	public Basket(int idBasket, int productNumberBasket, float amountBasket, tn.esprit.spring.entities.Client client,
-			Set<tn.esprit.spring.entities.Product> product) {
+	public Basket(int idBasket, int productNumberBasket, float amountBasket,Client client,Set<Product> product) {
 		super();
 		this.idBasket = idBasket;
 		this.productNumberBasket = productNumberBasket;
@@ -58,8 +55,17 @@ public class Basket implements Serializable {
 
 
 
-	public Basket(int idBasket, int productNumberBasket, float amountBasket,
-			Set<tn.esprit.spring.entities.Product> product, Order order) {
+
+	public Basket(int productNumberBasket, float amountBasket, Client client,Set<Product> product) {
+		super();
+		this.productNumberBasket = productNumberBasket;
+		this.amountBasket = amountBasket;
+		Client = client;
+		Product = product;
+	}
+
+	public Basket(int idBasket, int productNumberBasket, float amountBasket) {
+
 		super();
 		this.idBasket = idBasket;
 		this.productNumberBasket = productNumberBasket;
@@ -69,11 +75,14 @@ public class Basket implements Serializable {
 	}
 
 
-	@ManyToOne
+	
+	@OneToOne (mappedBy="Basket")
+	//static
 	Client Client;
-
 	
 
+	
+	
 	public int getIdBasket() {
 		return idBasket;
 	}
@@ -106,19 +115,8 @@ public class Basket implements Serializable {
 		Product = product;
 	}
 
-	
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-
-
-	
-
-	
-	
-	
 
 }

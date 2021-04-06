@@ -6,25 +6,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-//@JsonIgnoreProperties
 @Entity
-//@Table (name = "T_CLIENT")
 public class Client extends User implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
-	private static long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	private int rankClient ;
 	private int fidelityCardNumberClient ;
 	private int pointNumberClient ;
@@ -34,14 +23,10 @@ public class Client extends User implements Serializable {
 			String emailUser, String imageUser, SexeType sexeUser) {
 		super();
 	}
-	
-	
-	
+
 	public Client() {
 		super();
 	}
-
-
 
 	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
 			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
@@ -49,8 +34,6 @@ public class Client extends User implements Serializable {
 		super(firstNameUser, lastNameUser, cinUser, passwordUser, confirmPasswordUser, stateUser, phoneNumberUser, adressUser,
 				birthDateUser, emailUser, imageUser, sexeUser);
 	}
-
-
 
 	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, /*String imageUser,*/ SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
 		super();
@@ -77,6 +60,8 @@ public class Client extends User implements Serializable {
 	}
 	
 
+	public Basket getBasket() {
+
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
     //@JsonIgnore
@@ -87,45 +72,40 @@ public class Client extends User implements Serializable {
 
 
 	public Set<Basket> getBasket() {
+
 		return Basket;
 	}
 
-
-
-	public void setBasket(Set<Basket> basket) {
+	public void setBasket(Basket basket) {
 		Basket = basket;
 	}
 
-
-
 	public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
-			Set<tn.esprit.spring.entities.Order> order, Set<Basket> basket,
+			Set<tn.esprit.spring.entities.Order> order, Basket Basket,
 			Set<Comment> comment, Set<Claim> claim, Set<ImageUser1> ImageUser1) {
 		super();
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
 		Order = order;
-		Basket = basket;
+		Basket = Basket;
 		Comment = comment;
 		Claim = claim;
-		ImageUser1=ImageUser1;
+		this.ImageUser1=ImageUser1;
 	}
 
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
+	private Set<Order> Order;
 	
-	
-   // @JsonIgnore
-	@OneToMany (cascade = CascadeType.ALL, mappedBy="Client")
-	private Set<Basket> Basket; 
+	@OneToOne //( mappedBy="Client")
+	private Basket Basket; 
 
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	//@JsonIgnore
 	private Set<Comment> Comment;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-	//@JsonIgnore
 	private Set<Claim> Claim;
 	
 	
@@ -133,36 +113,13 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<ImageUser1> ImageUser1;
 
-
 	public Set<ImageUser1> getImageUser1() {
 		return ImageUser1;
 	}
 
-
-
 	public void setImageUser1(Set<ImageUser1> imageUser1) {
 		ImageUser1 = imageUser1;
 	}
-
-
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-
-
-
-	public static void setSerialVersionUID(long serialVersionUID) {
-		Client.serialVersionUID = serialVersionUID;
-	}
-
-
-
-	public static void setSerialversionuid(long serialversionuid) {
-		serialVersionUID = serialversionuid;
-	}
-
-
 
 	public int getRankClient() {
 		return rankClient;
@@ -207,56 +164,11 @@ public class Client extends User implements Serializable {
 	public void setClaim(Set<Claim> claim) {
 		Claim = claim;
 	}
-/*
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
 
-		result = prime * result + ((Claim == null) ? 0 : Claim.hashCode());
-		result = prime * result + ((Comment == null) ? 0 : Comment.hashCode());
-		result = prime * result + ((Order == null) ? 0 : Order.hashCode());
-		result = prime * result + fidelityCardNumberClient;
-		result = prime * result + pointNumberClient;
-		result = prime * result + rankClient;
-		return result;
+
+	public void setClient(Basket basket2) {
+		// TODO Auto-generated method stub
+
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Client other = (Client) obj;
-		
-		if (Claim == null) {
-			if (other.Claim != null)
-				return false;
-		} else if (!Claim.equals(other.Claim))
-			return false;
-		if (Comment == null) {
-			if (other.Comment != null)
-				return false;
-		} else if (!Comment.equals(other.Comment))
-			return false;
-		if (Order == null) {
-			if (other.Order != null)
-				return false;
-		} else if (!Order.equals(other.Order))
-			return false;
-		if (fidelityCardNumberClient != other.fidelityCardNumberClient)
-			return false;
-		if (pointNumberClient != other.pointNumberClient)
-			return false;
-		if (rankClient != other.rankClient)
-			return false;
-		return true;
-	}
-	
-	*/
-
-	
 }

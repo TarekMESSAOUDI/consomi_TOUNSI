@@ -92,11 +92,11 @@ public class User implements Serializable {
 	public void setCinUser(String cinUser) {
 		this.cinUser = cinUser;
 	}
-	@Transient
+	
 	public String getPasswordUser() {
 		return passwordUser;
 	}
-	@Transient
+	
 	public void setPasswordUser(String passwordUser) {
 		this.passwordUser = passwordUser;
 	}
@@ -142,7 +142,7 @@ public class User implements Serializable {
 	/**
 	 * @return the confirmPasswordUser
 	 */
-	@Transient
+	
 	public String getConfirmPasswordUser() {
 		return confirmPasswordUser;
 	}

@@ -7,31 +7,28 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-//@JsonIgnoreProperties
 @Entity
-//@Table (name = "T_ADMINISTRATOR")
 public class Administrator extends User implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	private String specialityAdmin ;
+	private String typeAdmin ;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
+	private Set<Claim> Claim;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
+	private Set<CharityEvent> CharityEvent;
 
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
-	private static long serialVersionUID = 1L;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
+	private Set<Publicity> Publicity;
 
+	
 	public Administrator() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 	
 	public Administrator(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, String specialityAdmin, String typeAdmin) {
 		super();
@@ -50,35 +47,18 @@ public class Administrator extends User implements Serializable {
 		this.specialityAdmin = specialityAdmin;
 		this.typeAdmin = typeAdmin;
 	}
-
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public static void setSerialversionuid(long serialversionuid) {
-		serialVersionUID = serialversionuid;
-	}
-
-
-
-	private String specialityAdmin ;
-	private String typeAdmin ;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	//@JsonIgnore
-	private Set<Claim> Claim;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	//@JsonIgnore
-	private Set<CharityEvent> CharityEvent;
+	
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Administrator")
-	//@JsonIgnore
-	private Set<Publicity> Publicity;
-
+	public Administrator(String specialityAdmin, String typeAdmin, Set<Claim> claim,Set<CharityEvent> charityEvent,Set<Publicity> publicity) {
+		super();
+		this.specialityAdmin = specialityAdmin;
+		this.typeAdmin = typeAdmin;
+		Claim = claim;
+		CharityEvent = charityEvent;
+		Publicity = publicity;
+	}
+	
 	public String getSpecialityAdmin() {
 		return specialityAdmin;
 	}
