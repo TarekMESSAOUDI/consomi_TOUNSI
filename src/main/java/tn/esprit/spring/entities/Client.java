@@ -24,7 +24,16 @@ public class Client extends User implements Serializable {
 		super();
 	}
 
+	
+	
 	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Client( String string9, SexeType men, int i, int j, int k, String string10) {
 		super();
 	}
 
@@ -35,7 +44,9 @@ public class Client extends User implements Serializable {
 				birthDateUser, emailUser, imageUser, sexeUser);
 	}
 
-	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, /*String imageUser,*/ SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
+	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser,
+			boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser,
+			SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
 		super();
 		this.firstNameUser = firstNameUser ;
 		this.lastNameUser = lastNameUser ;
@@ -52,22 +63,13 @@ public class Client extends User implements Serializable {
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
-		Order = getOrder();
 		Basket = getBasket();
+		Order = getOrder();
 		Comment = getComment();
 		Claim = getClaim();
 		ImageUser1 = getImageUser1();
 	}
 	
-    
-	private tn.esprit.spring.entities.Basket getBasket() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setBasket(Basket basket) {
-		Basket = basket;
-	}
 
 	public Client(int rankClient, int fidelityCardNumberClient, int pointNumberClient,
 			Set<tn.esprit.spring.entities.Order> order, Basket Basket,
@@ -77,7 +79,7 @@ public class Client extends User implements Serializable {
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
 		Order = order;
-		Basket = Basket;
+		this.Basket = Basket;
 		Comment = comment;
 		Claim = claim;
 		this.ImageUser1=ImageUser1;
@@ -87,7 +89,7 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Order> Order;
 	
-	@OneToOne //( mappedBy="Client")
+	@OneToOne
 	private Basket Basket; 
 
 	
@@ -96,11 +98,19 @@ public class Client extends User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Claim> Claim;
-	
-	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<ImageUser1> ImageUser1;
+
+	
+	
+	public Basket getBasket() {
+		return Basket;
+	}
+
+	public void setBasket(Basket basket) {
+		Basket = basket;
+	}
 
 	public Set<ImageUser1> getImageUser1() {
 		return ImageUser1;
@@ -127,9 +137,6 @@ public class Client extends User implements Serializable {
 	}
 	public void setPointNumberClient(int pointNumberClient) {
 		this.pointNumberClient = pointNumberClient;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 	public Set<Order> getOrder() {

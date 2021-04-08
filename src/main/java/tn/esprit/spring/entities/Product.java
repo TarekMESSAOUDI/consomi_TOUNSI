@@ -26,7 +26,7 @@ public class Product implements Serializable {
 	private String nombre;
 	private String descriptionProduct ;
 	private int quantityProduct ;
-	private int priceProduct ;
+	private float priceProduct ;
 	private int barcodeProduct ;
 	private float weightProduct ;
 	private float buyingPriceProduct ;
@@ -63,7 +63,7 @@ public class Product implements Serializable {
 			int quantityProduct, int priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct,
 			int idUnderCategory, String pictureProduct, int idDepartment, int idStock, int maxQuantityProduct,
 			tn.esprit.spring.entities.Department department, Order order,
-			tn.esprit.spring.entities.UnderCategory underCategory) {
+			tn.esprit.spring.entities.UnderCategory underCategory) {}
 
 	
 	public Product( int idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
@@ -87,12 +87,12 @@ public class Product implements Serializable {
 		this.idStock = idStock;
 		this.maxQuantityProduct = maxQuantityProduct;
 		
-		UnderCategory = underCategory;
+		UnderCategory = getUnderCategory();
 	}
 
 
 
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToOne
 	Department Department;
 	
@@ -102,7 +102,7 @@ public class Product implements Serializable {
 	
 	@JsonIgnore
 	@ManyToOne
-	UnderCategory UnderCategory;
+	UnderCategory UnderCategory;*/
 	
 	
 
@@ -154,12 +154,12 @@ public class Product implements Serializable {
 		this.quantityProduct = quantityProduct;
 	}
 
-	public int getPriceProduct() {
+	public float getPriceProduct() {
 		return priceProduct;
 	}
 
-	public void setPriceProduct(int priceProduct) {
-		this.priceProduct = priceProduct;
+	public void setPriceProduct(float f) {
+		this.priceProduct = f;
 	}
 
 	public int getBarcodeProduct() {
@@ -251,7 +251,7 @@ public class Product implements Serializable {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		float result = 1;
 		result = prime * result + ((Basket == null) ? 0 : Basket.hashCode());
 		result = prime * result + ((Department == null) ? 0 : Department.hashCode());
 		result = prime * result + ((UnderCategory == null) ? 0 : UnderCategory.hashCode());
@@ -270,7 +270,7 @@ public class Product implements Serializable {
 		result = prime * result + quantityProduct;
 		result = prime * result + ((titleProduct == null) ? 0 : titleProduct.hashCode());
 		result = prime * result + Float.floatToIntBits(weightProduct);
-		return result;
+		return (int) result;
 	}
 
 	@Override

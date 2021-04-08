@@ -26,6 +26,7 @@ public class ClientServiceImpl implements IClientService {
 	
 	@Override
 	public Client addClient(Client client) {
+		client.setRoleUser("CLIENT");
 		return Cr.save(client);
 	}
 

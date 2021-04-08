@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Administrator;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.IAdministratorRepository;
+import tn.esprit.spring.repository.IRoleRepository;
 
 
 @Service
@@ -18,9 +20,10 @@ public class AdministratorServiceImpl implements IAdministratorService {
 	
 	@Override
 	public Administrator addAdministrator(Administrator admin) {
+		admin.setRoleUser("ADMIN");
 		return Ar.save(admin);
 	}
-
+	
 	@Override
 	public Administrator updateAdministrator(Administrator admin) {
 		return Ar.save(admin);
