@@ -64,7 +64,7 @@ public class Basket implements Serializable {
 		Product = product;
 	}
 
-	public Basket(int idBasket, int productNumberBasket, float amountBasket) {
+/*	public Basket(int idBasket, int productNumberBasket, float amountBasket) {
 
 		super();
 		this.idBasket = idBasket;
@@ -72,7 +72,7 @@ public class Basket implements Serializable {
 		this.amountBasket = amountBasket;
 		Product = product;
 		
-	}
+	}*/
 
 
 	
