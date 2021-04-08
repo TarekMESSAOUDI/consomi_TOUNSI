@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.spring.entities.Basket;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
 import tn.esprit.spring.service.IBasketService;

@@ -59,21 +59,10 @@ public class Client extends User implements Serializable {
 		ImageUser1 = getImageUser1();
 	}
 	
-
-	public Basket getBasket() {
-
-	
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
-    //@JsonIgnore
-	private Set<Order> Order;
-	
     
-
-
-
-	public Set<Basket> getBasket() {
-
-		return Basket;
+	private tn.esprit.spring.entities.Basket getBasket() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void setBasket(Basket basket) {
