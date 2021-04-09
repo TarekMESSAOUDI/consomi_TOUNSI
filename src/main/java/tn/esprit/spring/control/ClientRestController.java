@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
+import tn.esprit.spring.repository.IClientRepository;
 import tn.esprit.spring.service.IBasketService;
 import tn.esprit.spring.service.IClientService;
 
@@ -27,6 +28,9 @@ public class ClientRestController {
 	
 	@Autowired
 	IBasketService bs;
+	
+	@Autowired
+	IClientRepository cR;
 
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-clients
 			@GetMapping("/retrieve-all-clients")
@@ -127,5 +131,17 @@ public class ClientRestController {
 			@ResponseBody
 			public Client updateClient(@RequestBody Client client) {
 			return cS.updateClient(client);
+			}
+			
+			@GetMapping("/get-all-name-client")
+			@ResponseBody
+			public List<String> getAllClientNames(){
+				return cR.getAllClientNames();
+			}
+			
+			@GetMapping("/get-max-rank")
+			@ResponseBody
+			public List<String> getMaxRank(){
+				return cR.getMaxRank();
 			}
 }

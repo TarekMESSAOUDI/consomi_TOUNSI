@@ -55,12 +55,6 @@ public class DeliveryPerson extends User implements Serializable {
 	@JsonIgnore
 	private Set<Delivery> Delivery;
 	
-	
-	
-	
-	
-	
-
 	public int getMissionNumberDeliveryPerson() {
 		return missionNumberDeliveryPerson;
 	}

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entities.Subject;
+import tn.esprit.spring.repository.ISubjectRepository;
 import tn.esprit.spring.service.ISubjectService;
 
 @Controller
@@ -21,6 +22,9 @@ public class SubjectRestController {
 	
 	@Autowired
 	ISubjectService sS;
+	
+	@Autowired
+	ISubjectRepository sR;
 	
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-subjects
 			@GetMapping("/retrieve-all-subjects")
@@ -49,6 +53,27 @@ public class SubjectRestController {
 			@ResponseBody
 			public List<Subject> retrieveSubjectByStars(@PathVariable("subject-stars") float starsNumberSubject) {
 			return sS.retrieveSubjectByStars(starsNumberSubject);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-moy-stars-subject
+			@GetMapping("/retrieve-moy-by-stars-subject")
+			@ResponseBody
+			public float retrieveMoyStarsSubject() {
+			return sR.retrievemoySubjectByStars();
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-max-stars-subject
+			@GetMapping("/retrieve-max-stars-subject")
+			@ResponseBody
+			public float retrieveMaxStarsSubject() {
+			return sR.retrievemaxSubjectByStars();
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-max-stars-subject
+			@GetMapping("/retrieve-min-stars-subject")
+			@ResponseBody
+			public float retrieveMinStarsSubject() {
+			return sR.retrieveminSubjectByStars();
 			}
 			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-subject-by-starsless/{subject-starsless}

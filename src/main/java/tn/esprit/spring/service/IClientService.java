@@ -2,9 +2,6 @@ package tn.esprit.spring.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
-import javax.xml.crypto.Data;
 
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;

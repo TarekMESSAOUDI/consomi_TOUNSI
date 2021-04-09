@@ -3,7 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
+import tn.esprit.spring.entities.Department;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -19,23 +19,25 @@ public class DepartmentManager extends User implements Serializable {
 	private float salaryDepartmentManager ;
 	private int NumberDepartmentManager ;
 	
-	public DepartmentManager(int idUser, String firstNameUser, String lastNameUser, int cinUser, String passwordUser,
-			String confirmPasswordUser, boolean stateUser, int phoneNumberUser, String adressUser, Date birthDateUser,
-			String emailUser, String imageUser, SexeType sexeUser) {
-		super();
-	}
+//	public DepartmentManager(int idUser, String firstNameUser, String lastNameUser, int cinUser, String passwordUser,
+//			String confirmPasswordUser, boolean stateUser, int phoneNumberUser, String adressUser, Date birthDateUser,
+//			String emailUser, String imageUser, SexeType sexeUser) {
+//		super();
+//	}
 
 	public DepartmentManager() {
 		super();
 	}
-	public DepartmentManager(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
-			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
-			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser) {
-		super(firstNameUser, lastNameUser, cinUser, passwordUser, confirmPasswordUser, stateUser, phoneNumberUser, adressUser,
-				birthDateUser, emailUser, imageUser, sexeUser);
-	}
+//	public DepartmentManager(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
+//			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
+//			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser) {
+//		super(firstNameUser, lastNameUser, cinUser, passwordUser, confirmPasswordUser, stateUser, phoneNumberUser, adressUser,
+//				birthDateUser, emailUser, imageUser, sexeUser);
+//	}
 	
-	public DepartmentManager(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, float salaryDepartmentManager, int NumberDepartmentManager) {
+	public DepartmentManager(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser,
+			boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser, String imageUser, 
+			SexeType sexeUser, float salaryDepartmentManager, int NumberDepartmentManager) {
 		super();
 		this.firstNameUser = firstNameUser ;
 		this.lastNameUser = lastNameUser ;
@@ -51,6 +53,7 @@ public class DepartmentManager extends User implements Serializable {
 		this.sexeUser = sexeUser ;
 		this.salaryDepartmentManager = salaryDepartmentManager;
 		this.NumberDepartmentManager = NumberDepartmentManager;
+		Department = getDepartment();
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="DepartmentManager")

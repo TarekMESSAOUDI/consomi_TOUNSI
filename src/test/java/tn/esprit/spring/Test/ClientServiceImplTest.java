@@ -33,7 +33,7 @@ public class ClientServiceImplTest {
 	public void testAddClient() throws ParseException {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	Date date = dateFormat.parse("2021-03-07");
-	Client client = new Client("Tarek", "MESSAOUDI", "07480313","0000", "0000", true, "55717442","ariana", date, "tarek", "img1", SexeType.Men, 1,1,0);
+	Client client = new Client("Tarek", "MESSAOUDI", "07480313","0000", "0000", true, "55717442","ariana", date, "tarek@", SexeType.Men, 1,1,0,"aa");
 	cS.addClient(client);
 	}
 	

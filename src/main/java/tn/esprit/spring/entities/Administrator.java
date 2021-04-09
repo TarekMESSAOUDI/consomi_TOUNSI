@@ -59,6 +59,8 @@ public class Administrator extends User implements Serializable {
 		Publicity = publicity;
 	}
 	
+	
+	
 	public String getSpecialityAdmin() {
 		return specialityAdmin;
 	}
@@ -98,5 +100,6 @@ public class Administrator extends User implements Serializable {
 	public void setPublicity(Set<Publicity> publicity) {
 		Publicity = publicity;
 	}
+	
 
 }

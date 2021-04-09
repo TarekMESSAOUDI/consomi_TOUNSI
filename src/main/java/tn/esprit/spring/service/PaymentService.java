@@ -5,7 +5,9 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 
-import http.Payment;
+import tn.esprit.spring.entities.Payment;
+
+//import http.Payment;
 
 
 import org.springframework.beans.factory.annotation.Value;

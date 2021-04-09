@@ -18,9 +18,10 @@ public class AdministratorServiceImpl implements IAdministratorService {
 	
 	@Override
 	public Administrator addAdministrator(Administrator admin) {
+		admin.setRoleUser("ADMIN");
 		return Ar.save(admin);
 	}
-
+	
 	@Override
 	public Administrator updateAdministrator(Administrator admin) {
 		return Ar.save(admin);

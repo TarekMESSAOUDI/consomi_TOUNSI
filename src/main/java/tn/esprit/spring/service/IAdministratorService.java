@@ -14,7 +14,6 @@ public interface IAdministratorService {
 	boolean deleteAdministrator(int id);
 
 	Optional<Administrator> retrieveAdministratorById(int idUser);
-
 	
 	List<Administrator> retrieveAllAdministrators();
 
