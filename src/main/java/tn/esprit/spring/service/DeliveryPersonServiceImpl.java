@@ -17,7 +17,7 @@ public class DeliveryPersonServiceImpl implements IDeliveryPersonService {
 	DeliveryPersonRepository dr;
 	@Override
 	public DeliveryPerson addDeliveryPerson(DeliveryPerson d) {
-		
+		d.setRoleUser("DELIVERY_PERSON");
 	return	dr.save(d);
 		
 	}

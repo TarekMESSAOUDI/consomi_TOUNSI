@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.control;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class BillController {
 	@Autowired
 	private BillService billService;
 	
-	// http://localhost:9090/SpringMVC/servlet/add-bill
+	// http://localhost:8081/SpringMVC/servlet/add-bill
 		@PostMapping("/add-bill")
 		@ResponseBody
 		public Bill addBill(@RequestBody Bill b) {
@@ -31,35 +32,35 @@ public class BillController {
 		return bill;
 		}
 	
-	// URL : http://localhost:9090/SpringMVC/servlet/getAllBill
+	// URL : http://localhost:8081/SpringMVC/servlet/getAllBill
 	    @GetMapping(value = "getAllBill")
 	  
 	    public List<Bill> getAllBill(){
 		return billService.getAllBill();
 		}
 	    
-	 // URL : http://localhost:9090/SpringMVC/servlet/delete-bill
+	 // URL : http://localhost:8081/SpringMVC/servlet/delete-bill
 		   @DeleteMapping(value = "delete-bill/{idBill}")
 		   
 			public void deleteBill(@PathVariable("idBill")Long idBill){
 			   billService.deleteBill(idBill);
 		   }
 		   
-		// http://localhost:9090/SpringMVC/servlet/modify-bill
+		// http://localhost:8081/SpringMVC/servlet/modify-bill
 			@PutMapping("/modify-bill")
 			@ResponseBody
-			public Bill modifyUser(@RequestBody Bill bill) {
+			public Bill modifyBill(@RequestBody Bill bill) {
 			return billService.updateBill(bill);
 			}
 			
-		// URL : http://localhost:9090/SpringMVC/servlet/getBill_by_ID/8
+		// URL : http://localhost:8081/SpringMVC/servlet/getBill_by_ID/8
 			 @GetMapping(value = "getBill_by_ID/{idBill}")
 			   
 			 public Optional<Bill> getBill_by_ID(@PathVariable("idBill")Long idBill) {
 					return billService.getBill_by_ID(idBill);
 			}
 			 
-		// URL : http://localhost:9090/SpringMVC/servlet/getBill_by_Type/At_Delivery
+		// URL : http://localhost:8081/SpringMVC/servlet/getBill_by_Type/At_Delivery
 			 @GetMapping(value = "getBill_by_Type/{paymentType}")
 			   
 			 public List<Bill> getBill_by_Type(@PathVariable("paymentType")PaymentType paymentType) {
@@ -67,7 +68,7 @@ public class BillController {
 			}
 			 
 			 
-			// URL : http://localhost:9090/SpringMVC/servlet/getAllBill_by_Order/1
+			// URL : http://localhost:8081/SpringMVC/servlet/getAllBill_by_Order/1
 			 @GetMapping(value = "getAllBill_by_Order/{idOrder}")
 			   
 			 public List<Bill> getAllBill_by_Order(@PathVariable("idOrder")Long idOrder) {
@@ -75,16 +76,36 @@ public class BillController {
 			}
 			 
 			 
-			 @PutMapping("/assignOrder_to_Bill/{idBill}/{idOrder}")
-			 @ResponseBody
-			 public void assignOrder_to_Bill(@PathVariable("idOrder") Long idOrder, @PathVariable("idBill") Long idBill) {
-				billService.assignOrder_to_Bill(idOrder,idBill);
+			 
+			// URL : http://localhost:8081/SpringMVC/servlet/modify_type_bill
+			   @PutMapping(value = "modify_type_bill/{idBill}/{paymentType}")
+			   @ResponseBody
+				public void modify_type_bill(@PathVariable("paymentType")PaymentType paymentType,@PathVariable("idBill")Long idBill){
+				   billService.modify_type_bill(paymentType, idBill);
+					 
+				}
+			   
+			// URL : http://localhost:8081/SpringMVC/servlet/get_payment_type_by_idBill
 
-			}
-			
+			   @GetMapping(value = "get_payment_type_by_idBill/{idBill}")
+			  
+
+			   public String  get_payment_type_by_idBill(@PathVariable("idBill")Long idBill) {
+				 return  billService.get_payment_type_by_idBill(idBill);
+				   
+			   }
+			 
+			// URL : http://localhost:8081/SpringMVC/servlet//showPDF/{idBill}
+			   @GetMapping("/showPDF/{idBill}")
+			   public void billpdf (@PathVariable("idBill") Long idBill) {
+				   
+				 billService.billpdf(idBill);
+			   }
 	
 	
 	
 	
 
 }
+
+

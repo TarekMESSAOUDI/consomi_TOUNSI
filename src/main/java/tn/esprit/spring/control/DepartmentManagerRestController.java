@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.DepartmentManager;
+import tn.esprit.spring.repository.IDepartmentManagerRepository;
 import tn.esprit.spring.service.IDepartmentManagerService;
 
 
@@ -22,6 +23,9 @@ public class DepartmentManagerRestController {
 	
 	@Autowired 
 	IDepartmentManagerService dmS;
+	
+	@Autowired 
+	IDepartmentManagerRepository dmR;
 	
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-departmentManagers
 			@GetMapping("/retrieve-all-departmentManagers")
@@ -39,7 +43,7 @@ public class DepartmentManagerRestController {
 			}
 			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-departmentManager-by-salary/{user-salary}
-			@GetMapping("/retrieve-departmentManager-by-salary/{user-salary}")
+			@GetMapping("/retrieve-departmentManager-by-salarygreaterthan/{user-salary}")
 			@ResponseBody
 			public List<DepartmentManager> retrieveDepartmentManagerBysalary(@PathVariable("user-salary") float salaryDepartmentManager) {
 			return dmS.retrieveDepartmentManagerBysalary(salaryDepartmentManager);
@@ -72,6 +76,20 @@ public class DepartmentManagerRestController {
 			@ResponseBody
 			public DepartmentManager updateDepartmentManager(@RequestBody DepartmentManager depM) {
 			return dmS.updateDepartmentManager(depM);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-moy-salaire
+			@GetMapping("/retrieve-moy-salaire")
+			@ResponseBody
+			public float retrievemoysalaire() {
+			return dmR.retrievemoysalaire();
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-somme-salaire
+			@GetMapping("/retrieve-somme-salaire")
+			@ResponseBody
+			public float retrievesommesalaire() {
+			return dmR.retrievesommesalaire();
 			}
 
 }

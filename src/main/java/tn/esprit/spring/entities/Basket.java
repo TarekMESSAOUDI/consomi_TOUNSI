@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,26 +29,60 @@ public class Basket implements Serializable {
 	private float amountBasket;
 	
 	
+
+
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")
+	//@JsonIgnore
+	private Set<Product> Product;
+	
+	
+
 	public Basket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Basket(int idBasket, int productNumberBasket, float amountBasket) {
+	public Basket(int idBasket, int productNumberBasket, float amountBasket,Client client,Set<Product> product) {
 		super();
 		this.idBasket = idBasket;
 		this.productNumberBasket = productNumberBasket;
 		this.amountBasket = amountBasket;
+		Client = client;
+		Product = product;
 	}
 
-	@OneToOne(mappedBy="Basket")
-	//@JsonIgnore
-	private Client Client;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")
-	@JsonIgnore
-	private Set<Product> Product;
 
+
+
+	public Basket(int productNumberBasket, float amountBasket, Client client,Set<Product> product) {
+		super();
+		this.productNumberBasket = productNumberBasket;
+		this.amountBasket = amountBasket;
+		Client = client;
+		Product = product;
+	}
+
+/*	public Basket(int idBasket, int productNumberBasket, float amountBasket) {
+
+		super();
+		this.idBasket = idBasket;
+		this.productNumberBasket = productNumberBasket;
+		this.amountBasket = amountBasket;
+		Product = product;
+		
+	}*/
+
+
+	
+	@OneToOne (mappedBy="Basket")
+	//static
+	Client Client;
+	
+
+	
+	
 	public int getIdBasket() {
 		return idBasket;
 	}
@@ -64,10 +99,6 @@ public class Basket implements Serializable {
 		this.productNumberBasket = productNumberBasket;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public float getAmountBasket() {
 		return amountBasket;
 	}
@@ -76,20 +107,16 @@ public class Basket implements Serializable {
 		this.amountBasket = amountBasket;
 	}
 
-	public Client getClient() {
-		return Client;
-	}
-
-	public void setClient(Client client) {
-		Client = client;
-	}
-
 	public Set<Product> getProduct() {
 		return Product;
 	}
 
 	public void setProduct(Set<Product> product) {
 		Product = product;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
