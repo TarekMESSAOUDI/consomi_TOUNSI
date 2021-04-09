@@ -3,6 +3,7 @@ package tn.esprit.spring.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -27,4 +28,10 @@ public interface IClientRepository extends CrudRepository <Client, Integer>{
 	List<Client> findBySexeUser(SexeType sexeUser);
 	
 	long  count();
+
+	@Query("SELECT e.firstNameUser,e.emailUser FROM User e where e.rankClient is not null")
+	List<String> getAllClientNames();
+	
+	@Query("SELECT MAX(e.rankClient),e.phoneNumberUser FROM User e where e.rankClient is not null")
+	List<String> getMaxRank();
 }

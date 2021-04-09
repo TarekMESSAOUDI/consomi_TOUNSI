@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Administrator;
-import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.IAdministratorRepository;
-import tn.esprit.spring.repository.IRoleRepository;
 
 
 @Service
