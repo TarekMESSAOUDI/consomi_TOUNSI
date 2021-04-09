@@ -1,14 +1,23 @@
 package tn.esprit.spring.service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import tn.esprit.spring.entities.Comment;
+import tn.esprit.spring.entities.Subject;
 import tn.esprit.spring.repository.CommentRepository;
+import tn.esprit.spring.repository.ISubjectRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -17,6 +26,15 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	CommentRepository commentrepository ;
+	@Autowired
+	ISubjectRepository Sr ;
+	
+	
+	@Autowired
+	CommentService Cs;
+	
+	
+	
 	
 	private static final Logger L = LogManager.getLogger(CommentService.class);
 	
@@ -29,6 +47,12 @@ public class CommentServiceImpl implements CommentService {
 		return comments;
 	
 	}
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public Comment addComment(Comment c) {
@@ -52,16 +76,64 @@ public class CommentServiceImpl implements CommentService {
 		return commentrepository.findById(idComment).get();
 	}
 	
-	@Override
-	public List<Comment> retrieveCommentBylikeNumberComment(int likeNumberComment){
-		return commentrepository.findBylikeNumberComment(likeNumberComment);
-	}
+	
+	
+	
 	
 	@Override
-	public List<Comment> retrieveCommentBydisLikeNumberComment(int disLikeNumberComment){
-		return commentrepository.findBydisLikeNumberComment(disLikeNumberComment);
+	public Long countNbcomments() {
+		return  commentrepository.count();
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@Transactional
+	@Override
+	public int ajouterCommentaire(Comment c) {
+		List<String> badwords=new ArrayList<>();
+		badwords.add("badbad");
+		badwords.add("badwords");
+		badwords.add("bads");
+		String motcommentaire[]=c.getDescriptionComment().split(" ");
+		String com ="";
+		 
+	for(String mots:motcommentaire){
+//		if(motcommentaire.length==1 && motcommentaire.equals("b"))
+		
+			if (badwords.contains(mots)){
+			    mots="*****";
+				com=com+" "+mots;	
+			}
+		else
+			com=com+" "+mots;}
+	 c.setDescriptionComment(com);
+	 commentrepository.save(c);
+	return c.getIdComment().intValue();
 	}
 	
+	
+	
+	
+	/////////////////////////////to try ///////////////////
+	@Override
+	public void affecterSubjecttoComment(int idSubject, long idComment) {
+		Comment comment = commentrepository.findById(idComment).get();
+		Subject subject = Sr.findById(idSubject).get();
+		if (!ObjectUtils.isEmpty(comment) && !ObjectUtils.isEmpty(subject))
+			comment.setSubject(subject);
+		Sr.save(subject);
+		
+		}
 	
 	
 	

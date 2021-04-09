@@ -96,6 +96,18 @@ public class Product implements Serializable {
 	@ManyToOne
 	Department Department;
 	
+	
+	@ManyToOne
+	Stock stock ;
+	
+	public Stock getStock() {
+		return stock;
+	}
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
 	@JsonIgnore
 	@ManyToOne
 	Basket Basket; 
