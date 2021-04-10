@@ -18,7 +18,7 @@ public class virtualVisitControl {
 	VirtualVisitService VVS;
 	
 	
-	@PostMapping("/upload")
+	@PostMapping("/uploadrayon")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
 	    try {

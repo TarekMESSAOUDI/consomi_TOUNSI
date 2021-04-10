@@ -15,6 +15,7 @@ public List<Product> findAllByIdUnderCategory(int idCategory);
 public List<Product> findAllByIdUnderCategoryAndTitleProduct(int idCategory,String name);
 public List<Product> findAllByIdDepartment(int idDepartment);
 
+
 //////////////tarek comptabilité//////////
 
 	@Query("SELECT 'title :',p.titleProduct ,'---->','Gain :', (p.priceProduct) - (p.buyingPriceProduct) FROM Product p")
@@ -28,5 +29,11 @@ public List<Product> findAllByIdDepartment(int idDepartment);
 	
 	@Query("SELECT  SUM(p.priceProduct) FROM Product p")
 	public float getallbuyproduct();
+
+
+
+//@Query(value = "SELECT * FROM t_product WHERE idDepartment =?1", nativeQuery = true)    //to find a product in the Department
+public List<Product> findByIdDepartment(int idDepartment);
+
 
 }

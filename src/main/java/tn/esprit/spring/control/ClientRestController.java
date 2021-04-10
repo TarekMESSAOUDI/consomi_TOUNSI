@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
 import tn.esprit.spring.repository.IClientRepository;
-import tn.esprit.spring.service.IBasketService;
+
 import tn.esprit.spring.service.IClientService;
 
 
@@ -26,8 +26,7 @@ public class ClientRestController {
 	@Autowired 
 	IClientService cS;
 	
-	@Autowired
-	IBasketService bs;
+	
 	
 	@Autowired
 	IClientRepository cR;

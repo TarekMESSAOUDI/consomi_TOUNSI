@@ -9,6 +9,8 @@ import tn.esprit.spring.entities.Department;
 
 public interface DepartmentRepository extends CrudRepository<Department, Integer> {
 
+	Department saveAndFlush(Department dep);
+
 	
 	
 	//@Query(value = "SELECT * FROM t_department WHERE nameDepartment LIKE ?1%", nativeQuery = true)

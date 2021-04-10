@@ -87,6 +87,7 @@ public class ProductControl {
 			
 	}
 	
+
 	/////////Tarek Compatbilité/////////////
 	
 	//http://localhost:9090/SpringMVC/servlet/gain-product
@@ -118,5 +119,4 @@ public class ProductControl {
 		return pr.getallbuyproduct();
 		}
 
-	
 }

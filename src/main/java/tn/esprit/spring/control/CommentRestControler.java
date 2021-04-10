@@ -3,8 +3,11 @@ package tn.esprit.spring.control;
 import java.util.List;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Comment;
+import tn.esprit.spring.repository.CommentRepository;
 import tn.esprit.spring.service.CommentService;
 
 @RestController
@@ -23,6 +27,8 @@ public class CommentRestControler {
 	
 	@Autowired
 	CommentService commentservice;
+	@Autowired
+	CommentRepository Cr ;
 	
 	
 	// http://localhost:9090/SpringMVC/servlet/retrieve-all-Comments
@@ -41,7 +47,7 @@ public class CommentRestControler {
 		}
 		
 		
-		
+		/*
 		// http://localhost:9090/SpringMVC/servlet/add-comment
 		@PostMapping("/add-comment")
 		@ResponseBody
@@ -49,9 +55,9 @@ public class CommentRestControler {
 		Comment comment1 = commentservice.addComment(c);
 		return comment1;
 		}
+	*/
 	
-	
-		//localhost:9090/SpringMVC/servlet/remove-comment/{comment-id}
+		//  http://localhost:9090/SpringMVC/servlet/remove-comment/{comment-id}
 			@DeleteMapping("/remove-comment/{comment-id}")
 			@ResponseBody
 			public void removeComment(@PathVariable("comment-id") Long commentId) {
@@ -64,6 +70,85 @@ public class CommentRestControler {
 			return commentservice.addComment(comment);
 			}
 	
+
+			
+			
+			
+			// 	http://localhost:9090/SpringMVC/servlet/afficherNbcomment
+			@GetMapping("/afficherNbcomment")
+			public Long afficherNbCommentaire(){
+				return 	commentservice.countNbcomments();
+			}
 	
-	
+			
+			
+			
+			
+			
+			
+			
+			/////////////////////////////add comment without bad words//////////////////////////////////////////////
+			
+			
+		//	http://localhost:9090/SpringMVC/servlet/add-comment
+			
+			@PostMapping("/add-comment")
+			public ResponseEntity<?>ajouterCommentaire( @Validated @RequestBody Comment c){
+				commentservice.ajouterCommentaire(c);
+				return 	ResponseEntity.ok().body(c);
+			
+			}
+			
+			
+			
+			
+			@PutMapping("/affecterSubjecttoComment/{ids}/{id}")
+			public void affecterSubjecttoComment(@PathVariable("ids") int idSubject, @PathVariable("id") long idComment) {
+				commentservice.affecterSubjecttoComment(idSubject, idComment);
+
+			}
+			
+			
+			
+
+			//http://localhost:9090/SpringMVC/servlet/maxdislike
+			
+			@GetMapping("/maxdislike")
+			public int getdislike() {
+				 return Cr.MaxDislike();
+
+			}
+			
+//http://localhost:9090/SpringMVC/servlet/maxlike
+			
+			@GetMapping("/maxlike")
+			public int getlike() {
+				 return Cr.Maxlike();
+
+			}
+			
+//http://localhost:9090/SpringMVC/servlet/Totallikes
+			
+			@GetMapping("/Totallikes")
+			public int totallikes() {
+				 return Cr.Totallikes();
+
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			//http://localhost:9090/SpringMVC/servlet/Getcommentbysubject/{idComment}
+			
+			@GetMapping("/Getcommentbysubject/{idComment}")
+			public String getcommentsofsubject(@PathVariable("idComment") long idComment){
+				
+				return Cr.Getcommentbysubject(idComment);
+				
+			}
+			
 }
