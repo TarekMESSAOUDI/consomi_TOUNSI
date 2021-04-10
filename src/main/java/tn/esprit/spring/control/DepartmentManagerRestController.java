@@ -85,6 +85,13 @@ public class DepartmentManagerRestController {
 			return dmR.retrievemoysalaire();
 			}
 			
+			// http://localhost:9090/SpringMVC/servlet/retrieve-max-salaire
+			@GetMapping("/retrieve-max-salaire")
+			@ResponseBody
+			public float retrievemaxsalaire() {
+			return dmR.retrievemaxsalaire();
+			}
+			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-somme-salaire
 			@GetMapping("/retrieve-somme-salaire")
 			@ResponseBody

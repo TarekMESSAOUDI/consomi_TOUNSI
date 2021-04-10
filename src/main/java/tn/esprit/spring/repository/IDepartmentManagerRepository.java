@@ -19,5 +19,10 @@ public interface IDepartmentManagerRepository extends CrudRepository <Department
 
 	@Query("SELECT COUNT(d.salaryDepartmentManager)*AVG(d.salaryDepartmentManager) from DepartmentManager d")
 	float retrievesommesalaire();
+	
+	@Query("SELECT MAX(d.salaryDepartmentManager) from DepartmentManager d")
+	float retrievemaxsalaire();
+	
+	
 
 }

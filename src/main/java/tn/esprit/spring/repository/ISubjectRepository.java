@@ -24,4 +24,9 @@ public interface ISubjectRepository extends CrudRepository <Subject, Integer>{
 
 	@Query("SELECT MIN(s.starsNumberSubject) from Subject s")
 	float retrieveminSubjectByStars();
+
+	@Query("SELECT s FROM Subject s ORDER BY s.starsNumberSubject DESC")
+	List<Subject> retrievesuborderbystars();
+	
+	boolean existsByTitleSubject(String titleSubject);
 }
