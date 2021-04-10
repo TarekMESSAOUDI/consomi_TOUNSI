@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,6 +43,13 @@ public class BasketRestController {
 			Basket ba = bs.addBasket(basket);
 			return ba;
 			}
+			
+			// http://localhost:9090/SpringMVC/servlet/delet-basket/{idBasket}
+			@DeleteMapping("/delet-basket/{idBasket}")
+			@ResponseBody
+			public boolean deletBasketBasket(@PathVariable int idBasket) {
+			return bs.deleteBasket(idBasket);
+			}
 	
 	// http://localhost:9090/SpringMVC/servlet/affect-basket-to-client
 			@PostMapping("/affect-basket-to-client/{idbasket}/{iduser}")
@@ -54,10 +62,45 @@ public class BasketRestController {
 				bsi.affectationBasketToClient(idBasket, idUser);
 		}
 			
-			/*@GetMapping("/get-rankclient-by-basketid/{idBasket}")
+			/*// http://localhost:9090/SpringMVC/servlet/get-AmountBasket-By-ClientId/{idUser}
+			@GetMapping("/get-AmountBasket-By-ClientId/{idUser}")
 			@ResponseBody
-			public Double getRankClientByBasketId(@PathVariable("idBasket")int idBasket){
-				return br.getRankClientByBasketId(idBasket);
+			public float getAmountBasketByClientId(@PathVariable("idUser")int idUser){
+				return br.getAmountBasketByClientId(idUser);
 			}*/
+			
+			// http://localhost:9090/SpringMVC/servlet/get-moy-AmountBasket
+			@GetMapping("/get-moy-AmountBasket")
+			@ResponseBody
+			public float getmoyAmountBasket(){
+				return br.getmoyAmountBasket();
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/get-total-AmountBasket
+			@GetMapping("/get-total-AmountBasket")
+			@ResponseBody
+			public float gettotalAmountBasket(){
+				return br.gettotalAmountBasket();
+			}
 
+			// http://localhost:9090/SpringMVC/servlet/get-max-AmountBasket
+			@GetMapping("/get-max-AmountBasket")
+			@ResponseBody
+			public float getmaxAmountBasket(){
+				return br.getmaxAmountBasket();
+			}		
+			
+			// http://localhost:9090/SpringMVC/servlet/get-count-Basket
+			@GetMapping("/get-count-Basket")
+			@ResponseBody
+			public float getcountAmountBasket(){
+				return br.getcountBasket();
+			}	
+			
+			// http://localhost:9090/SpringMVC/servlet/get-ecart-amountBasket
+			@GetMapping("/get-ecart-amountBasket")
+			@ResponseBody
+			public float getecartamountBasket(){
+				return br.getecartamountBasket();
+			}			
 }

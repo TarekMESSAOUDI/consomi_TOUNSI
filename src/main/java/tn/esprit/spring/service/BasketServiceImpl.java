@@ -47,5 +47,14 @@ public class BasketServiceImpl implements IBasketService{
 		// TODO Auto-generated method stub
 		return br.save(basket);
 	}
+	
+	@Override
+	public boolean deleteBasket(int id) {
+		if (br.existsById(id)){
+			br.deleteById(id);
+			return true;
+		}else
+		return false;
+	}
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Administrator;
+import tn.esprit.spring.repository.IAdministratorRepository;
 import tn.esprit.spring.service.IAdministratorService;
 
 
@@ -22,6 +23,9 @@ public class AdministratorRestController {
 	
 	@Autowired 
 	IAdministratorService aS;
+	
+	@Autowired 
+	IAdministratorRepository aR;
 	
 		// http://localhost:9090/SpringMVC/servlet/retrieve-all-administrators
 		@GetMapping("/retrieve-all-administrators")
@@ -72,5 +76,13 @@ public class AdministratorRestController {
 		@ResponseBody
 		public Administrator updateAdministrator(@RequestBody Administrator admin) {
 		return aS.updateAdministrator(admin);
+		}
+		
+		// http://localhost:9090/SpringMVC/servlet/retreive-name-and-speciality
+		@GetMapping("/retreive-name-and-speciality")
+		@ResponseBody
+		public List<String> getNameAndSpecialityAdmin(){
+			return aR.getNameAndSpecialityAdmin();
+			
 		}
 }

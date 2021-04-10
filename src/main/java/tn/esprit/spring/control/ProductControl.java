@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.repository.ProductRepository;
 
 
 @RestController
@@ -22,6 +23,9 @@ public class ProductControl {
 	
 	@Autowired
 	IProductService productService;
+	
+	@Autowired
+	ProductRepository pr;
 	
 	//http://localhost:9090/SpringMVC/servlet/show-all-products
 	@GetMapping("/show-all-products")
@@ -82,5 +86,37 @@ public class ProductControl {
 	return productService.updateProduct(p);
 			
 	}
+	
+	/////////Tarek Compatbilité/////////////
+	
+	//http://localhost:9090/SpringMVC/servlet/gain-product
+	@GetMapping("/gain-product")
+	@ResponseBody
+	public List<String> getgainproduct() {
+	return pr.getgainproduct();
+			
+	}
+	
+	//http://localhost:9090/SpringMVC/servlet/total-gain-product
+		@GetMapping("/total-gain-product")
+		@ResponseBody
+		public float gettotalgainproduct() {
+		return pr.gettotalgainproduct();
+		}
+		
+		//http://localhost:9090/SpringMVC/servlet/total-achat
+		@GetMapping("/total-achat")
+		@ResponseBody
+		public float getallcostproduct() {
+		return pr.getallcostproduct();
+		}
+		
+		//http://localhost:9090/SpringMVC/servlet/total-vente
+		@GetMapping("/total-vente")
+		@ResponseBody
+		public float getallbuyproduct() {
+		return pr.getallbuyproduct();
+		}
+
 	
 }

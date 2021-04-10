@@ -8,4 +8,6 @@ public interface IBasketService {
 
 	Basket addBasket(Basket basket);
 
+	boolean deleteBasket(int id);
+
 }
