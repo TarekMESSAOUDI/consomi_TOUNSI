@@ -17,8 +17,8 @@ public List<Product> findAllByIdDepartment(int idDepartment);
 
 
 
-@Query(value = "SELECT * FROM t_product WHERE idDepartment =?1", nativeQuery = true)    //to find a product in the Department
-public List<Product> findProductinDepartment(int idDepartment);
+//@Query(value = "SELECT * FROM t_product WHERE idDepartment =?1", nativeQuery = true)    //to find a product in the Department
+public List<Product> findByIdDepartment(int idDepartment);
 
 
 

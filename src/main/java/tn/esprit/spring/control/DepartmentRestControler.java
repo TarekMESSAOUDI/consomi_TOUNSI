@@ -16,6 +16,7 @@
 
 import tn.esprit.spring.entities.Department;
 import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.service.DepartmentService;
 
 
@@ -25,6 +26,9 @@ import tn.esprit.spring.service.DepartmentService;
 		
 		@Autowired
 		DepartmentService departmentService;
+		
+		@Autowired
+		ProductRepository pr ; 
 		
 		
 		
@@ -62,13 +66,19 @@ import tn.esprit.spring.service.DepartmentService;
 				public void removeDepartment(@PathVariable("department-id") int departmentId) {
 				departmentService.deleteDepartment(departmentId);
 				}
-				// http://localhost:9090/SpringMVC/servlet/modify-department
-				@PutMapping("/modify-department")
+				
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/update-Department
+				@PutMapping("/update-Department")
 				@ResponseBody
-				public Department modifyDepartment(@RequestBody Department department) {
-				return departmentService.addDepartment(department);
+				public Department updateDepartment(@RequestBody Department dep) {
+				return departmentService.DepartmentUpadate(dep);
+						
 				}
-		
+				
+				//////////////////////////////////////////////still not working/////////////////////////////
 				
 				
 				
@@ -76,7 +86,7 @@ import tn.esprit.spring.service.DepartmentService;
 				
 				@GetMapping("/findproductinDepartment/{idD}")
 				public List<Product> findProduitNameParRayon(@PathVariable(value = "idD") int idDepartment) {
-					return departmentService.findProdcutInDepartment(idDepartment);
+					return pr.findByIdDepartment(idDepartment);
 				}
 				
 				
@@ -89,7 +99,7 @@ import tn.esprit.spring.service.DepartmentService;
 				
 				
 		
-							////////////////////////////////////////to contenue desallocate
+				
 				
 		// http://localhost:9090/SpringMVC/servlet/allocateProductToDepartment/{idd/{idp}  	
 	@PutMapping("/allocateProductToDepartment/{iddepartment}/{idproduct}")

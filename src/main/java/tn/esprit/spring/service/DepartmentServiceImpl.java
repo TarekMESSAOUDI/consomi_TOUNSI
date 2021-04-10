@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Department;
 import tn.esprit.spring.entities.Product;
-import tn.esprit.spring.entities.Stock;
+
 import tn.esprit.spring.repository.DepartmentRepository;
 import tn.esprit.spring.repository.ProductRepository;
 
@@ -49,12 +49,21 @@ ProductRepository productrepository;
 	}
 
 	
-	
 	@Override
-	public Department updateDepartment(Department D) {
+	public Department DepartmentUpadate(Department dep) {
 		
-		return departmentrepository.save(D);
+		Department existingDep=departmentrepository.findById(dep.getIdDepartment()).orElse(null);
+		
+		departmentrepository.findById(dep.getIdDepartment());
+		existingDep.setNameDepartment(dep.getNameDepartment());
+		existingDep.setTypeDepartment(dep.getTypeDepartment());
+		existingDep.setCapacityDepartment(dep.getCapacityDepartment());
+		
+		return 	departmentrepository.save(existingDep);
 	}
+
+	
+	
 	
 	@Override
 	public Department retrieveDepartment(int idDepartment) {
@@ -66,7 +75,7 @@ ProductRepository productrepository;
 	
 	
 	
-///////////////////////////////////////////////////
+////////////////////////////////////////////
 @Override
 public void allocateProductToDepartment(int idDepartment, int IdProduct) {
 Product product = productrepository.findById(IdProduct).get();
@@ -97,7 +106,7 @@ public void deallocateProductFromDepartment(int IdDepartment, int IdProduct) {
 @Override
 public List<Product> findProdcutInDepartment(int idDepartment) {
 	
-	return productrepository.findProductinDepartment(idDepartment);
+	return productrepository.findByIdDepartment(idDepartment);
 }
 	
 

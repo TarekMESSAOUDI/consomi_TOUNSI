@@ -13,7 +13,7 @@ public interface DepartmentService {
 
 	void deleteDepartment(int idDepartment);
 
-	Department updateDepartment(Department D);
+	Department DepartmentUpadate(Department dep);
 
 	Department retrieveDepartment(int idDepartment);
 
@@ -24,6 +24,10 @@ public interface DepartmentService {
 	
 
 	List<Product> findProdcutInDepartment(int idDepartment);
+
+
+
+
 
 
 

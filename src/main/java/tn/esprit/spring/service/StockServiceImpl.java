@@ -9,9 +9,11 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entities.Department;
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.entities.TypeStock;
+import tn.esprit.spring.repository.DepartmentRepository;
 import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.repository.StockRepository;
 
@@ -22,6 +24,9 @@ public class StockServiceImpl implements StockService {
 	
 	@Autowired
 	StockRepository stockrepository ;
+	
+	@Autowired
+	ProductRepository pr ;
 	
 	
 	private static final Logger L = LogManager.getLogger(StockServiceImpl.class);
@@ -79,5 +84,29 @@ public Stock updateStock(Stock s) {
 	
  
  
+ 
+ @Override
+ public void allocateProductToStock(Long idStock, int IdProduct) {
+ Product product = pr.findById(IdProduct).get();
+ Stock stock = stockrepository.findById(idStock).get();
+ product.setStock(stock);
+ pr.save(product);
 	
+}
+ 
+ 
+ 
+ public void orderProduct(int idProduct,int quantityStock) {
+		Product p = pr.findById(idProduct).get();
+		
+		p.getStock().setQuantityStock(quantityStock+p.getStock().getQuantityStock());
+		pr.save(p);
+	}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 }

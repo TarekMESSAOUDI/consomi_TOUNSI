@@ -19,8 +19,31 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	
 	
 	
-	@Query(value = "select count(*) from t_comment where id_sujet= ?1", nativeQuery = true)
-	 public int countNbCommentaire(int idComment);
+	
+	
+	@Query("SELECT MAX(c.disLikeNumberComment)FROM Comment c")
+	 public int MaxDislike();
+	
+	
+	@Query("SELECT MAX(c.LikeNumberComment)FROM Comment c")   //
+	 public int Maxlike();
+	
+	
+	
+
+	@Query("SELECT AVG(c.disLikeNumberComment)*COUNT(c) FROM Comment c") //
+	 public int Totallikes();
+	
+	
+	
+	
+	@Query("Select "
+			+ "DISTINCT S.descriptionSubject FROM Subject S "
+			+ "join S.Comment C "
+			+ "where C.idComment=:idComment")
+    public String  Getcommentbysubject(@Param("idComment")long idComment);
+	
+	
 	
 	
 }

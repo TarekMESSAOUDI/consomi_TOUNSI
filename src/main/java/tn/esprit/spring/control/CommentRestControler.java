@@ -3,10 +3,10 @@ package tn.esprit.spring.control;
 import java.util.List;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Comment;
+import tn.esprit.spring.repository.CommentRepository;
 import tn.esprit.spring.service.CommentService;
 
 @RestController
@@ -26,6 +27,8 @@ public class CommentRestControler {
 	
 	@Autowired
 	CommentService commentservice;
+	@Autowired
+	CommentRepository Cr ;
 	
 	
 	// http://localhost:9090/SpringMVC/servlet/retrieve-all-Comments
@@ -68,15 +71,15 @@ public class CommentRestControler {
 			}
 	
 
-			// 	http://localhost:9090/SpringMVC/servlet/afficherNbcomment/{sujetId}
-			@GetMapping("/afficherNbcomment/{sujetId}")
-			public ResponseEntity<?> afficherNbCommentaireOfSujet(@PathVariable(value = "sujetId") int idComment) {
-				int com =commentservice.countNbcommentaire(idComment);
-				return 	ResponseEntity.ok().body(com);
+			
+			
+			
+			// 	http://localhost:9090/SpringMVC/servlet/afficherNbcomment
+			@GetMapping("/afficherNbcomment")
+			public Long afficherNbCommentaire(){
+				return 	commentservice.countNbcomments();
 			}
 	
-			
-			
 			
 			
 			
@@ -95,4 +98,36 @@ public class CommentRestControler {
 				return 	ResponseEntity.ok().body(c);
 			
 			}
+			
+			
+			
+			
+			@PutMapping("/affecterSubjecttoComment/{ids}/{id}")
+			public void affecterSubjecttoComment(@PathVariable("ids") int idSubject, @PathVariable("id") long idComment) {
+				commentservice.affecterSubjecttoComment(idSubject, idComment);
+
+			}
+			
+			
+			
+
+			//http://localhost:9090/SpringMVC/servlet/maxdislike
+			
+			@GetMapping("/maxdislike")
+			public int getdislike() {
+				 return Cr.MaxDislike();
+
+			}
+			
+			
+			
+			//http://localhost:9090/SpringMVC/servlet/Getcommentbysubject/{idComment}
+			
+			@GetMapping("/Getcommentbysubject/{idComment}")
+			public String getcommentsofsubject(@PathVariable("idComment") long idComment){
+				
+				return Cr.Getcommentbysubject(idComment);
+				
+			}
+			
 }

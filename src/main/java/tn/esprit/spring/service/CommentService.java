@@ -18,10 +18,12 @@ public interface CommentService {
 
 	List<Comment> retrieveAllComments();
 
-	
-	int countNbcommentaire(int idSubject);
 
 	int ajouterCommentaire(Comment c);
+
+	void affecterSubjecttoComment(int idSubject, long idComment);
+
+	Long countNbcomments();
 
 	
 

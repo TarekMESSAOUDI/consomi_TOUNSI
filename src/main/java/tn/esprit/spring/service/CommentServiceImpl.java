@@ -12,9 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import tn.esprit.spring.entities.Comment;
+import tn.esprit.spring.entities.Subject;
 import tn.esprit.spring.repository.CommentRepository;
+import tn.esprit.spring.repository.ISubjectRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -23,6 +26,15 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	CommentRepository commentrepository ;
+	@Autowired
+	ISubjectRepository Sr ;
+	
+	
+	@Autowired
+	CommentService Cs;
+	
+	
+	
 	
 	private static final Logger L = LogManager.getLogger(CommentService.class);
 	
@@ -35,6 +47,12 @@ public class CommentServiceImpl implements CommentService {
 		return comments;
 	
 	}
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public Comment addComment(Comment c) {
@@ -63,11 +81,12 @@ public class CommentServiceImpl implements CommentService {
 	
 	
 	@Override
-	public int countNbcommentaire(int idComment) {
-		return  commentrepository.countNbCommentaire(idComment);
+	public Long countNbcomments() {
+		return  commentrepository.count();
 	
 	
 }
+	
 	
 	
 	
@@ -92,7 +111,7 @@ public class CommentServiceImpl implements CommentService {
 //		if(motcommentaire.length==1 && motcommentaire.equals("b"))
 		
 			if (badwords.contains(mots)){
-			    mots="(@#à*&è)";
+			    mots="*****";
 				com=com+" "+mots;	
 			}
 		else
@@ -101,6 +120,21 @@ public class CommentServiceImpl implements CommentService {
 	 commentrepository.save(c);
 	return c.getIdComment().intValue();
 	}
+	
+	
+	
+	
+	/////////////////////////////to try ///////////////////
+	@Override
+	public void affecterSubjecttoComment(int idSubject, long idComment) {
+		Comment comment = commentrepository.findById(idComment).get();
+		Subject subject = Sr.findById(idSubject).get();
+		if (!ObjectUtils.isEmpty(comment) && !ObjectUtils.isEmpty(subject))
+			comment.setSubject(subject);
+		Sr.save(subject);
+		
+		}
+	
 	
 	
 }
