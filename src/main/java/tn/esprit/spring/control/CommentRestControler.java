@@ -119,6 +119,27 @@ public class CommentRestControler {
 
 			}
 			
+//http://localhost:9090/SpringMVC/servlet/maxlike
+			
+			@GetMapping("/maxlike")
+			public int getlike() {
+				 return Cr.Maxlike();
+
+			}
+			
+//http://localhost:9090/SpringMVC/servlet/Totallikes
+			
+			@GetMapping("/Totallikes")
+			public int totallikes() {
+				 return Cr.Totallikes();
+
+			}
+			
+			
+			
+			
+			
+			
 			
 			
 			//http://localhost:9090/SpringMVC/servlet/Getcommentbysubject/{idComment}

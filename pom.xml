@@ -93,7 +93,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-	</dependencies>	
+	
 
 
 		
@@ -123,9 +123,9 @@
         </dependency>
 		
 	
+
+
 	</dependencies>
-
-
 
 	<build>
 		<plugins>

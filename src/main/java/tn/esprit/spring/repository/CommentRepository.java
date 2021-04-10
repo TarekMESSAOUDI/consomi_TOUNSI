@@ -25,13 +25,13 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	 public int MaxDislike();
 	
 	
-	@Query("SELECT MAX(c.LikeNumberComment)FROM Comment c")   //
+	@Query("SELECT MAX(c.likeNumberComment)FROM Comment c")   
 	 public int Maxlike();
 	
 	
 	
 
-	@Query("SELECT AVG(c.disLikeNumberComment)*COUNT(c) FROM Comment c") //
+	@Query("SELECT AVG(c.likeNumberComment)*COUNT(c) FROM Comment c") 
 	 public int Totallikes();
 	
 	
