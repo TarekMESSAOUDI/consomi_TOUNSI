@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.UnderCategory;
 import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.repository.UnderCategoryRepository;
@@ -43,6 +44,28 @@ public class UnderCategoryImpl implements IUnderCategory {
 			List<UnderCategory> underCategories =(List<UnderCategory>) UCR.findAll();
 			return underCategories;
 	}
+
+	@Override
+	public void assignProductToUnderCategory(int idUnderCategory, int idProduct) {
+		UnderCategory undercategory=UCR.findById(idUnderCategory).get();
+		Product product=PR.findById(idProduct).get();
+		
+		product.setUnderCategory(undercategory);
+		PR.save(product);
+	}
+
+//	@Override
+//	public void deassignProductFromUndercaegory(int idUnderCategory, int idProduct) {
+//		UnderCategory underCategory=UCR.findById(idUnderCategory).get();
+//		
+//		int x=underCategory.getProduct().size();
+//		for(int index=0; index < x ;index++){
+//			if(underCategory.getProduct().get(index).getIdUndercategory()==idProduct){
+//				underCategory.getProduct().remove(index);
+//			}
+//		} 
+//		
+//	}
 
 
 

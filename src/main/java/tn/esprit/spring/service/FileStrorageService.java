@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import tn.esprit.spring.entities.FileDB;
+
+import tn.esprit.spring.entities.Publicity;
 import tn.esprit.spring.repository.FileRepository;
 
 
@@ -19,6 +21,8 @@ public class FileStrorageService {
 	
 	@Autowired
 	FileRepository FR;
+	@Autowired
+	IPublicityService PS;
 	
 	
 		
@@ -38,5 +42,12 @@ public class FileStrorageService {
 		  }
 		
 	
+		  public void assignImageToPublicity(int idPublicity, int idImage) {
+				Publicity publicity=PS.findById(idPublicity);
+				FileDB image=FR.findById(idImage).get();
+				image.setPublicity(publicity);
+				FR.save(image);	
+				
+			}
 
 }

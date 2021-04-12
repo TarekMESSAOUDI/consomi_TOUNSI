@@ -23,6 +23,8 @@ public class FileRestController {
 	@Autowired
 	FileStrorageService storageService;
 
+	
+	// http://localhost:9090/SpringMVC/servlet/upload
 	  @PostMapping("/upload")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
@@ -37,6 +39,7 @@ public class FileRestController {
 	    }
 	  }	
 	
+	 
 
 }
 

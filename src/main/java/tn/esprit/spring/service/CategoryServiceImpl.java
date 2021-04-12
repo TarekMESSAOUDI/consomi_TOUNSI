@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Category;
+import tn.esprit.spring.entities.UnderCategory;
 import tn.esprit.spring.repository.CategoryRepository;
+import tn.esprit.spring.repository.UnderCategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService {
 
 	@Autowired 
 	CategoryRepository CR;
+	@Autowired
+	UnderCategoryRepository UCR;
 	
 	@Override
 	public Category addCategory(Category c) {
@@ -38,6 +42,26 @@ public class CategoryServiceImpl implements ICategoryService {
 	public List<Category> showAll() {
 		List<Category> categories =(List<Category>) CR.findAll();
 		return categories;
+	}
+
+	@Override
+	public void affectUnderCategoryToCategory(int idCategory, int idUnderCategory) {
+		Category category=CR.findById(idCategory).get();
+		UnderCategory undercategory=UCR.findById(idUnderCategory).get();
+		
+		undercategory.setCategory(category);
+		UCR.save(undercategory);
+	}
+
+	@Override
+	public List<Category> findByName(String nameCategory) {
+		return CR.findByNameCategory(nameCategory);
+		
+	}
+
+	@Override
+	public Category findByIdCat(int id) {
+		return CR.findByIdCategory(id);
 	}
 
 }

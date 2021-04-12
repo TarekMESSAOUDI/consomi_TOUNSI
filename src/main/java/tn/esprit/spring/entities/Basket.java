@@ -45,7 +45,7 @@ public class Basket implements Serializable {
 	private Client Client;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")
-	@JsonIgnore
+	
 	private Set<Product> Product;
 
 	public int getIdBasket() {

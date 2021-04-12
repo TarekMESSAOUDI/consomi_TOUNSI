@@ -38,9 +38,29 @@ public class FileDB  implements Serializable {
   
   
   @ManyToOne
-	private Product idProduct;
+	private Product Product;
+  
+  public Publicity getPublicity() {
+	return publicity;
+}
 
-  public FileDB(String name, String type, byte[] data) {
+public void setPublicity(Publicity publicity) {
+	this.publicity = publicity;
+}
+
+
+@ManyToOne
+ 	private Publicity publicity;
+
+  public Product getProduct() {
+	return Product;
+}
+
+public void setProduct(Product product) {
+	Product = product;
+}
+
+public FileDB(String name, String type, byte[] data) {
     this.name = name;
     this.type = type;
     this.data = data;

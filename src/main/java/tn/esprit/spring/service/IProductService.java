@@ -18,9 +18,11 @@ public interface IProductService {
 	public Product GetById(int id);
 	public Product GetByName(String nameProduct);
 	public List<Product> GetAllByName(String nameProduct);
-	public List<Product> findByNameAndCategory(int idCategory,String ProductName);
-	public List<Product> findByUnderCategory(int idUnderCategory);
-	public List <Product> findByIdDepartment (int idDepartement);
+	
+
+	
+	public void assignImageToProduct(int idProduct,int idImage);
+	
 	
 
 	

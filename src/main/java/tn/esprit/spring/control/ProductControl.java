@@ -1,4 +1,5 @@
  package tn.esprit.spring.control;
+import tn.esprit.spring.service.FileStrorageService;
 import tn.esprit.spring.service.IProductService;
 
 
@@ -19,9 +20,11 @@ import tn.esprit.spring.entities.Product;
 
 @RestController
 public class ProductControl {
-	
+	@Autowired
+	FileStrorageService FSS;
 	@Autowired
 	IProductService productService;
+	@Autowired IProductService IPS;
 	
 	//http://localhost:9090/SpringMVC/servlet/show-all-products
 	@GetMapping("/show-all-products")
@@ -31,7 +34,7 @@ public class ProductControl {
 		return list;
 	}
 	
-	//http://localhost:9090/SpringMVC/servlet/GetOneByName/{productName}
+	//http://localhost:9090/SpringMVC/servlet/GetByOneName/{productName}
 	@GetMapping("/GetByOneName/{productName}")
 	@ResponseBody 
 	public Product RetrieveByName(@PathVariable("productName")String nameProd){
@@ -82,5 +85,13 @@ public class ProductControl {
 	return productService.updateProduct(p);
 			
 	}
+	
+	//http://localhost:9090/SpringMVC/servlet/affect-image-to-product/{Idp}/{Idimage}
+			@PutMapping("/affect-image-to-product/{Idp}/{Idimage}")
+			public void affecterProduitARayon(@PathVariable(value = "Idp") int Idp,
+					@PathVariable(value = "Idimage") int Idimage) {
+				 IPS.assignImageToProduct(Idp, Idimage);
+				
+			}
 	
 }

@@ -2,7 +2,6 @@ package tn.esprit.spring.service;
 
 
 
-
 import java.util.List;
 
 
@@ -12,12 +11,11 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
-
+import tn.esprit.spring.repository.FileRepository;
 import tn.esprit.spring.repository.ProductRepository;
+import tn.esprit.spring.entities.FileDB;
 import tn.esprit.spring.entities.Product;
+
 
 
 @Service
@@ -25,6 +23,11 @@ public class ProductServiceImpl implements IProductService {
 
 	@Autowired
 	ProductRepository productRepository;
+	@Autowired 
+	FileRepository filerepository;
+	
+	
+	
 	
 	private static final Logger L = LogManager.getLogger(IProductService.class);
 	
@@ -38,7 +41,7 @@ public class ProductServiceImpl implements IProductService {
 
 	}
 
-	@Override  //done
+	@Override  
 	public Product addProduct(Product p) {
 		productRepository.save(p);
 		return p;
@@ -79,13 +82,6 @@ public class ProductServiceImpl implements IProductService {
 
 
 
-	@Override
-	public List<Product> findByNameAndCategory(int idCategory, String ProductName) {
-		
-		return productRepository.findAllByIdUnderCategoryAndTitleProduct(idCategory, ProductName);
-	}
-
-	
 
 	@Override
 	public Product updateProduct(Product p) {
@@ -107,15 +103,24 @@ public class ProductServiceImpl implements IProductService {
 	
 	}
 
-	@Override
-	public List<Product> findByUnderCategory(int idUnderCategory) {
-		return productRepository.findAllByIdUnderCategory(idUnderCategory);
-	}
+
+	
 
 	@Override
-	public List<Product> findByIdDepartment(int idDepartement) {
-		return productRepository.findAllByIdDepartment(idDepartement);
+	public void assignImageToProduct(int idProduct, int idImage) {
+		Product product=productRepository.findById(idProduct).get();
+		FileDB image=filerepository.findById(idImage).get();
+		image.setProduct(product);
+		filerepository.save(image);	
+		
 	}
+
+
+	
+	
+	
+	
+	
 	
 	}
 

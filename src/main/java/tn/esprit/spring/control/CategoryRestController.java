@@ -23,7 +23,7 @@ public class CategoryRestController {
 	@Autowired
 	ICategoryService CS;
 	
-	//http://localhost:9090/SpringMVC/servlet/add-category
+	//  http://localhost:9090/SpringMVC/servlet/add-category
 		@PostMapping("/add-category")
 		@ResponseBody
 		public Category addProduct(@RequestBody Category c) {
@@ -32,7 +32,7 @@ public class CategoryRestController {
 		}
 		
 		
-		//http://localhost:9090/SpringMVC/servlet/remove-category/{categorytId}
+		//   http://localhost:9090/SpringMVC/servlet/remove-category/{categorytId}
 		@DeleteMapping("/remove-category/{categorytId}")
 		@ResponseBody
 		public void removeCategory(@PathVariable("categorytId") int catId) {
@@ -41,7 +41,7 @@ public class CategoryRestController {
 		
 		
 		
-		//http://localhost:9090/SpringMVC/servlet/update-category
+		//  http://localhost:9090/SpringMVC/servlet/update-category
 		@PutMapping("/update-category")
 		@ResponseBody
 		public Category updateProduct(@RequestBody Category c) {
@@ -57,5 +57,27 @@ public class CategoryRestController {
 			List <Category> list=CS.showAll();
 			return list;
 		}
+		
+		//http://localhost:9090/SpringMVC/servlet/affect-undercategory-to-category/{Iduc}/{Idc}
+		@PutMapping("affect-undercategory-to-category/{Iduc}/{Idc}")
+		public void affecterProduitARayon(@PathVariable(value = "Iduc") int Iduc,
+				@PathVariable(value = "Idc") int idCategory) {
+			CS.affectUnderCategoryToCategory(idCategory, Iduc);
+			
+		}
+		//http://localhost:9090/SpringMVC/servlet/retrieve-by-name/{nameCat}
+			@GetMapping("/retrieve-by-name/{nameCat}")
+			@ResponseBody
+			public List<Category> retrieveByName(@PathVariable(value = "nameCat")String nameCategory){
+				List <Category> list=CS.findByName(nameCategory);
+				return list;
+			}
+			
+		//  http://localhost:9090/SpringMVC/servlet/retrieve-cat-by-id/{id}
+			@GetMapping("/retrieve-cat-by-id/{id}")
+			@ResponseBody
+			public Category retrieveCatById(@PathVariable(value = "id")int id){
+				return CS.findByIdCat(id);
+			}
 	
 }
