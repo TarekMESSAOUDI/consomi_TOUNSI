@@ -1,10 +1,12 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -46,7 +48,7 @@ public class Client extends User implements Serializable {
 
 	public Client(String firstNameUser, String lastNameUser, String cinUser, String passwordUser, String confirmPasswordUser,
 			boolean stateUser, String phoneNumberUser, String adressUser, Date birthDateUser, String emailUser,
-			SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser) {
+			SexeType sexeUser, int rankClient, int fidelityCardNumberClient, int pointNumberClient, String imageUser, boolean accountNonLocked, int failedAttempt, Date lockTime, String resettoken, boolean isBlocked, LocalDate blockDate, LocalDate unBlockDate, boolean isPrivate) {
 		super();
 		this.firstNameUser = firstNameUser ;
 		this.lastNameUser = lastNameUser ;
@@ -63,6 +65,14 @@ public class Client extends User implements Serializable {
 		this.rankClient = rankClient;
 		this.fidelityCardNumberClient = fidelityCardNumberClient;
 		this.pointNumberClient = pointNumberClient;
+		this.accountNonLocked = accountNonLocked;
+		this.failedAttempt = failedAttempt;
+		this.lockTime = lockTime;
+		this.resettoken = resettoken;
+		this.isBlocked = isBlocked;
+		this.blockDate = blockDate;
+		this.unBlockDate = unBlockDate;
+		this.isPrivate = isPrivate;
 		Basket = getBasket();
 		Order = getOrder();
 		Comment = getComment();
