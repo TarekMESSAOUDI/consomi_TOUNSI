@@ -24,6 +24,7 @@ public interface ISubjectService {
 	List<Subject> retrieveSubjectByStars(float starsNumberSubject);
 
 	List<Subject> retrieveSubjectByStarsless(float starsNumberSubject);
+	
 
 
 }

@@ -23,10 +23,10 @@ public List<Product> findAllByTitleProduct(String name);
 	@Query("SELECT  SUM((((p.priceProduct) - (p.buyingPriceProduct))*(p.quantityProduct))),'DT' FROM Product p")
 	public float gettotalgainproduct();
 	
-	@Query("SELECT  SUM(p.buyingPriceProduct) FROM Product p")
+	@Query("SELECT  SUM((p.buyingPriceProduct)*(p.quantityProduct)) FROM Product p")
 	public float getallcostproduct();
 	
-	@Query("SELECT  SUM(p.priceProduct) FROM Product p")
+	@Query("SELECT  SUM((p.priceProduct)*(p.quantityProduct)) FROM Product p")
 	public float getallbuyproduct();
 
 

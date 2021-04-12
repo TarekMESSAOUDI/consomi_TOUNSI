@@ -1,9 +1,11 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -47,7 +49,113 @@ public class User implements Serializable {
 	
 
 	protected String roleUser;
+	protected boolean accountNonLocked;
+	@Column(name = "failedAttempt", columnDefinition = "int default 0")
+	protected int failedAttempt;
+	@Column(name = "lockTime")
+	protected Date lockTime;
+	@Column(name = "resettoken")
+	protected String resettoken;
+	protected boolean isBlocked;
+	protected LocalDate blockDate;
+	protected LocalDate unBlockDate;
+	protected boolean isPrivate;
 
+
+
+	public User(int idUser, String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
+			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
+			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser, String roleUser,
+			boolean accountNonLocked, int failedAttempt, Date lockTime, String resettoken, boolean isBlocked,
+			LocalDate blockDate, LocalDate unBlockDate, boolean isPrivate) {
+		super();
+		this.idUser = idUser;
+		this.firstNameUser = firstNameUser;
+		this.lastNameUser = lastNameUser;
+		this.cinUser = cinUser;
+		this.passwordUser = passwordUser;
+		this.confirmPasswordUser = confirmPasswordUser;
+		this.stateUser = stateUser;
+		this.phoneNumberUser = phoneNumberUser;
+		this.adressUser = adressUser;
+		this.birthDateUser = birthDateUser;
+		this.emailUser = emailUser;
+		this.imageUser = imageUser;
+		this.sexeUser = sexeUser;
+		this.roleUser = roleUser;
+		this.accountNonLocked = accountNonLocked;
+		this.failedAttempt = failedAttempt;
+		this.lockTime = lockTime;
+		this.resettoken = resettoken;
+		this.isBlocked = isBlocked;
+		this.blockDate = blockDate;
+		this.unBlockDate = unBlockDate;
+		this.isPrivate = isPrivate;
+	}
+
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public int getFailedAttempt() {
+		return failedAttempt;
+	}
+
+	public void setFailedAttempt(int failedAttempt) {
+		this.failedAttempt = failedAttempt;
+	}
+
+	public Date getLockTime() {
+		return lockTime;
+	}
+
+	public void setLockTime(Date lockTime) {
+		this.lockTime = lockTime;
+	}
+
+	public String getResettoken() {
+		return resettoken;
+	}
+
+	public void setResettoken(String resettoken) {
+		this.resettoken = resettoken;
+	}
+
+	public boolean isBlocked() {
+		return isBlocked;
+	}
+
+	public void setBlocked(boolean isBlocked) {
+		this.isBlocked = isBlocked;
+	}
+
+	public LocalDate getBlockDate() {
+		return blockDate;
+	}
+
+	public void setBlockDate(LocalDate blockDate) {
+		this.blockDate = blockDate;
+	}
+
+	public LocalDate getUnBlockDate() {
+		return unBlockDate;
+	}
+
+	public void setUnBlockDate(LocalDate unBlockDate) {
+		this.unBlockDate = unBlockDate;
+	}
+
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
 
 
 	public User() {
