@@ -53,6 +53,12 @@ public class Basket implements Serializable {
 		Product = product;
 	}
 
+	
+	//@JsonIgnore
+	@OneToOne(mappedBy="Basket")
+	private Client Client;
+
+
 
 
 
@@ -76,9 +82,7 @@ public class Basket implements Serializable {
 
 
 	
-	@OneToOne (mappedBy="Basket")
-	//static
-	Client Client;
+	
 	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")

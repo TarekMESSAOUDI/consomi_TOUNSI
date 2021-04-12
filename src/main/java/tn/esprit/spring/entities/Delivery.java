@@ -22,6 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table (name = "T_DELIVERY")
 public class Delivery implements Serializable {
 	
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -34,6 +38,10 @@ public class Delivery implements Serializable {
 	private MeansOfTransport meansOfTransportDelivery ;
 	private String adressDelivery ;
 	private boolean finishedDelivery;
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	private int kilometrage;
+	private int costs;
 	
 	public Delivery() {
 		super();
@@ -41,7 +49,7 @@ public class Delivery implements Serializable {
 	}
 	
 	public Delivery(int idDelivery, Date dateDelivery, String placeDelivery, boolean stateDelivery,
-			MeansOfTransport meansOfTransportDelivery, String adressDelivery, boolean finishedDelivery) {
+			MeansOfTransport meansOfTransportDelivery, String adressDelivery, boolean finishedDelivery,Status status,int kilometrage, int costs) {
 		super();
 		this.idDelivery = idDelivery;
 		this.dateDelivery = dateDelivery;
@@ -50,6 +58,10 @@ public class Delivery implements Serializable {
 		this.meansOfTransportDelivery = meansOfTransportDelivery;
 		this.adressDelivery = adressDelivery;
 		this.finishedDelivery = finishedDelivery;
+		this.status=status;
+		this.kilometrage=kilometrage;
+		this.costs=costs;
+		
 	}
 
 	@JsonIgnore
@@ -57,6 +69,32 @@ public class Delivery implements Serializable {
 	DeliveryPerson DeliveryPerson;
 	
 	
+	
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public int getKilometrage() {
+		return kilometrage;
+	}
+
+	public void setKilometrage(int kilometrage) {
+		this.kilometrage = kilometrage;
+	}
+
+	public int getCosts() {
+		return costs;
+	}
+
+	public void setCosts(int costs) {
+		this.costs = costs;
+	}
+
 	public Date getDateDelivery() {
 		return dateDelivery;
 	}
