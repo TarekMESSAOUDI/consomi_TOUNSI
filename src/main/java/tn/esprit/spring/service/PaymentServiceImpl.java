@@ -18,7 +18,7 @@ import tn.esprit.spring.repository.PaymentRepository;
 
 
 
-@Service
+/*@Service
 public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
@@ -61,9 +61,7 @@ public class PaymentServiceImpl implements PaymentService {
 		//paymentRepository.findByTypePayment(typePayment);
 		//return null;
 	//}
-    
-	
-}
+}*/
 	
 
 

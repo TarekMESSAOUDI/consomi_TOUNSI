@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table (name = "T_DELIVERY_PERSON")
 public class DeliveryPerson extends User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -56,12 +55,6 @@ public class DeliveryPerson extends User implements Serializable {
 	@JsonIgnore
 	private Set<Delivery> Delivery;
 	
-	
-	
-	
-	
-	
-
 	public int getMissionNumberDeliveryPerson() {
 		return missionNumberDeliveryPerson;
 	}

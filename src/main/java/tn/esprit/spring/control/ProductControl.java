@@ -1,3 +1,4 @@
+
  package tn.esprit.spring.control;
 import tn.esprit.spring.service.FileStrorageService;
 import tn.esprit.spring.service.IProductService;
@@ -25,6 +26,10 @@ public class ProductControl {
 	@Autowired
 	IProductService productService;
 	@Autowired IProductService IPS;
+  
+  
+  @Autowired
+	ProductRepository pr;
 	
 	//http://localhost:9090/SpringMVC/servlet/show-all-products
 	@GetMapping("/show-all-products")
@@ -93,5 +98,35 @@ public class ProductControl {
 				 IPS.assignImageToProduct(Idp, Idimage);
 				
 			}
+  
+  //http://localhost:9090/SpringMVC/servlet/gain-product
+	@GetMapping("/gain-product")
+	@ResponseBody
+	public List<String> getgainproduct() {
+	return pr.getgainproduct();
+			
+	}
+	
+	//http://localhost:9090/SpringMVC/servlet/total-gain-product
+		@GetMapping("/total-gain-product")
+		@ResponseBody
+		public float gettotalgainproduct() {
+		return pr.gettotalgainproduct();
+		}
+		
+		//http://localhost:9090/SpringMVC/servlet/total-achat
+		@GetMapping("/total-achat")
+		@ResponseBody
+		public float getallcostproduct() {
+		return pr.getallcostproduct();
+		}
+		
+		//http://localhost:9090/SpringMVC/servlet/total-vente
+		@GetMapping("/total-vente")
+		@ResponseBody
+		public float getallbuyproduct() {
+		return pr.getallbuyproduct();
+		}
+
 	
 }

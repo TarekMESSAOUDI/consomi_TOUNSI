@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.entities.TypeStock;
+import tn.esprit.spring.repository.StockRepository;
 import tn.esprit.spring.service.StockService;
 
 @RestController
@@ -22,6 +23,12 @@ public class StockRestControler {
 	
 	@Autowired
 	StockService stockService;
+	
+	@Autowired
+	StockRepository sr;
+	
+	
+	
 	// http://localhost:9090/SpringMVC/servlet/retrieve-all-Stocks
 	@GetMapping("/retrieve-all-Stocks")
 	@ResponseBody
@@ -75,8 +82,7 @@ public class StockRestControler {
 			
 						
 						
-//still under maint
-						
+////////////////////still under maint////////////////////////				
 			// http://localhost:8081/SpringMVC/servlet/retrieve-Stock-By-TypeStock/{Stock-TypeStock}     
 			@GetMapping("/retrieve-Stock-By-TypeStock/{Stock-TypeStock}")
 			@ResponseBody
@@ -84,6 +90,28 @@ public class StockRestControler {
 			return stockService.retrieveByTypeStock(TypeStock);
 			}
 						
+			
+			
+			
+			// http://localhost:9090/SpringMVC/servlet/allocateProductToStock/{ids/{idp}  	
+			@PutMapping("/allocateProductToDepartment/{idstockt}/{idproduct}")
+			public void allocateProductToStock(@PathVariable(value = "idstock") Long idStock ,@PathVariable(value = "idproduct") int IdProduct){
+							
+			stockService.allocateProductToStock(idStock, IdProduct);
+			
+			
+			}
+			
+			
+			//////////////////////order product/////////////////////////
+			
+			@PutMapping(value = "/orderProduct/{pid}/{quantityStock}")
+			public void orderProduct(@PathVariable("pid")int idProduct,@PathVariable("quantityStock")int quantityStock) {
+				 stockService.orderProduct(idProduct, quantityStock);
+				
+			}
+			
+			
 			
 			
 }

@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.service;
 
 import java.util.List;
@@ -15,3 +16,4 @@ public interface ICategoryService {
 	public List<Category> findByName(String nameCategory);
 	public Category findByIdCat(int id);
 }	
+

@@ -1,6 +1,5 @@
 package tn.esprit.spring.entities;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,10 +19,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table (name = "T_USER")
 public class User implements Serializable {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -42,13 +38,13 @@ public class User implements Serializable {
 	protected String imageUser ;
 	@Enumerated (EnumType.STRING)
 	protected SexeType sexeUser ;
+	protected String roleUser;
 
 
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
-
-
+	
 	public User(String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
 			String confirmPasswordUser, boolean stateUser, String phoneNumberUser, String adressUser,
 			Date birthDateUser, String emailUser, String imageUser, SexeType sexeUser) {
@@ -65,6 +61,7 @@ public class User implements Serializable {
 		this.emailUser = emailUser;
 		this.imageUser = imageUser;
 		this.sexeUser = sexeUser;
+		this.roleUser= roleUser;
 	}
 
 
@@ -92,11 +89,11 @@ public class User implements Serializable {
 	public void setCinUser(String cinUser) {
 		this.cinUser = cinUser;
 	}
-	@Transient
+	
 	public String getPasswordUser() {
 		return passwordUser;
 	}
-	@Transient
+	
 	public void setPasswordUser(String passwordUser) {
 		this.passwordUser = passwordUser;
 	}
@@ -139,16 +136,10 @@ public class User implements Serializable {
 	public void setSexeUser(SexeType sexeUser) {
 		this.sexeUser = sexeUser;
 	}
-	/**
-	 * @return the confirmPasswordUser
-	 */
-	@Transient
+
 	public String getConfirmPasswordUser() {
 		return confirmPasswordUser;
 	}
-	/**
-	 * @param confirmPasswordUser the confirmPasswordUser to set
-	 */
 	
 	public void setConfirmPasswordUser(String confirmPasswordUser) {
 		this.confirmPasswordUser = confirmPasswordUser;
@@ -160,4 +151,15 @@ public class User implements Serializable {
 		this.birthDateUser = birthDateUser;
 	}
 
+
+	public String getRoleUser() {
+		return roleUser;
+	}
+
+
+	public void setRoleUser(String roleUser) {
+		this.roleUser = roleUser;
+	}
+
+	
 }

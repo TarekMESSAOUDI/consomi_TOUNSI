@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
@@ -110,3 +111,4 @@ public FileDB(int id, String name, String type, byte[] data) {
   
 
 }
+

@@ -1,13 +1,16 @@
+
 package tn.esprit.spring.service;
+
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import tn.esprit.spring.entities.Bill;
 import tn.esprit.spring.entities.Order;
-
+import tn.esprit.spring.entities.PaymentType;
 import tn.esprit.spring.repository.OrderRepository;
 
 
@@ -29,6 +32,42 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 	
+	@Override
+	public Order updateOrder(Order o) {
+		
+		return orderRepository.save(o);
+	}
+	
+	@Override
+	public void deleteOrder(Long idOrder) {
+		orderRepository.deleteById(idOrder);
+		
+	}
+	
+	@Override
+	public List<Order> getAllOrder() {
+		return (List<Order>)orderRepository.findAll();
+	}
+	
+	@Override
+	 public List<Order> getOrder_by_Type(PaymentType paymentType){
+	    return orderRepository.findByPaymentType(paymentType);
+	 }
+	
+	@Override
+	public void Pay_By_Card(Long idOrder) {
+		orderRepository.Pay_By_Card(idOrder);
+
+	}
+	
+	@Override
+	public void Pay_At_Delivery(Long idOrder) {
+		orderRepository.Pay_At_Delivery(idOrder);
+	}
+	
+	
+	
 	
 
 }
+

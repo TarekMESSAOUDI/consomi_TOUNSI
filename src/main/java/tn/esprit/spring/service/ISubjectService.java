@@ -9,7 +9,7 @@ import tn.esprit.spring.entities.Subject;
 
 public interface ISubjectService {
 	
-	Subject addSubject(Subject s,int idSubject);
+	String addSubject(Subject s);
 
 	Subject updateSubject(Subject s);
 
