@@ -59,6 +59,11 @@ public class Department implements Serializable {
 	@JsonIgnore
 	private Set<Product> Product;
 
+	
+	
+	
+	
+	
 
 	public int getIdDepartment() {
 		return idDepartment;

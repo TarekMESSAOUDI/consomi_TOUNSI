@@ -19,11 +19,15 @@ public interface DepartmentService {
 
 	List<Department> retrieveAllDepartments();
 
-	void allocateProductToDepartment(int idDepartment, int IdProduct);
+	
 
 	
 
 	List<Product> findProdcutInDepartment(int idDepartment);
+
+	void allocateProductToDepartment(int idDepartment, int idProduct);
+
+	void allocateFilesToDepartment(int idDepartment, int idImage);
 
 
 

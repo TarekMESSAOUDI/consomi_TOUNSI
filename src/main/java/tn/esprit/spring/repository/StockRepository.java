@@ -18,11 +18,16 @@ public interface StockRepository extends CrudRepository<Stock,Long> {
 List<Stock> findByName(@Param("t")String nameStock);
 	
 	
-	
+	/*
 	@Query(value = "SELECT * FROM T1_Stock stk WHERE stk.TypeStock = :t " , nativeQuery =true)
 	List<Stock> findByTypeStock(@Param("t")TypeStock TypeStock);
 	
+	*/
 	
-	 
-
+	/*
+	@Query("SELECT p.id FROM product p,stock s  WHERE   s.amount<10 ")   
+	List<Long> missingProduct();
+	*/
+	
+	
 }

@@ -86,11 +86,6 @@ public class Product implements Serializable {
 		UnderCategory = getUnderCategory();
 	}
 
-
-
-	/*@JsonIgnore
-	@ManyToOne
-	Department Department;
 	
 	
 	@ManyToOne
@@ -104,6 +99,7 @@ public class Product implements Serializable {
 		this.stock = stock;
 	}
 
+
 	@JsonIgnore
 	@OneToMany
 	Set <FileDB> images;
@@ -111,10 +107,8 @@ public class Product implements Serializable {
 	@JsonIgnore
 	@ManyToOne
 	Basket Basket; 
+
 	
-	@JsonIgnore
-	@ManyToOne
-	UnderCategory UnderCategory;*/
 	
 	
 
