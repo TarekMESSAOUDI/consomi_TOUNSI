@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.entities.Department;
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.entities.TypeStock;
+import tn.esprit.spring.repository.StockRepository;
 import tn.esprit.spring.service.StockService;
 
 @RestController
@@ -22,6 +24,12 @@ public class StockRestControler {
 	
 	@Autowired
 	StockService stockService;
+	
+	@Autowired
+	StockRepository sr;
+	
+	
+	
 	// http://localhost:9090/SpringMVC/servlet/retrieve-all-Stocks
 	@GetMapping("/retrieve-all-Stocks")
 	@ResponseBody
@@ -57,13 +65,14 @@ public class StockRestControler {
 			
 			
 			
-			// http://localhost:9090/SpringMVC/servlet/modify-stock
-			@PutMapping("/modify-stock")
+			//http://localhost:9090/SpringMVC/servlet/update-stock
+			@PutMapping("/update-stock")
 			@ResponseBody
-			public Stock modifyStock(@RequestBody Stock stock) {
-			return stockService.addStock(stock);
+			public Stock updatethestock(@RequestBody Stock st) {
+			return stockService.StockUpadate(st);
+					
 			}
-	
+			
 			
 			
 			// http://localhost:9090/SpringMVC/servlet/retrieve-Stock-By-Name/{Stock-nameStock}
@@ -75,15 +84,36 @@ public class StockRestControler {
 			
 						
 						
-//still under maint
-						
-			// http://localhost:8081/SpringMVC/servlet/retrieve-Stock-By-TypeStock/{Stock-TypeStock}     
-			@GetMapping("/retrieve-Stock-By-TypeStock/{Stock-TypeStock}")
-			@ResponseBody
-			public List<Stock> retrieveStockByTypeStock(@PathVariable("Stock-TypeStock") TypeStock TypeStock) {
-			return stockService.retrieveByTypeStock(TypeStock);
+
+			
+			
+			
+			// http://localhost:9090/SpringMVC/servlet/allocateProductToStock/{ids}/{idp}  	
+			@PutMapping("/allocateProductToStock/{idstock}/{idproduct}")
+			public void allocateProductToStock(@PathVariable(value = "idstock") Long idStock ,@PathVariable(value = "idproduct") int idProduct){
+							
+			stockService.allocateProductToStock(idStock, idProduct);
+			
+			
 			}
-						
+			
+			
+			//////////////////////order product/////////////////////////
+		//http://localhost:9090/SpringMVC/servlet/orderProduct/{pid}/{quantityProduct}  	
+			
+			@PutMapping(value = "/orderProduct/{pid}/{quantityProduct}")
+			public void orderProduct(@PathVariable("pid")int idProduct,@PathVariable("quantityProduct")int quantityProduct) {
+				 stockService.orderProduct(idProduct, quantityProduct);
+				
+			}
+			
+			@GetMapping(value = "/stockalert")
+			public void stockalert(){
+				stockService.ChekStock();
+			}
+			
+			
+			
 			
 			
 }

@@ -4,16 +4,21 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
+
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -40,6 +45,9 @@ public class User implements Serializable {
 	protected String imageUser ;
 	@Enumerated (EnumType.STRING)
 	protected SexeType sexeUser ;
+
+	
+
 	protected String roleUser;
 	protected boolean accountNonLocked;
 	@Column(name = "failedAttempt", columnDefinition = "int default 0")
@@ -52,6 +60,7 @@ public class User implements Serializable {
 	protected LocalDate blockDate;
 	protected LocalDate unBlockDate;
 	protected boolean isPrivate;
+
 
 
 	public User(int idUser, String firstNameUser, String lastNameUser, String cinUser, String passwordUser,
@@ -147,6 +156,7 @@ public class User implements Serializable {
 	public void setPrivate(boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
+
 
 	public User() {
 		// TODO Auto-generated constructor stub

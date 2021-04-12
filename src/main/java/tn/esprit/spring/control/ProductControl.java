@@ -1,4 +1,6 @@
+
  package tn.esprit.spring.control;
+import tn.esprit.spring.service.FileStrorageService;
 import tn.esprit.spring.service.IProductService;
 
 
@@ -15,16 +17,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Product;
-import tn.esprit.spring.repository.ProductRepository;
 
 
 @RestController
 public class ProductControl {
-	
+	@Autowired
+	FileStrorageService FSS;
 	@Autowired
 	IProductService productService;
-	
-	@Autowired
+	@Autowired IProductService IPS;
+  
+  
+  @Autowired
 	ProductRepository pr;
 	
 	//http://localhost:9090/SpringMVC/servlet/show-all-products
@@ -35,7 +39,7 @@ public class ProductControl {
 		return list;
 	}
 	
-	//http://localhost:9090/SpringMVC/servlet/GetOneByName/{productName}
+	//http://localhost:9090/SpringMVC/servlet/GetByOneName/{productName}
 	@GetMapping("/GetByOneName/{productName}")
 	@ResponseBody 
 	public Product RetrieveByName(@PathVariable("productName")String nameProd){
@@ -87,9 +91,15 @@ public class ProductControl {
 			
 	}
 	
-	/////////Tarek Compatbilité/////////////
-	
-	//http://localhost:9090/SpringMVC/servlet/gain-product
+	//http://localhost:9090/SpringMVC/servlet/affect-image-to-product/{Idp}/{Idimage}
+			@PutMapping("/affect-image-to-product/{Idp}/{Idimage}")
+			public void affecterProduitARayon(@PathVariable(value = "Idp") int Idp,
+					@PathVariable(value = "Idimage") int Idimage) {
+				 IPS.assignImageToProduct(Idp, Idimage);
+				
+			}
+  
+  //http://localhost:9090/SpringMVC/servlet/gain-product
 	@GetMapping("/gain-product")
 	@ResponseBody
 	public List<String> getgainproduct() {

@@ -14,8 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 //@JsonIgnoreProperties
 @Entity
@@ -72,8 +71,20 @@ public class Publicity implements Serializable {
 
 	//@JsonIgnore
 	@ManyToOne
-	Administrator Administrator; 
+	Administrator Administrator;
+	@JsonIgnore
+	@ManyToOne
+	Event event;
 	
+	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		event = event;
+	}
+
 	public void setStartDatePublicity(Date startDatePublicity) {
 		this.startDatePublicity = startDatePublicity;
 	}

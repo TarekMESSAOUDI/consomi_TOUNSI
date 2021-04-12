@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties
+
 @Entity
 @Table (name = "T_UNDER_CATEGORY")
 public class UnderCategory implements Serializable {
@@ -37,8 +37,8 @@ public class UnderCategory implements Serializable {
 		this.nameUnderCategory = nameUnderCategory;
 	}
 
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="UnderCategory")
-	@JsonIgnore
 	private Set<Product> Product;
 	
 	@JsonIgnore
@@ -69,6 +69,7 @@ public class UnderCategory implements Serializable {
 	public Category getCategory() {
 		return Category;
 	}
+	
 	public void setCategory(Category category) {
 		Category = category;
 	}

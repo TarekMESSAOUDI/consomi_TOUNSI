@@ -16,13 +16,33 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	
 	
 	
-	@Query(value = "SELECT * FROM t_comment c WHERE c.likeNumberComment = :t " , nativeQuery =true)
-	List<Comment> findBylikeNumberComment(@Param("t")int likeNumberComment);
-	
-	@Query(value = "SELECT * FROM t_comment c WHERE c.disLikeNumberComment = :t " , nativeQuery =true)
-	List<Comment> findBydisLikeNumberComment(@Param("t")int disLikeNumberComment);
 	
 	
 	
 	
+	
+	@Query("SELECT MAX(c.disLikeNumberComment)FROM Comment c")
+	 public int MaxDislike();
+	
+	
+	@Query("SELECT MAX(c.likeNumberComment)FROM Comment c")   
+	 public int Maxlike();
+	
+
+
+	@Query("SELECT AVG(c.likeNumberComment)*COUNT(c) FROM Comment c") 
+	 public int Totallikes();
+	
+		
+	
+	@Query("Select "
+			+ "DISTINCT S.descriptionSubject FROM Subject S "
+			+ "join S.Comment C "
+			+ "where C.idComment=:idComment")
+    public String  Getcommentbysubject(@Param("idComment")long idComment);
+	
+	
+	
+	
+
 }

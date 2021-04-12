@@ -3,6 +3,11 @@ package tn.esprit.spring.control;
 import java.util.Date;
 import java.util.List;
 
+import java.util.Optional;
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +25,7 @@ import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.IClientRepository;
-import tn.esprit.spring.service.IBasketService;
+
 import tn.esprit.spring.service.IClientService;
 
 
@@ -30,8 +35,7 @@ public class ClientRestController {
 	@Autowired 
 	IClientService cS;
 	
-	@Autowired
-	IBasketService bs;
+	
 	
 	@Autowired
 	IClientRepository cR;

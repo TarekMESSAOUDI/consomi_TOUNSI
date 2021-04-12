@@ -21,7 +21,17 @@ public interface StockService {
 
 
 
-	List<Stock> retrieveByTypeStock(TypeStock TypeStock);
+	
+
+	void allocateProductToStock(Long idStock, int IdProduct);
+
+
+
+	Stock StockUpadate(Stock st);
+
+	void orderProduct(int idProduct, int quantity);
+
+	String ChekStock();
 
 
 	

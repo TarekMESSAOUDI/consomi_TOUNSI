@@ -8,14 +8,33 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Client extends User implements Serializable {
 	
+
+	
+	/**
+	 * 
+	 */
+	
+	/**
+	 * 
+	 */
+	
+
 	private static final long serialVersionUID = 1L;
+
 	private int rankClient ;
 	private int fidelityCardNumberClient ;
 	private int pointNumberClient ;
@@ -99,6 +118,10 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Order> Order;
 	
+
+    @JsonIgnore
+
+
 	@OneToOne
 	private Basket Basket; 
 
@@ -108,6 +131,14 @@ public class Client extends User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	private Set<Claim> Claim;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy="Client")
+	
+	 Set<Reservation> Reservation;
+	
+	
+
+	
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<ImageUser1> ImageUser1;

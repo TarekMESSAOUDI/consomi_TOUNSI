@@ -15,7 +15,8 @@
 	import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Department;
-
+import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.service.DepartmentService;
 
 
@@ -25,6 +26,9 @@ import tn.esprit.spring.service.DepartmentService;
 		
 		@Autowired
 		DepartmentService departmentService;
+		
+		@Autowired
+		ProductRepository pr ; 
 		
 		
 		
@@ -62,31 +66,52 @@ import tn.esprit.spring.service.DepartmentService;
 				public void removeDepartment(@PathVariable("department-id") int departmentId) {
 				departmentService.deleteDepartment(departmentId);
 				}
-				// http://localhost:9090/SpringMVC/servlet/modify-department
-				@PutMapping("/modify-department")
+				
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/update-Department
+				@PutMapping("/update-Department")
 				@ResponseBody
-				public Department modifyDepartment(@RequestBody Department department) {
-				return departmentService.addDepartment(department);
+				public Department updateDepartment(@RequestBody Department dep) {
+				return departmentService.DepartmentUpadate(dep);
+						
 				}
-		
+				
+				//////////////////////////////////////////////still not working/////////////////////////////
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/findproductinDepartment
+				
+				@GetMapping("/findproductinDepartment/{idD}")
+				public List<Product> findProduitNameParRayon(@PathVariable(value = "idD") int idDepartment) {
+					return pr.findByIdDepartment(idDepartment);
+				}
 				
 				
 				
 				
 				
-		
-							////////////////////////////////////////to contenue desallocate
 				
-		// http://localhost:9090/SpringMVC/servlet/allocateProductToDepartment/{idd/{idp}  	
-	@PutMapping("/allocateProductToDepartment/{iddepartment}/{idproduct}")
-	public void allocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int IdProduct){
+		// http://localhost:9090/SpringMVC/servlet/alteProductToDepartment/{idd}/{idp}  	
+	@PutMapping("/alteProductToDepartment/{iddepartment}/{idproduct}")
+	public void AllocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int idProduct){
 					
-	departmentService.allocateProductToDepartment(idDepartment, IdProduct);
+	departmentService.allocateProductToDepartment(idDepartment, idProduct);
 	}		
 		
 	
 	
 	
+	// http://localhost:9090/SpringMVC/servlet/alteFileToDepartment/{idd}/{idf}  	
+@PutMapping("/alteFileToDepartment/{iddepartment}/{idImage}")
+public void AllocateFileToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idImage") int idImage){
+				
+departmentService.allocateFilesToDepartment(idDepartment, idImage);
+}		
+	
+
 	
 	
 	}
