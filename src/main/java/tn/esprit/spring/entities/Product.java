@@ -1,19 +1,21 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@JsonIgnoreProperties
+
 @Table(name="T_PRODUCT")
 public class Product implements Serializable {
 	
@@ -30,10 +32,6 @@ public class Product implements Serializable {
 	private int barcodeProduct ;
 	private float weightProduct ;
 	private float buyingPriceProduct ;
-	private int idUnderCategory ;
-	private String pictureProduct ;
-	private int idDepartment ;
-	private int idStock ;
 	private int maxQuantityProduct ;
 	
 	
@@ -67,9 +65,11 @@ public class Product implements Serializable {
 
 	
 	public Product( int idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
-			float priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct, int idUnderCategory,
-			String pictureProduct, int idDepartment, int idStock, int maxQuantityProduct) {
 
+		float priceProduct, int barcodeProduct, float weightProduct, float buyingPriceProduct, int maxQuantityProduct) {
+		
+
+	
 		super();
 		this.idProduct = idProduct;
 		this.idPayment = idPayment;
@@ -81,10 +81,6 @@ public class Product implements Serializable {
 		this.barcodeProduct = barcodeProduct;
 		this.weightProduct = weightProduct;
 		this.buyingPriceProduct = buyingPriceProduct;
-		this.idUnderCategory = idUnderCategory;
-		this.pictureProduct = pictureProduct;
-		this.idDepartment = idDepartment;
-		this.idStock = idStock;
 		this.maxQuantityProduct = maxQuantityProduct;
 		
 		UnderCategory = getUnderCategory();
@@ -104,9 +100,14 @@ public class Product implements Serializable {
 	}
 
 
+	@JsonIgnore
+	@OneToMany
+	Set <FileDB> images;
 	
-	
-	
+	@JsonIgnore
+	@ManyToOne
+	Basket Basket; 
+
 	
 	
 	
@@ -191,36 +192,10 @@ public class Product implements Serializable {
 		this.buyingPriceProduct = buyingPriceProduct;
 	}
 
-	public int getIdUnderCategory() {
-		return idUnderCategory;
-	}
 
-	public void setIdUnderCategory(int idUnderCategory) {
-		this.idUnderCategory = idUnderCategory;
-	}
 
-	public String getPictureProduct() {
-		return pictureProduct;
-	}
-
-	public void setPictureProduct(String pictureProduct) {
-		this.pictureProduct = pictureProduct;
-	}
-
-	public int getIdDepartment() {
-		return idDepartment;
-	}
-
-	public void setIdDepartment(int idDepartment) {
-		this.idDepartment = idDepartment;
-	}
-
-	public int getIdStock() {
-		return idStock;
-	}
-
-	public void setIdStock(int idStock) {
-		this.idStock = idStock;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public int getMaxQuantityProduct() {

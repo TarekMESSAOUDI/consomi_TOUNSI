@@ -59,5 +59,11 @@ public class ImageUserServiceImpl implements IImageUserService{
 			iur.save(imageUser1);
 }
 
+
+		@Override
+		public Iterable<ImageUser1> retreiveAllImage() {
+			return iur.findAll();
+		}
+
 		
 	}

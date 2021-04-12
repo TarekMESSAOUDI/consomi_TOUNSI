@@ -3,6 +3,11 @@ package tn.esprit.spring.control;
 import java.util.Date;
 import java.util.List;
 
+import java.util.Optional;
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -95,6 +100,7 @@ public class ClientRestController {
 			return cS.retrieveClientBySexe(sexeUser);
 			}
 			
+			
 			// http://localhost:9090/SpringMVC/servlet/count-client
 			@GetMapping("/count-client")
 			@ResponseBody
@@ -132,15 +138,31 @@ public class ClientRestController {
 			return cS.updateClient(client);
 			}
 			
+			//http://localhost:9090/SpringMVC/servlet/get-all-name-client
 			@GetMapping("/get-all-name-client")
 			@ResponseBody
 			public List<String> getAllClientNames(){
 				return cR.getAllClientNames();
 			}
 			
+			//http://localhost:9090/SpringMVC/servlet/get-max-rank
 			@GetMapping("/get-max-rank")
 			@ResponseBody
 			public List<String> getMaxRank(){
 				return cR.getMaxRank();
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-phone-grouby-adress
+			@GetMapping("/get-phone-grouby-adress")
+			@ResponseBody
+			public List<String> getphonegoupbyadress(){
+				return cR.getphonegoupbyadress();
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-min-age
+			@GetMapping("/get-min-age")
+			@ResponseBody
+			public Date getminage(){
+				return cR.getminage();
 			}
 }

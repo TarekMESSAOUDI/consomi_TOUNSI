@@ -86,9 +86,8 @@ public class SubjectRestController {
 			// http://localhost:9090/SpringMVC/servlet/add-subject
 			@PostMapping("/add-subject")
 			@ResponseBody
-			public Subject addSubject(@RequestBody Subject sub) {
-				Subject subject = sS.addSubject(sub);
-			return subject;
+			public String addSubject(@RequestBody Subject sub) {
+			return sS.addSubject(sub);
 			}
 
 			// http://localhost:9090/SpringMVC/servlet/delete-subject/{subject-id}
@@ -103,6 +102,13 @@ public class SubjectRestController {
 			@ResponseBody
 			public Subject updateSubject(@RequestBody Subject sub) {
 			return sS.updateSubject(sub);
+			}
+			
+			// http://localhost:9090/SpringMVC/servlet/retreive-subject-order-by-stars
+			@GetMapping("/retreive-subject-order-by-stars")
+			@ResponseBody
+			public List<Subject> retrievesuborderbystars(){
+				return sR.retrievesuborderbystars();
 			}
 
 }

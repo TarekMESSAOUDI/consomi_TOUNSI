@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.control;
 
 import java.util.List;
@@ -12,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.spring.entities.Publicity;
+import tn.esprit.spring.service.FileStrorageService;
 import tn.esprit.spring.service.IPublicityService;
 @RestController
 public class PublicityControl {
 	
 	@Autowired
 	IPublicityService PS;
+	@Autowired
+	FileStrorageService FSS;
 	
 	//http://localhost:9090/SpringMVC/servlet/show-all-publicities
 	@GetMapping("/show-all-publicities")
@@ -65,4 +69,12 @@ public class PublicityControl {
 	return PS.updatePublicity(pub);
 			
 	}
+	
+	//	http://localhost:9090/SpringMVC/servlet/affect-image-to-publicity/{Idpublicity}/{Idimage}
+	@PutMapping("/affect-image-to-publicity/{Idpublicity}/{Idimage}")
+	public void affectImageToPublicity(@PathVariable(value = "Idpublicity") int Idpublicity,
+			@PathVariable(value = "Idimage") int Idimage) {
+		 FSS.assignImageToPublicity(Idpublicity, Idimage);
+	}
+	
 }
