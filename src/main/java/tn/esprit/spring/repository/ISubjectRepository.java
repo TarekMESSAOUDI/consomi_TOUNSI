@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entities.Subject;
 
@@ -27,6 +28,12 @@ public interface ISubjectRepository extends CrudRepository <Subject, Integer>{
 
 	@Query("SELECT s FROM Subject s ORDER BY s.starsNumberSubject DESC")
 	List<Subject> retrievesuborderbystars();
+	
+	/*@Query("SELECT "
+			+ "DISTINCT c.idComment FROM Comment c "
+			+ "join c.Subject s"
+			+ "where s.starsNumberSubject > 3")
+    public List<Long> getTitleSubjectlikesup100();*/
 	
 	boolean existsByTitleSubject(String titleSubject);
 }

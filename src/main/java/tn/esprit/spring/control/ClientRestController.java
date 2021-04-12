@@ -9,6 +9,7 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.IClientRepository;
 
 import tn.esprit.spring.service.IClientService;
@@ -37,6 +41,7 @@ public class ClientRestController {
 	IClientRepository cR;
 
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-clients
+			@PreAuthorize("hasRole('ADMIN') ")
 			@GetMapping("/retrieve-all-clients")
 			@ResponseBody
 			public List<Client> getclient() {
@@ -68,7 +73,7 @@ public class ClientRestController {
 			// http://localhost:9090/SpringMVC/servlet/retrieve-client-by-firstname/{client-firstname}
 			@GetMapping("/retrieve-client-by-firstname/{client-firstname}")
 			@ResponseBody
-			public List<Client> retrieveClientByFirstName(@PathVariable("client-firstname") String firstNameUser) {
+			public Client retrieveClientByFirstName(@PathVariable("client-firstname") String firstNameUser) {
 			return cS.retrieveClientByFirstName(firstNameUser);
 			}
 			
@@ -116,13 +121,6 @@ public class ClientRestController {
 			
 			return cl;
 			}
-			
-		/*	// http://localhost:9090/SpringMVC/servlet/affect-image-to-client/{iduser/{idimage}  	
-			@PutMapping("/affect-image-to-client/{iduser}/{idimage}")
-			public void affectImageToClient(@PathVariable(value = "idUser") int idUser,@PathVariable(value = "idImageUser") int IdImageUser){
-							
-			cS.affectImageToClient(idUser, IdImageUser);
-			}		*/
 
 			// http://localhost:9090/SpringMVC/servlet/delete-client/{user-id}
 			@DeleteMapping("/delete-client/{user-id}")
@@ -165,4 +163,47 @@ public class ClientRestController {
 			public Date getminage(){
 				return cR.getminage();
 			}
+			
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@DeleteMapping("/deleteUserById/{userId}")
+			public void deleteUserById(@PathVariable("userId") Integer userId) throws Exception {
+				cS.deleteUserById(userId);
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@PutMapping("/activateUser")
+			public Client activateUser(@RequestBody Client user) throws Exception {
+				return cS.activateUser(user);
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@PutMapping("/desactivateUser")
+			public Client desactivateUser(@RequestBody Client user) throws Exception {
+				return cS.desactivateUser(user);
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@GetMapping("/findUserBylogin/{username}")
+			public Client findUserByfirstNameUser(@PathVariable("username") String username) throws Exception {
+				return (Client) cS.findUserByfirstNameUser(username);
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@GetMapping("/findUserRole/{IdUser}")
+			public String findUserRole(@PathVariable("IdUser") int IdUser) throws Exception {
+				return cS.getUserRoleDescription(IdUser);
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@GetMapping("/findActivatedUser/")
+			public List<String> findUserActivated() throws Exception {
+				return cS.findUsersActivated();
+			}
+
+			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
+			@GetMapping("/findDisabledUser/")
+			public List<String> findUserDisabled() throws Exception {
+				return cS.getUsersFromDisabled();
+			}
+
 }
