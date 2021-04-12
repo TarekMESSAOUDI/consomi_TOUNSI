@@ -128,7 +128,11 @@ public class AuthenticationRestController {
 
 		emailService.sendEmail(passwordResetEmail);*/
 		iuserservice.createUser((Client) user);
-		return ResponseEntity.ok(new ResponseMessage("User registered successfully! "+ "your username :"+ user.getFirstNameUser()+"\n your password is "+user.getPasswordUser()+"\n your mail adress :"+user.getEmailUser()+" \n your role :"+user.getRoleUser()));
+		return ResponseEntity.ok(new ResponseMessage("User registered successfully! "
+				+ "\n" + "your username :" + user.getFirstNameUser()
+				+ "\n" +" your password is " + user.getPasswordUser()
+				+ "\n" + " your mail adress :"+user.getEmailUser()
+				+ "\n" +" \n your role :" + user.getRoleUser()));
 	}
 
 	@PostMapping("/forgot/{login}")

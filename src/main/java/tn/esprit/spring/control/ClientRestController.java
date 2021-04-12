@@ -37,6 +37,7 @@ public class ClientRestController {
 	IClientRepository cR;
 
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-clients
+			@PreAuthorize("hasRole('ADMIN') ")
 			@GetMapping("/retrieve-all-clients")
 			@ResponseBody
 			public List<Client> getclient() {
@@ -116,13 +117,6 @@ public class ClientRestController {
 			
 			return cl;
 			}
-			
-		/*	// http://localhost:9090/SpringMVC/servlet/affect-image-to-client/{iduser/{idimage}  	
-			@PutMapping("/affect-image-to-client/{iduser}/{idimage}")
-			public void affectImageToClient(@PathVariable(value = "idUser") int idUser,@PathVariable(value = "idImageUser") int IdImageUser){
-							
-			cS.affectImageToClient(idUser, IdImageUser);
-			}		*/
 
 			// http://localhost:9090/SpringMVC/servlet/delete-client/{user-id}
 			@DeleteMapping("/delete-client/{user-id}")
@@ -166,32 +160,6 @@ public class ClientRestController {
 				return cR.getminage();
 			}
 			
-			
-			/*@JsonBackReference("")
-			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
-			@GetMapping("/findall")
-			public List<User> getAllUsers() {
-				return cS.getAllUsers();
-			}*/
-
-			/*@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
-			@GetMapping("/userbyid/{idUser}")
-			public User getUserById(@PathVariable("idUser") int idUser) throws Exception {
-				return cS.getUserById(idUser);
-			}*/
-
-			
-/*			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
-			@PutMapping("/UpdateUser")
-			@ResponseBody
-			public User updateUser(@RequestBody User user) throws Exception {
-				User userinthedatabase = cS.getUserById(user.getIdUser());
-				if (!encoder.encode(user.getPasswordUser()).equals(userinthedatabase.getPasswordUser())) {
-					user.setPasswordUser(encoder.encode(user.getPasswordUser()));
-				}
-				return cS.updateUser(user);
-			}
-*/
 			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
 			@DeleteMapping("/deleteUserById/{userId}")
 			public void deleteUserById(@PathVariable("userId") Integer userId) throws Exception {
@@ -200,21 +168,15 @@ public class ClientRestController {
 
 			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
 			@PutMapping("/activateUser")
-			public User activateUser(@RequestBody Client user) throws Exception {
+			public Client activateUser(@RequestBody Client user) throws Exception {
 				return cS.activateUser(user);
 			}
 
 			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
 			@PutMapping("/desactivateUser")
-			public User desactivateUser(@RequestBody Client user) throws Exception {
+			public Client desactivateUser(@RequestBody Client user) throws Exception {
 				return cS.desactivateUser(user);
 			}
-
-		/*	@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
-			@GetMapping("/findUserLastName/{username}")
-			public List<User> findUserLastName(@PathVariable("username") String username) throws Exception {
-				return cS.findUserLastName(username);
-			}*/
 
 			@PreAuthorize("hasAuthority('Admin') or hasAuthority('Client') or hasAuthority('DepartmentManager') or hasAuthority('DeliveryPerson')")
 			@GetMapping("/findUserBylogin/{username}")
