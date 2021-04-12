@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.control;
 
 import java.util.List;
@@ -56,6 +57,13 @@ public class UnderCategoryRestController {
 		public List<UnderCategory> getAllUndercategories(){
 			List <UnderCategory> list=IuC.showAllunderCategories();
 			return list;
+		}
+		//http://localhost:9090/SpringMVC/servlet/affect-product-to-under-category/{Idp}/{Iduc}
+		@PutMapping("/affect-product-to-under-category/{Idp}/{Iduc}")
+		public void affecterProduitARayon(@PathVariable(value = "Idp") int idProduct,
+				@PathVariable(value = "Iduc") int idUnderCategory) {
+			IuC.assignProductToUnderCategory(idUnderCategory, idProduct);
+			
 		}
 		
 		

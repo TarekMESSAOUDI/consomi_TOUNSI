@@ -81,6 +81,11 @@ public class Basket implements Serializable {
 	Client Client;
 	
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")
+	
+	private Set<Product> Product;
+
+
 	
 	
 	public int getIdBasket() {
