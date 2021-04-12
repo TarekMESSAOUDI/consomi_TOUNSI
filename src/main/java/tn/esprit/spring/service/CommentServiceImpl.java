@@ -95,8 +95,6 @@ public class CommentServiceImpl implements CommentService {
 	
 	
 	
-	
-	
 	@Transactional
 	@Override
 	public int ajouterCommentaire(Comment c) {
@@ -108,7 +106,7 @@ public class CommentServiceImpl implements CommentService {
 		String com ="";
 		 
 	for(String mots:motcommentaire){
-//		if(motcommentaire.length==1 && motcommentaire.equals("b"))
+
 		
 			if (badwords.contains(mots)){
 			    mots="*****";

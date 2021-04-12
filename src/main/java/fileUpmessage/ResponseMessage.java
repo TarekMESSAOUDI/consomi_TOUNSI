@@ -1,9 +1,7 @@
 package fileUpmessage;
 
 public class ResponseMessage {
-	
-	
-	private String message;
+	  private String message;
 
 	  public ResponseMessage(String message) {
 	    this.message = message;
@@ -17,4 +15,8 @@ public class ResponseMessage {
 	    this.message = message;
 	  }
 
-}
+	}
+
+
+
+

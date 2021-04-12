@@ -76,25 +76,21 @@ public Stock updateStock(Stock s) {
 	
 	
 	
-	
- @Override                                                         
-	public List<Stock> retrieveByTypeStock(TypeStock TypeStock){
-		return stockrepository.findByTypeStock(TypeStock);	
-	}
+
 	
  
  
  
  @Override
- public void allocateProductToStock(Long idStock, int IdProduct) {
- Product product = pr.findById(IdProduct).get();
+ public void allocateProductToStock(Long idStock, int idProduct) {
+ Product product = pr.findById(idProduct).get();
  Stock stock = stockrepository.findById(idStock).get();
  product.setStock(stock);
  pr.save(product);
 	
 }
  
- 
+ /*
  
  public void orderProduct(int idProduct,int quantityStock) {
 		Product p = pr.findById(idProduct).get();
@@ -103,10 +99,59 @@ public Stock updateStock(Stock s) {
 		pr.save(p);
 	}
  
+ */
+ 
+ @Override
+	public Stock StockUpadate(Stock st) {
+		
+		Stock existingStk=stockrepository.findById(st.getIdStock()).orElse(null);
+		
+		stockrepository.findById(st.getIdStock());
+		existingStk.setNameStock(st.getNameStock());
+		existingStk.setTypeStock(st.getTypeStock());
+		existingStk.setCapacityStock(st.getCapacityStock());
+		existingStk.setQuantityStock(st.getQuantityStock());
+		existingStk.setSellingcost(st.getSellingcost());
+
+		
+		
+		
+		
+		return 	stockrepository.save(existingStk);
+	}
+
+ 
+ 
+ @Override
+ public void orderProduct(int idProduct ,int quantity){
+ 
+ Product p= pr.findById(idProduct).get();
+ p.setQuantityProduct(p.getQuantityProduct()-quantity);
+ pr.save(p);
+ 
+ 
+ }
+ 
+ @Override
+ public String ChekStock (){
+	 
+	 List<Product> products =(List<Product>) pr.findAll() ;
+		for (Product p : products){
+			
+			if (p.getQuantityProduct()<=5){
+				return ("the produts "+p +"is Missing ");
+			}
+			
+		}
+		return "Stock is ok ";
+ }
  
  
  
+ }
+ 
+ 
+
  
  
  
-}

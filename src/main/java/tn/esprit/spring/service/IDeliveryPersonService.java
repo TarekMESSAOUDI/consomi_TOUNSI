@@ -17,4 +17,6 @@ public interface IDeliveryPersonService {
 	Optional<DeliveryPerson> retrieveDeliveryPerson(int idUser);
 	
 	List<DeliveryPerson> retrieveAllDeliveryPerson();
+	
+	void getSalaryDeliveryPerson(int id);
 }

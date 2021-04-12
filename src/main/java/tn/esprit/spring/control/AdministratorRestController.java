@@ -30,7 +30,7 @@ public class AdministratorRestController {
 		// http://localhost:9090/SpringMVC/servlet/retrieve-all-administrators
 		@GetMapping("/retrieve-all-administrators")
 		@ResponseBody
-		public List<Administrator> getAdministrator() {
+	 	public List<Administrator> getAdministrator() {
 		List<Administrator> list = aS.retrieveAllAdministrators();
 		return list;
 		}
@@ -56,7 +56,7 @@ public class AdministratorRestController {
 		return aS.retrieveAdministratorSpecialityAdmin(specialityAdmin);
 		}
 		
-		// http://localhost:9090/SpringMVC/servlet/add-administrator
+		// 		
 		@PostMapping("/add-administrator")
 		@ResponseBody
 		public Administrator addAdministrator(@RequestBody Administrator admin) {

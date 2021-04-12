@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class FileRestController {
 	@Autowired
 	FileStrorageService storageService;
 
-
-	  @PostMapping("/uploade")
-
+	
+	// http://localhost:9090/SpringMVC/servlet/upload
+	  @PostMapping("/upload")
 	  public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
 	    String message = "";
 	    try {
@@ -39,6 +40,7 @@ public class FileRestController {
 	    }
 	  }	
 	
+	 
 
 }
 

@@ -1,3 +1,4 @@
+
 package tn.esprit.spring.service;
 
 import java.util.List;
@@ -13,6 +14,13 @@ public interface IPublicityService  {
 	public Publicity addPublicity(Publicity p);
 	public Publicity GetPublicityById(int id);
 	public List<Publicity> GetPublicitiesByName(String name);
+	public Publicity findById(int id);
+	
+	/****************** methodes avances *****************/
+	public float coastOnChannel(String Channel);
+	
+	
 	
 	
 }
+

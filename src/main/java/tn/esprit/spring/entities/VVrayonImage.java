@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -34,6 +35,10 @@ public class VVrayonImage {
 	
 	
 	
+	
+	
+	
+	
 
 	public VVrayonImage() {
 		super();
@@ -47,6 +52,20 @@ public class VVrayonImage {
 		NameImage = nameImage;
 		this.type = type;
 		this.data = data;
+	}
+
+	
+	
+	
+	
+
+	public Department getDepartment() {
+		return Department;
+	}
+
+
+	public void setDepartment(Department department) {
+		Department = department;
 	}
 
 
@@ -90,7 +109,9 @@ public class VVrayonImage {
 	
 	
 	
-	
+	//@JsonIgnore
+		@ManyToOne
+		Department Department ;
 	
 	
 	

@@ -3,15 +3,20 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -38,7 +43,11 @@ public class User implements Serializable {
 	protected String imageUser ;
 	@Enumerated (EnumType.STRING)
 	protected SexeType sexeUser ;
+
+	
+
 	protected String roleUser;
+
 
 
 	public User() {
