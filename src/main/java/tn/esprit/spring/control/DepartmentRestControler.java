@@ -15,7 +15,8 @@
 	import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Department;
-
+import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.service.DepartmentService;
 
 
@@ -26,11 +27,14 @@ import tn.esprit.spring.service.DepartmentService;
 		@Autowired
 		DepartmentService departmentService;
 		
+		@Autowired
+		ProductRepository pr ; 
 		
 		
 		
 		
-		// http://localhost:8081/SpringMVC/servlet/retrieve-all-Departments
+		
+		// http://localhost:9090/SpringMVC/servlet/retrieve-all-Departments
 		@GetMapping("/retrieve-all-Departments")
 		@ResponseBody
 		public List<Department> getDepartments() {
@@ -38,16 +42,16 @@ import tn.esprit.spring.service.DepartmentService;
 		return list;
 		}
 
-		//http://localhost:8081/SpringMVC/servlet/retrieve-department/{department-id}
+		//http://localhost:9090/SpringMVC/servlet/retrieve-department/{department-id}
 			@GetMapping("/retrieve-department/{department-id}")
 			@ResponseBody
-			public Department retrieveDepartment(@PathVariable("department-id") Long departmentId) {
+			public Department retrieveDepartment(@PathVariable("department-id") int departmentId) {
 			return departmentService.retrieveDepartment(departmentId);
 			}
 			
 			
 			
-			// http://localhost:8081/SpringMVC/servlet/add-department
+			// http://localhost:9090/SpringMVC/servlet/add-department
 			@PostMapping("/add-department")
 			@ResponseBody
 			public Department addDepartment(@RequestBody Department D) {
@@ -56,20 +60,60 @@ import tn.esprit.spring.service.DepartmentService;
 			}
 		
 		
-			//localhost:8081/SpringMVC/servlet/remove-department/{department-id}
+			// http://localhost:9090/SpringMVC/servlet/remove-department/{department-id}
 				@DeleteMapping("/remove-department/{department-id}")
 				@ResponseBody
-				public void removeDepartment(@PathVariable("department-id") Long departmentId) {
+				public void removeDepartment(@PathVariable("department-id") int departmentId) {
 				departmentService.deleteDepartment(departmentId);
 				}
-				// http://localhost:8081/SpringMVC/servlet/modify-department
-				@PutMapping("/modify-department")
+				
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/update-Department
+				@PutMapping("/update-Department")
 				@ResponseBody
-				public Department modifyDepartment(@RequestBody Department department) {
-				return departmentService.addDepartment(department);
+				public Department updateDepartment(@RequestBody Department dep) {
+				return departmentService.DepartmentUpadate(dep);
+						
 				}
+				
+				//////////////////////////////////////////////still not working/////////////////////////////
+				
+				
+				
+				//http://localhost:9090/SpringMVC/servlet/findproductinDepartment
+				
+				@GetMapping("/findproductinDepartment/{idD}")
+				public List<Product> findProduitNameParRayon(@PathVariable(value = "idD") int idDepartment) {
+					return pr.findByIdDepartment(idDepartment);
+				}
+				
+				
+				
+				
+				
+				
+		// http://localhost:9090/SpringMVC/servlet/alteProductToDepartment/{idd}/{idp}  	
+	@PutMapping("/alteProductToDepartment/{iddepartment}/{idproduct}")
+	public void AllocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int idProduct){
+					
+	departmentService.allocateProductToDepartment(idDepartment, idProduct);
+	}		
 		
-		
+	
+	
+	
+	// http://localhost:9090/SpringMVC/servlet/alteFileToDepartment/{idd}/{idf}  	
+@PutMapping("/alteFileToDepartment/{iddepartment}/{idImage}")
+public void AllocateFileToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idImage") int idImage){
+				
+departmentService.allocateFilesToDepartment(idDepartment, idImage);
+}		
+	
+
+	
+	
 	}
 
 	

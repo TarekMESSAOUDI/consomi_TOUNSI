@@ -3,6 +3,7 @@ package tn.esprit.spring.service;
 import java.util.List;
 
 import tn.esprit.spring.entities.Department;
+import tn.esprit.spring.entities.Product;
 
 public interface DepartmentService {
 
@@ -10,13 +11,29 @@ public interface DepartmentService {
 
 	Department addDepartment(Department D);
 
-	void deleteDepartment(Long idDepartment);
+	void deleteDepartment(int idDepartment);
 
-	Department updateDepartment(Department D);
+	Department DepartmentUpadate(Department dep);
 
-	Department retrieveDepartment(Long idDepartment);
+	Department retrieveDepartment(int idDepartment);
 
 	List<Department> retrieveAllDepartments();
+
+	
+
+	
+
+	List<Product> findProdcutInDepartment(int idDepartment);
+
+	void allocateProductToDepartment(int idDepartment, int idProduct);
+
+	void allocateFilesToDepartment(int idDepartment, int idImage);
+
+
+
+
+
+
 
 	
 

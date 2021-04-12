@@ -1,4 +1,4 @@
-package tn.esprit.spring.service;
+/*package tn.esprit.spring.service;
 
 
 import java.util.List;
@@ -28,7 +28,14 @@ public interface BillService {
 
 	List<Bill> getAllBill_by_Order(Long idOrder);
 
-	void assignOrder_to_Bill(Long idOrder, Long idBill);
+
+	void modify_type_bill(PaymentType paymentType, Long idBill);
+
+	String get_payment_type_by_idBill(Long idBill);
+
+	void billpdf(Long idBill);
+
+	
 	
 
 	
@@ -38,3 +45,4 @@ public interface BillService {
 	
 
 }
+*/

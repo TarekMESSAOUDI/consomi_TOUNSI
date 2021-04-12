@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table (name = "T_DELIVERY_PERSON")
 public class DeliveryPerson extends User implements Serializable {
 	
 	
@@ -68,34 +67,6 @@ public class DeliveryPerson extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="DeliveryPerson")
 	@JsonIgnore
 	private Set<Delivery> Delivery;
-	
-	
-	
-	
-	/////test//////
-	/*public int getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}*/
-
-	
-	/////////test///////////
-	
-	
-	
-	
-	/*public int getNbrMax() {
-		return nbrMax;
-	}
-
-	public void setNbrMax(int nbrMax) {
-		this.nbrMax = nbrMax;
-	}*/
-
-	
 	
 
 	public int getMissionNumberDeliveryPerson() {

@@ -2,9 +2,11 @@ package tn.esprit.spring.control;
 
 import java.util.Date;
 import java.util.List;
+
 import java.util.Optional;
 
-import javax.xml.crypto.Data;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
+import tn.esprit.spring.repository.IClientRepository;
+
 import tn.esprit.spring.service.IClientService;
 
 
@@ -26,6 +30,11 @@ public class ClientRestController {
 	
 	@Autowired 
 	IClientService cS;
+	
+	
+	
+	@Autowired
+	IClientRepository cR;
 
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-clients
 			@GetMapping("/retrieve-all-clients")
@@ -38,7 +47,7 @@ public class ClientRestController {
 			// http://localhost:9090/SpringMVC/servlet/retrieve-client-by-id/{user-id}
 			@GetMapping("/retrieve-client-by-id/{user-id}")
 			@ResponseBody
-			public Optional<Client> retrieveClient(@PathVariable("user-id") int userId) {
+			public Client retrieveClient(@PathVariable("user-id") int userId) {
 			return cS.retrieveClientById(userId);
 			}
 			
@@ -91,6 +100,7 @@ public class ClientRestController {
 			return cS.retrieveClientBySexe(sexeUser);
 			}
 			
+			
 			// http://localhost:9090/SpringMVC/servlet/count-client
 			@GetMapping("/count-client")
 			@ResponseBody
@@ -103,8 +113,16 @@ public class ClientRestController {
 			@ResponseBody
 			public Client addClient(@RequestBody Client client) {
 			Client cl = cS.addClient(client);
+			
 			return cl;
 			}
+			
+		/*	// http://localhost:9090/SpringMVC/servlet/affect-image-to-client/{iduser/{idimage}  	
+			@PutMapping("/affect-image-to-client/{iduser}/{idimage}")
+			public void affectImageToClient(@PathVariable(value = "idUser") int idUser,@PathVariable(value = "idImageUser") int IdImageUser){
+							
+			cS.affectImageToClient(idUser, IdImageUser);
+			}		*/
 
 			// http://localhost:9090/SpringMVC/servlet/delete-client/{user-id}
 			@DeleteMapping("/delete-client/{user-id}")
@@ -118,5 +136,33 @@ public class ClientRestController {
 			@ResponseBody
 			public Client updateClient(@RequestBody Client client) {
 			return cS.updateClient(client);
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-all-name-client
+			@GetMapping("/get-all-name-client")
+			@ResponseBody
+			public List<String> getAllClientNames(){
+				return cR.getAllClientNames();
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-max-rank
+			@GetMapping("/get-max-rank")
+			@ResponseBody
+			public List<String> getMaxRank(){
+				return cR.getMaxRank();
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-phone-grouby-adress
+			@GetMapping("/get-phone-grouby-adress")
+			@ResponseBody
+			public List<String> getphonegoupbyadress(){
+				return cR.getphonegoupbyadress();
+			}
+			
+			//http://localhost:9090/SpringMVC/servlet/get-min-age
+			@GetMapping("/get-min-age")
+			@ResponseBody
+			public Date getminage(){
+				return cR.getminage();
 			}
 }

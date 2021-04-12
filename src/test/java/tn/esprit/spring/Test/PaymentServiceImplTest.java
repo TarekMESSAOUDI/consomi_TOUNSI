@@ -19,8 +19,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Payment;
 import tn.esprit.spring.entities.PaymentType;
 
-import tn.esprit.spring.service.PaymentService;
-
+//import tn.esprit.spring.service.PaymentService;
+/*
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PaymentServiceImplTest {
@@ -66,4 +66,4 @@ public void testfindByType() {
 
 
 
-}
+}*/

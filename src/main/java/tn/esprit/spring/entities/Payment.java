@@ -113,6 +113,18 @@ public class Payment implements Serializable {
 		return "Payment [idPayment=" + idPayment + ", typePayment=" + typePayment + ", datePayment=" + datePayment
 				+ ", Client=" + Client + "]";
 	}
+	public Object getAmount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getCurrency() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
     
 	

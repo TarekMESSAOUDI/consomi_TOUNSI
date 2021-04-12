@@ -17,6 +17,7 @@ public class DepartmentManagerServiceImpl implements IDepartmentManagerService {
 
 	@Override
 	public DepartmentManager addDepartmentManager(DepartmentManager DepM) {
+		DepM.setRoleUser("DEPARTMENT_MANAGER");
 		return Dmr.save(DepM);
 	}
 

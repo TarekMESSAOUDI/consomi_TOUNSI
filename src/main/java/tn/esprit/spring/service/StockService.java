@@ -13,7 +13,7 @@ public interface StockService {
 
 	void deleteStock(Long idStock);
 
-	//Stock updateStock(Stock s);
+	Stock updateStock(Stock s);
 
 	Stock retrieveStock(Long idStock);
 
@@ -21,7 +21,18 @@ public interface StockService {
 
 
 
-	List<Stock> retrieveByTypeStock(TypeStock TypeStock);
+	
+
+	void allocateProductToStock(Long idStock, int IdProduct);
+
+
+
+	Stock StockUpadate(Stock st);
+
+	void orderProduct(int idProduct, int quantity);
+
+	String ChekStock();
+
 
 	
 

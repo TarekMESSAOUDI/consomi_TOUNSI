@@ -49,9 +49,6 @@ public class Department implements Serializable {
 		this.capacityDepartment = capacityDepartment;
 	}
 
-	@JsonIgnore
-	@ManyToOne
-	Stock stock ;
 	
 	
 	//@JsonIgnore
@@ -62,6 +59,11 @@ public class Department implements Serializable {
 	@JsonIgnore
 	private Set<Product> Product;
 
+	
+	
+	
+	
+	
 
 	public int getIdDepartment() {
 		return idDepartment;
@@ -94,13 +96,7 @@ public class Department implements Serializable {
 	public void setCapacityDepartment(int capacityDepartment) {
 		this.capacityDepartment = capacityDepartment;
 	}
-	public Stock getStock() {
-		return stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
-	}
+	
 
 	public DepartmentManager getDepartmentManager() {
 		return DepartmentManager;
@@ -121,8 +117,8 @@ public class Department implements Serializable {
 	@Override
 	public String toString() {
 		return "Department [idDepartment=" + idDepartment + ", nameDepartment=" + nameDepartment + ", typeDepartment="
-				+ typeDepartment + ", capacityDepartment=" + capacityDepartment + ", stock=" + stock
-				+ ", DepartmentManager=" + DepartmentManager + ", Product=" + Product + "]";
+				+ typeDepartment + ", capacityDepartment=" + capacityDepartment + 
+				", DepartmentManager=" + DepartmentManager + ", Product=" + Product + "]";
 	}
 	
 	

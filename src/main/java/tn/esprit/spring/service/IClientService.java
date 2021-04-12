@@ -2,9 +2,6 @@ package tn.esprit.spring.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
-import javax.xml.crypto.Data;
 
 import tn.esprit.spring.entities.Client;
 import tn.esprit.spring.entities.SexeType;
@@ -17,7 +14,7 @@ public interface IClientService {
 
 	boolean deleteClient(int id);
 
-	Optional<Client> retrieveClientById(int id);
+	Client retrieveClientById(int id);
 	
 	List<Client> retrieveAllClients();
 
@@ -36,6 +33,7 @@ public interface IClientService {
 	List<Client> retrieveClientBySexe(SexeType sexeUser);
 
 	long retrieveClientByCount();
+
 
 
 }

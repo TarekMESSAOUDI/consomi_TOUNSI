@@ -1,32 +1,55 @@
-package tn.esprit.spring.service;
+ package tn.esprit.spring.service;
 
 
-
-import java.util.List;
-import java.util.Optional;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 
 import tn.esprit.spring.entities.Payment;
-import tn.esprit.spring.entities.PaymentType;
+
+//import http.Payment;
 
 
-public interface PaymentService {
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-	Payment addPayment(Payment p);
-	public void deletepayment(Long idPayment);
-  List<Payment> findAll();
-	//void findPayment(int idPayment);
-	List<Payment> findByType(String typePayment);
-	//Payment GetByTypePayment(PaymentType typePayment);
-	Optional<Payment> findById(Long idPayment);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class PaymentService {
+
+    @Value("${stripe.key.secret}")
+    String secretKey;
+
+    public PaymentIntent paymentIntent(Payment payment) throws StripeException {
+        Stripe.apiKey = secretKey;
+        List<String> paymentMethodTypes = new ArrayList();
+        paymentMethodTypes.add("card");
+        Map<String, Object> params = new HashMap<>();
+        params.put("amount", payment.getAmount());
+        params.put("currency", payment.getCurrency());
+        params.put("description", payment.getDescription());
+        params.put("payment_method_types", paymentMethodTypes);
+        return PaymentIntent.create(params);
+    }
+
+    public PaymentIntent confirm(String id) throws StripeException {
+        Stripe.apiKey = secretKey;
+        PaymentIntent paymentIntent = PaymentIntent.retrieve(id);
+        Map<String, Object> params = new HashMap<>();
+        params.put("payment_method", "pm_card_visa");
+        paymentIntent.confirm(params);
+        return paymentIntent;
+    }
+
+    public PaymentIntent cancel(String id) throws StripeException {
+        Stripe.apiKey = secretKey;
+        PaymentIntent paymentIntent = PaymentIntent.retrieve(id);
+        paymentIntent.cancel();
+        return paymentIntent;
+    }
 
 }
