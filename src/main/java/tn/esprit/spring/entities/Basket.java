@@ -39,9 +39,9 @@ public class Basket implements Serializable {
 		this.productNumberBasket = productNumberBasket;
 		this.amountBasket = amountBasket;
 	}
-
-	@OneToOne(mappedBy="Basket")
+	
 	//@JsonIgnore
+	@OneToOne(mappedBy="Basket")
 	private Client Client;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Basket")

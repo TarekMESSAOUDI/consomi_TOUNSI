@@ -6,18 +6,24 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //@JsonIgnoreProperties
 @Entity
 @Table (name = "T_CLIENT")
 public class Client extends User implements Serializable {
 	
+	
+	/**
+	 * 
+	 */
 	
 	/**
 	 * 
@@ -77,7 +83,7 @@ public class Client extends User implements Serializable {
    // @JsonIgnore
 	private Set<Order> Order;
 	
-   // @JsonIgnore
+    @JsonIgnore
 	@OneToOne
 	private Basket Basket; 
 	
@@ -88,6 +94,14 @@ public class Client extends User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="Client")
 	//@JsonIgnore
 	private Set<Claim> Claim;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy="Client")
+	
+	 Set<Reservation> Reservation;
+	
+	
+
+	
 
 
 	

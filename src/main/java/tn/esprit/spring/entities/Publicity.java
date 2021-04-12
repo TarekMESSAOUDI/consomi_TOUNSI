@@ -72,8 +72,20 @@ public class Publicity implements Serializable {
 
 	//@JsonIgnore
 	@ManyToOne
-	Administrator Administrator; 
+	Administrator Administrator;
+	@JsonIgnore
+	@ManyToOne
+	Event event;
 	
+	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		event = event;
+	}
+
 	public void setStartDatePublicity(Date startDatePublicity) {
 		this.startDatePublicity = startDatePublicity;
 	}
