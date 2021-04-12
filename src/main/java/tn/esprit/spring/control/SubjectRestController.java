@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tn.esprit.spring.entities.Subject;
+import tn.esprit.spring.repository.CommentRepository;
 import tn.esprit.spring.repository.ISubjectRepository;
 import tn.esprit.spring.service.ISubjectService;
 
@@ -25,6 +27,9 @@ public class SubjectRestController {
 	
 	@Autowired
 	ISubjectRepository sR;
+	
+	@Autowired 
+	CommentRepository cR;
 	
 			// http://localhost:9090/SpringMVC/servlet/retrieve-all-subjects
 			@GetMapping("/retrieve-all-subjects")
@@ -110,5 +115,13 @@ public class SubjectRestController {
 			public List<Subject> retrievesuborderbystars(){
 				return sR.retrievesuborderbystars();
 			}
+			
+			/*// http://localhost:9090/SpringMVC/servlet/retreive-titlesubject-like-sup100
+			@GetMapping("/retreive-titlesubject-like-sup100")
+			@ResponseBody
+			public List<Long> getlikeNumberCommentBySubjectId(){
+				return sR.getTitleSubjectlikesup100();
+				
+			}*/
 
 }

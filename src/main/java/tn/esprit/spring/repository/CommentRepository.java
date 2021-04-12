@@ -25,5 +25,4 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	
 	
 	
-	
 }
