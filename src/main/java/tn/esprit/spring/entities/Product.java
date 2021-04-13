@@ -90,11 +90,6 @@ public class Product implements Serializable {
 		UnderCategory = getUnderCategory();
 	}
 
-
-
-	/*@JsonIgnore
-	@ManyToOne
-	Department Department;
 	
 	
 	@ManyToOne
@@ -108,13 +103,11 @@ public class Product implements Serializable {
 		this.stock = stock;
 	}
 
-	@JsonIgnore
-	@ManyToOne
-	Basket Basket; 
+
 	
-	@JsonIgnore
-	@ManyToOne
-	UnderCategory UnderCategory;*/
+	
+	
+	
 	
 	
 

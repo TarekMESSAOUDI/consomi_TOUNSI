@@ -31,4 +31,24 @@ public class virtualVisitControl {
 	      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
 	    }
 	  }
+	
+	/*
+	@GetMapping("/rayonpics")
+	  public ResponseEntity<List<FileInfo>> getListFiles() {
+	    List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
+	      String filename = path.getFileName().toString();
+	      String url = MvcUriComponentsBuilder
+	          .fromMethodName(FilesController.class, "getFile", path.getFileName().toString()).build().toString();
+
+	      return new FileInfo(filename, url);
+	    }).collect(Collectors.toList());
+
+	    return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
+	  }
+	
+	
+	
+	*/
+	
+	
 }

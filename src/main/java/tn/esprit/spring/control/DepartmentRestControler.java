@@ -94,23 +94,24 @@ import tn.esprit.spring.service.DepartmentService;
 				
 				
 				
-				
-				
-				
-				
-		
-				
-				
-		// http://localhost:9090/SpringMVC/servlet/allocateProductToDepartment/{idd/{idp}  	
-	@PutMapping("/allocateProductToDepartment/{iddepartment}/{idproduct}")
-	public void allocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int IdProduct){
+		// http://localhost:9090/SpringMVC/servlet/alteProductToDepartment/{idd}/{idp}  	
+	@PutMapping("/alteProductToDepartment/{iddepartment}/{idproduct}")
+	public void AllocateProductToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idproduct") int idProduct){
 					
-	departmentService.allocateProductToDepartment(idDepartment, IdProduct);
+	departmentService.allocateProductToDepartment(idDepartment, idProduct);
 	}		
 		
 	
 	
 	
+	// http://localhost:9090/SpringMVC/servlet/alteFileToDepartment/{idd}/{idf}  	
+@PutMapping("/alteFileToDepartment/{iddepartment}/{idImage}")
+public void AllocateFileToDepartment(@PathVariable(value = "iddepartment") int idDepartment,@PathVariable(value = "idImage") int idImage){
+				
+departmentService.allocateFilesToDepartment(idDepartment, idImage);
+}		
+	
+
 	
 	
 	}
